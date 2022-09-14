@@ -1,5 +1,7 @@
+import RoomInfoInterface from "../Interface/comm/room/RoomInfoInterface";
 import Player from "./Player";
-import RoomInfoInterface from '../Interface/RoomInfoInterface';
+import GameProcess from '../GameProcess';
+import { GameOverRule } from "../enums/GameRules";
 
 class Room {
 	private id: string;
@@ -24,8 +26,8 @@ class Room {
 		return this.owner;
 	}
 
-	public getInfo():RoomInfoInterface{
-		return { roomId: this.getId(), owner: this.getOwner().getName(), ownerId: this.getOwner().getId(), playerList: this.getPlayerList().map(player => player.getInfo()) };
+	public getInfo(): RoomInfoInterface {
+		return { roomId: this.getId(), owner: this.getOwner().getName(), ownerId: this.getOwner().getId(), playerList: this.getPlayerList().map((player) => player.getInfo()) };
 	}
 
 	public join(player: Player) {
@@ -53,6 +55,10 @@ class Room {
 
 	public isEmpty() {
 		return this.playerList.length == 0;
+	}
+
+	public startGame(){
+		const gameProcess = new GameProcess(this.id, this.playerList, 1000, GameOverRule.OnePlayerGoBroke, 2);
 	}
 }
 

@@ -1,10 +1,10 @@
 import { WebSocket, WebSocketServer } from "ws";
-import CommInterface from "./Interface/CommInterface";
+import CommInterface from "./Interface/comm/CommInterface";
 import CommTypes from "./enums/CommTypes";
 import Player from "./base/Player";
 import Room from "./base/Room";
 import { newRoomId } from "./utils";
-import MsgInterface from "./Interface/MsgInterface";
+import MsgInterface from "./Interface/comm/MsgInterface";
 import colors from "colors";
 require("colors");
 
@@ -44,7 +44,7 @@ class GameSocketServer {
 				let receivedMsg: MsgInterface = receivedData.msg;
 				switch (receivedData.type) {
 					case CommTypes.ConnectSuccess:
-						if(receivedMsg.data == '') console.info("有空字符")
+						if (receivedMsg.data == "") console.info("有空字符");
 						player = new Player(receivedMsg.data, receivedMsg.sourceId, socketClient);
 						this.handleConnectSuccess(socketClient, player.getId());
 						break;
@@ -55,7 +55,12 @@ class GameSocketServer {
 						this.handleJoinRoom(player, receivedMsg.targetId);
 						break;
 					case CommTypes.LeaveRoom: //处理玩家离开房间
-						this.handleLeaveRoom(socketClient, receivedMsg.sourceId, receivedMsg.targetId);
+						this.handleLeaveRoom(player, receivedMsg.targetId);
+						break;
+					case CommTypes.StartGame:	//处理开始游戏
+						this.handleStartGame(receivedMsg.targetId);
+						break;
+					default:
 						break;
 				}
 			});
@@ -75,6 +80,27 @@ class GameSocketServer {
 		};
 		this.socketServer.clients.forEach((socketClient) => {
 			this.sendMsgToOneClient(socketClient, radioMsg);
+		});
+	}
+
+	//对房间里的全部玩家发通知(会显示在顶部信息提醒)
+	roomMsgRaido(roomId: string, msg: string, exceptPlayerId?: string) {
+		let currentRoom = this.getRoomById(roomId); //获取当前房间
+		let playerList = currentRoom.getPlayerList(); //获取当前房间的玩家列表
+		const roomMsg: CommInterface = {
+			//填写广播的信息
+			type: CommTypes.RoomMsgRadio,
+			msg: {
+				sourceId: roomId,
+				targetId: "",
+				data: "",
+				extra: msg,
+			},
+		};
+		playerList.forEach((player) => {
+			if (!(exceptPlayerId && player.getId() === exceptPlayerId)) {
+				player.getSocketClient().send(JSON.stringify(roomMsg));
+			}
 		});
 	}
 
@@ -127,8 +153,8 @@ class GameSocketServer {
 			msg: {
 				sourceId: "server",
 				targetId: "",
-				data: "连接服务器Socket成功!",
-				extra: "",
+				data: "",
+				extra: "连接服务器Socket成功!",
 			},
 		};
 		this.sendMsgToOneClient(socketClient, replyMsg);
@@ -152,15 +178,18 @@ class GameSocketServer {
 	handleJoinRoom(player: Player, roomId: string) {
 		let roomIndex = this.getRoomIndexById(roomId);
 		let currentRoom: Room;
+		let extraMsg = "";
 		//判断房间是否存在, 不存在就创建
 		if (roomIndex === -1) {
 			roomId = newRoomId();
 			currentRoom = new Room(roomId, player);
 			this.roomList.push(currentRoom);
 			this.roomListRadio(); //创建房间后向全体玩家发送房间列表更新的信息
+			extraMsg = "创建房间成功！";
 			console.info("玩家: ".gray, player.getId().yellow, "创建房间:".gray, roomId.yellow);
 		} else {
 			currentRoom = this.roomList[roomIndex];
+			extraMsg = "进入房间成功！";
 			console.info("玩家: ".gray, player.getId().yellow, "进入房间:".gray, roomId.yellow);
 		}
 		currentRoom.join(player); //玩家进入房间
@@ -172,14 +201,16 @@ class GameSocketServer {
 				sourceId: roomId,
 				targetId: player.getId(),
 				data: "",
-				extra: "",
+				extra: extraMsg,
 			},
 		};
 		this.sendMsgToOneClient(player.getSocketClient(), replyMsg);
+		this.roomMsgRaido(roomId, `${player.getName()} 进入了房间`, player.getId());
 		this.roomRadio(roomId);
 	}
 
-	handleLeaveRoom(socketClient: WebSocket, playerId: string, roomId: string) {
+	handleLeaveRoom(player:Player, roomId: string) {
+		const playerId = player.getId();
 		console.info("玩家: ".gray, playerId.yellow, "离开房间:".red, roomId.yellow);
 		//处理玩家离开房间
 		const currentRoom = this.roomList[this.getRoomIndexById(roomId)];
@@ -189,18 +220,25 @@ class GameSocketServer {
 				sourceId: "server",
 				targetId: "",
 				data: "",
-				extra: "",
+				extra: `你离开了${currentRoom.getOwner().getName()}的房间`,
 			},
 		};
 		currentRoom.leave(playerId);
-		this.sendMsgToOneClient(socketClient, leaveRoomMsg);
+		this.sendMsgToOneClient(player.getSocketClient(), leaveRoomMsg);
 		if (currentRoom.isEmpty()) {
 			//玩家离开后房间为空就删除房间
 			this.roomList.splice(this.getRoomIndexById(currentRoom.getId()), 1);
 			this.roomListRadio(); //通知全体在线玩家更新房间列表
 		} else {
 			this.roomRadio(roomId); //离开后通知房间内其他玩家更新信息
+			this.roomMsgRaido(roomId, `${player.getName()} 离开了房间`, player.getId());
 		}
+	}
+
+	handleStartGame(roomId: string){
+		const currentRoom = this.getRoomById(roomId);
+		console.info("房间: ".gray, roomId.yellow, "开始游戏:".green);
+		currentRoom.startGame();
 	}
 
 	getRoomIndexById(roomId: string) {

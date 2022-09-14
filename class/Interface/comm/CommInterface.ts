@@ -1,4 +1,4 @@
-import CommTypes from "../enums/CommTypes";
+import CommTypes from "../../enums/CommTypes";
 import MsgInterface from "./MsgInterface";
 
 interface CommInterface {

@@ -1,7 +1,8 @@
-import RealEstate from "./RealEstate";
-import ChanceCard from "./ChanceCard";
 import { WebSocket } from "ws";
+import PlayerInfoInterface from "../Interface/comm/game/PlayerInfoInterface";
 import Icon from "../utils/Icon";
+import ChanceCard from "./ChanceCard";
+import RealEstate from "./RealEstate";
 
 class Player {
 	private name: string = "";
@@ -9,8 +10,11 @@ class Player {
 	private color: string = "";
 	private icon: string = "";
 	private ready: boolean = false;
+	private stop: boolean = false;
 	private socketClient: WebSocket;
+
 	private money: number = 0; //拥有金钱
+	private currentGrid: number = 0;
 	private ownRealEstateList: Array<RealEstate> = []; //拥有的房地产
 	private ownChanceCardList: Array<ChanceCard> = []; //拥有的机会卡
 
@@ -60,7 +64,7 @@ class Player {
 		return this.color;
 	}
 
-	public getIcon(){
+	public getIcon() {
 		return this.icon;
 	}
 
@@ -72,8 +76,24 @@ class Player {
 		return this.money;
 	}
 
-	public getInfo() {
-		return { name: this.getName(), id: this.getId(), color: this.getColor(), icon: this.getIcon(), ready: this.isReady() };
+	public getCurrentGrid() {
+		return this.currentGrid;
+	}
+
+	public isStop() {
+		return this.stop;
+	}
+
+	public setReady(isReady: boolean) {
+		this.ready = isReady;
+	}
+
+	public setStop(isStop: boolean) {
+		this.stop = isStop;
+	}
+
+	public getInfo(): PlayerInfoInterface {
+		return { name: this.getName(), id: this.getId(), color: this.getColor(), icon: this.getIcon(), ready: this.isReady(), money: this.getMoney(), currentGrid: this.getCurrentGrid(), stop: this.isStop() };
 	}
 
 	public getSocketClient() {
