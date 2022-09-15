@@ -4,6 +4,7 @@ import RealEstateInterface from "../class/Interface/RealEstateInterface";
 import RealEstate from "../class/base/RealEstate";
 import MapInfoInterface from "../class/Interface/comm/game/MapInfoInterface";
 import SpecialMapItem from "../class/base/SpecialMapItem";
+import ChanceCard from '../class/base/ChanceCard';
 
 const mapInfo = [
 	{ name: "金泉酒店", buy: 10, build: 10, pass: 10, oneHouse: 10, towHouse: 10, villa: 10, color: "#66ccff" },
@@ -43,6 +44,7 @@ const mapInfo = [
 	{ name: "华润万家", buy: 10, build: 10, pass: 10, oneHouse: 10, towHouse: 10, villa: 10, color: "#66ccff" },
 	{ name: "好万家", buy: 10, build: 10, pass: 10, oneHouse: 10, towHouse: 10, villa: 10, color: "#66ccff" },
 	{ name: "鸿富超市", buy: 10, build: 10, pass: 10, oneHouse: 10, towHouse: 10, villa: 10, color: "#66ccff" },
+	{ name: "金蝴蝶", buy: 10, build: 10, pass: 10, oneHouse: 10, towHouse: 10, villa: 10, color: "#66ccff" },
 ];
 
 function getMapItemListFromJson(): RealEstateInterface[] {
@@ -80,6 +82,18 @@ class EnPingMap implements MapInterface {
 			13,
 			new SpecialMapItem("监仓", (player) => {
 				player.setStop(true);
+			})
+		);
+		this.addMapItem(
+			21,
+			new SpecialMapItem("福利彩票", (player) => {
+				// player.gainChanceCard()
+			})
+		);
+		this.addMapItem(
+			34,
+			new SpecialMapItem("浪波湾", (player) => {
+				// player.gainChanceCard()
 			})
 		);
 	}

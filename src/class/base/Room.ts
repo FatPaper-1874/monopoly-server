@@ -1,12 +1,13 @@
+import { GameOverRule } from "../enums/GameRules";
+import GameProcess from "../GameProcess";
 import RoomInfoInterface from "../Interface/comm/room/RoomInfoInterface";
 import Player from "./Player";
-import GameProcess from '../GameProcess';
-import { GameOverRule } from "../enums/GameRules";
 
 class Room {
 	private id: string;
 	private owner: Player;
 	private playerList: Array<Player>;
+	private gameProcess!: GameProcess;
 
 	constructor(id: string, owner: Player) {
 		this.id = id;
@@ -40,7 +41,11 @@ class Room {
 		const leavePlayerIndex = this.playerList.findIndex((itme) => itme.getId() === playerId);
 		if (leavePlayerIndex === -1) return;
 		this.playerList.splice(leavePlayerIndex, 1);
-		if (!this.hasOwner() && this.playerList.length > 0) this.owner = this.playerList[0];
+
+		if (!this.hasOwner() && this.playerList.length > 0) {
+			this.owner = this.playerList[0];
+			if (this.gameProcess) this.gameProcess.gameFrameRadio();
+		}
 	}
 
 	private hasOwner() {
@@ -57,8 +62,8 @@ class Room {
 		return this.playerList.length == 0;
 	}
 
-	public startGame(){
-		const gameProcess = new GameProcess(this.id, this.playerList, 1000, GameOverRule.OnePlayerGoBroke, 2);
+	public startGame() {
+		this.gameProcess = new GameProcess(this.id, this.playerList, 1000, GameOverRule.OnePlayerGoBroke, 2);
 	}
 }
 

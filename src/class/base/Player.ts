@@ -1,4 +1,3 @@
-import { WebSocket } from "ws";
 import PlayerInfoInterface from "../Interface/comm/game/PlayerInfoInterface";
 import Icon from "../utils/Icon";
 import ChanceCard from "./ChanceCard";
@@ -11,35 +10,33 @@ class Player {
 	private icon: string = "";
 	private ready: boolean = false;
 	private stop: boolean = false;
-	private socketClient: WebSocket;
 
 	private money: number = 0; //拥有金钱
 	private currentGrid: number = 0;
-	private ownRealEstateList: Array<RealEstate> = []; //拥有的房地产
+	private ownRealEstateList: Array<string> = []; //拥有的房地产名称
 	private ownChanceCardList: Array<ChanceCard> = []; //拥有的机会卡
 
-	constructor(name: string, id: string, socketClient: WebSocket) {
+	constructor(name: string, id: string) {
 		this.name = name;
 		this.id = id;
-		this.socketClient = socketClient;
 		this.color = this.randomColor();
 		this.icon = Icon.getRandomIcon();
 	}
 
 	public gainMoney(money: number) {
-		this.money = +money;
+		this.money += money;
 	}
 
 	public costMoney(money: number) {
-		this.money = -money;
+		this.money -= money;
 	}
 
 	public gainRealEstate(realEstate: RealEstate) {
-		this.ownRealEstateList.push(realEstate);
+		this.ownRealEstateList.push(realEstate.getName());
 	}
 
 	public loseRealEstate(realEstate: RealEstate) {
-		const loseRealEstateIndex = this.ownRealEstateList.indexOf(realEstate);
+		const loseRealEstateIndex = this.ownRealEstateList.indexOf(realEstate.getName());
 		this.ownRealEstateList.splice(loseRealEstateIndex, 1);
 	}
 
@@ -76,6 +73,10 @@ class Player {
 		return this.money;
 	}
 
+	public walk(step: number){
+		this.currentGrid = (this.currentGrid + step) % 42
+	}
+
 	public getCurrentGrid() {
 		return this.currentGrid;
 	}
@@ -92,12 +93,13 @@ class Player {
 		this.stop = isStop;
 	}
 
-	public getInfo(): PlayerInfoInterface {
-		return { name: this.getName(), id: this.getId(), color: this.getColor(), icon: this.getIcon(), ready: this.isReady(), money: this.getMoney(), currentGrid: this.getCurrentGrid(), stop: this.isStop() };
+	public payToOtherPlayer(targetPlayer: Player, money: number){
+		this.costMoney(money);
+		targetPlayer.gainMoney(money);
 	}
 
-	public getSocketClient() {
-		return this.socketClient;
+	public getInfo(): PlayerInfoInterface {
+		return { name: this.getName(), id: this.getId(), color: this.getColor(), icon: this.getIcon(), ready: this.isReady(), money: this.getMoney(), currentGrid: this.getCurrentGrid(), stop: this.isStop(), ownRealEstate: this.ownRealEstateList };
 	}
 
 	public getOwnRealEstateList() {

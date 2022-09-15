@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "ts-node-dev ./index.ts"
+    "start": "ts-node-dev --files ./index.ts"
   },
   "devDependencies": {
     "@types/colors": "^1.2.1",
