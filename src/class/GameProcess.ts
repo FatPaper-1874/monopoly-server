@@ -7,7 +7,9 @@ import EnPingMap from "../maps/EnPingMap";
 import CommInterface from "./Interface/comm/CommInterface";
 import CommTypes from "./enums/CommTypes";
 import GameFrameInterface from "./Interface/comm/game/GameFrameInterface";
-import EventResultTypes from './enums/EventResultTypes';
+import EventResultTypes from "./enums/EventResultTypes";
+import MapItemTypes from "./enums/MapItemTypes";
+import ArrivalEventTypes from "./enums/ArrivalEventTypes";
 
 export default class GameProcess {
 	private roomId: string;
@@ -41,7 +43,7 @@ export default class GameProcess {
 			const waitingRollDice = new Promise<void>((resolve, rejects) => {
 				console.info("等待" + this.getCurrentRoundPlayerId().green + "摇骰子");
 				const roundNotice: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "warn", extra: "到你的回合啦 :)" } };
-				$socketServer.sendMsgToOneClientById(currentPlayer.getId(), roundNotice);	//提醒回合到了
+				$socketServer.sendMsgToOneClientById(currentPlayer.getId(), roundNotice); //提醒回合到了
 				$evenListen.once(`${currentPlayer.getId()}-rollDice`, () => {
 					this.dice.roll(); //摇骰子
 					currentPlayer.walk(this.dice.getResultNumber());
@@ -57,7 +59,7 @@ export default class GameProcess {
 					};
 					this.gameMsgRadio(replyMsg);
 					setTimeout(() => {
-						this.handleArrivalEvent(currentPlayer);
+						this.handleArrivalEvent(currentPlayer); //走完格子后就开始执行到达事件
 						this.gameFrameRadio();
 						resolve();
 					}, 1200); //假装延迟给前端扭骰子动画时间
@@ -65,14 +67,48 @@ export default class GameProcess {
 			});
 
 			const waitingHandleArrivalEvent = new Promise<void>((resolve, rejects) => {
-				$evenListen.once(`${this.getCurrentRoundPlayerId()}-arrivalEvent`, (result: EventResultTypes) => {
-					//收到客户端的交易结果
-					if(result === EventResultTypes.Agree){
-						this.handleBuyRealEstate(currentPlayer);
-						const roundNotice: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "success", extra: "购买成功 ;)" } };
-						$socketServer.sendMsgToOneClientById(currentPlayer.getId(), roundNotice);	//提醒回合到了
+				$evenListen.once(`${this.getCurrentRoundPlayerId()}-arrivalEvent`, (result: EventResultTypes, eventType: ArrivalEventTypes) => {
+					switch (eventType) {
+						case ArrivalEventTypes.Buy:
+							{
+								if (result === EventResultTypes.Agree) {
+									if (this.handleBuyRealEstate(currentPlayer)) {
+										//发送交易结果提醒
+										const buyRealEstateSuccessMsg: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "success", extra: "购买成功 ;)" } };
+										$socketServer.sendMsgToOneClientById(currentPlayer.getId(), buyRealEstateSuccessMsg);
+									} else {
+										const buyRealEstateSuccessMsg: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "error", extra: "购买失败 :(" } };
+										$socketServer.sendMsgToOneClientById(currentPlayer.getId(), buyRealEstateSuccessMsg);
+									}
+								}
+								resolve();
+							}
+							break;
+						case ArrivalEventTypes.Building:
+							{
+								if (result === EventResultTypes.Agree) {
+									if (this.handleBuildHouse(currentPlayer)) {
+										//发送交易结果提醒
+										const buildHouseSuccessMsg: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "success", extra: "建楼成功 ;)" } };
+										$socketServer.sendMsgToOneClientById(currentPlayer.getId(), buildHouseSuccessMsg);
+									} else {
+										const buildHouseSuccessMsg: CommInterface = { type: CommTypes.RoomMsgRadio, msg: { sourceId: "server", targetId: "", data: "error", extra: "建楼失败 :(" } };
+										$socketServer.sendMsgToOneClientById(currentPlayer.getId(), buildHouseSuccessMsg);
+									}
+								}
+								resolve();
+							}
+							break;
+						case ArrivalEventTypes.None:
+							{
+								resolve();
+							}
+							break;
+						default:
+							resolve();
+							break;
 					}
-					resolve();
+					//收到客户端的交易结果
 				});
 			});
 
@@ -85,7 +121,7 @@ export default class GameProcess {
 
 			// await Promise.all([waitingRollDice, waitingHandleArrivalEvent, waitingUseCard]).then();
 			await Promise.all([waitingRollDice, waitingHandleArrivalEvent]).then(() => {
-				const roundNotice: CommInterface = { type: CommTypes.RoundEnd, msg: { sourceId: "server", targetId: "", data: "warn", extra: "你的回合结束辣 :)" } };	//所有promise结束, 回合结束
+				const roundNotice: CommInterface = { type: CommTypes.RoundEnd, msg: { sourceId: "server", targetId: "", data: "warn", extra: "你的回合结束辣 :)" } }; //所有promise结束, 回合结束
 				$socketServer.sendMsgToOneClientById(currentPlayer.getId(), roundNotice);
 				this.nextRound();
 				this.gameFrameRadio();
@@ -143,10 +179,18 @@ export default class GameProcess {
 		this.map.mapItemList[player.getCurrentGrid()].arrivalEvent(player);
 	}
 
-	handleBuyRealEstate(player: Player){
-		const realEstate:RealEstate =  this.map.mapItemList[player.getCurrentGrid()] as RealEstate;
-		player.costMoney(realEstate.getCostList().buy);
+	handleBuyRealEstate(player: Player): boolean {
+		const realEstate: RealEstate = this.map.mapItemList[player.getCurrentGrid()] as RealEstate;
+		if (!player.costMoney(realEstate.getCostList().buy)) return false;
 		realEstate.setOwner(player);
 		player.gainRealEstate(realEstate);
+		return true;
+	}
+
+	handleBuildHouse(player: Player): boolean {
+		const realEstate: RealEstate = this.map.mapItemList[player.getCurrentGrid()] as RealEstate;
+		if (!player.costMoney(realEstate.getCostList().build)) return false;
+		if(!realEstate.addBuilding()) console.info("建房子时超出了三栋, 意料之外的错误".red);
+		return true;
 	}
 }

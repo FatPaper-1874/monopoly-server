@@ -12,6 +12,7 @@ enum CommTypes {
 	UseChanceCard,
 	BuyRealEstate,
 	BuildHouse,
+	SpecialEvent,
 	PayToSomeOne,
 	RoundEnd,
 }

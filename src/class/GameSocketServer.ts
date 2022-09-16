@@ -7,6 +7,8 @@ import { newRoomId } from "./utils";
 import MsgInterface from "./Interface/comm/MsgInterface";
 import colors from "colors";
 import EventResultTypes from './enums/EventResultTypes';
+import MapItemTypes from './enums/MapItemTypes';
+import ArrivalEventTypes from './enums/ArrivalEventTypes';
 require("colors");
 
 interface SocketClientListInterface {
@@ -65,6 +67,12 @@ class GameSocketServer {
 						break;
 					case CommTypes.BuyRealEstate: //处理买地
 						this.handleBuyRealEstate(player.getId(), receivedMsg);
+						break;
+					case CommTypes.BuildHouse:
+						this.handleBuildHouse(player.getId(), receivedMsg);
+						break;
+					case CommTypes.SpecialEvent:
+						this.handleSpecialEvent(player.getId(), receivedMsg);
 						break;
 					case CommTypes.UseChanceCard: //处理使用道具卡
 						this.handleUseChanceCard(player.getId(), receivedMsg);
@@ -179,7 +187,18 @@ class GameSocketServer {
 
 	handleBuyRealEstate(playId: string, msg: MsgInterface) {
 		const result:EventResultTypes = JSON.parse(msg.data);
-		$evenListen.emit(`${playId}-arrivalEvent`, result);
+		$evenListen.emit(`${playId}-arrivalEvent`, result, ArrivalEventTypes.Buy);
+	}
+
+	handleBuildHouse(playId: string, msg: MsgInterface) {
+		const result:EventResultTypes = JSON.parse(msg.data);
+		$evenListen.emit(`${playId}-arrivalEvent`, result, ArrivalEventTypes.Building);
+	}
+
+	handleSpecialEvent(playId: string, msg: MsgInterface) {
+		//处理客户端走到特殊格子的函数(只是为了配合与交易函数分开);
+		const result:EventResultTypes = JSON.parse(msg.data);
+		$evenListen.emit(`${playId}-arrivalEvent`, result, ArrivalEventTypes.None);
 	}
 
 	handleUseChanceCard(playId: string, msg: MsgInterface) {}
