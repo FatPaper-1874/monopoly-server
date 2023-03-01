@@ -19,6 +19,14 @@ export interface User {
 	isReady: boolean;
 	avatar: string;
 	color: string;
+	role: Role,
+}
+
+export interface Role{
+	id: string,
+	rolename: string,
+	filename: string,
+	color: string,
 }
 
 export interface RoomInfo {
@@ -33,6 +41,7 @@ export interface RoomInfo {
 	isStarted: boolean;
 	ownerId: string;
 	ownerName: string;
+	roleList: Role[];
 }
 
 export interface MapItem {

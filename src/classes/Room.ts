@@ -1,21 +1,24 @@
 import { WebSocket } from "ws";
-import { SocketMsgType } from "../enums/bace";
+import { ChangeRoleOperate, SocketMsgType } from "../enums/bace";
 import { User, SocketMessage, RoomInfo } from "../interfaces/bace";
 import fs from "fs";
 import path from "path";
+import { Role } from "../../../monopoly-client/src/interfaces/bace";
 
 export class Room {
 	private roomId: string;
 	private userList: Map<string, User>;
 	private isStarted: boolean;
 	private ownerId: string;
+	private roleList: Role[];
 
-	constructor(owner: User) {
+	constructor(owner: User, roleList: Role[]) {
 		this.roomId = this.newRoomId();
 		this.ownerId = owner.userId;
+		this.roleList = roleList;
+		this.isStarted = false;
 		this.userList = new Map();
 		this.join(owner);
-		this.isStarted = false;
 	}
 
 	public getRoomId() {
@@ -59,10 +62,18 @@ export class Room {
 	private getRoomInfo(): RoomInfo {
 		const roomInfo: RoomInfo = {
 			roomId: this.roomId,
-			userList: Array.from(this.userList.values()).map((user) => ({ userId: user.userId, username: user.username, isReady: user.isReady, color: user.color, avatar: user.avatar })),
+			userList: Array.from(this.userList.values()).map((user) => ({
+				userId: user.userId,
+				username: user.username,
+				isReady: user.isReady,
+				color: user.color,
+				avatar: user.avatar,
+				role: user.role,
+			})),
 			isStarted: this.isStarted,
 			ownerId: this.getOwner().userId,
 			ownerName: this.getOwner().username,
+			roleList: this.roleList,
 		};
 		return roomInfo;
 	}
@@ -94,6 +105,7 @@ export class Room {
 			//用户已在房间内
 			return false;
 		} else {
+			user.role = this.roleList[Math.floor(Math.random() * this.roleList.length)];
 			this.userList.set(user.userId, user);
 			this.roomInfoBroadcast();
 			return true;
@@ -121,14 +133,39 @@ export class Room {
 		}
 	}
 
+	public changeRole(_userId: string, operate: ChangeRoleOperate): void {
+		const user = this.userList.get(_userId);
+		if (user) {
+			const roleIndex = this.roleList.findIndex((role) => role.id === user.role.id);
+			const newIndex =
+				operate === ChangeRoleOperate.Next
+					? roleIndex + 1 >= this.roleList.length
+						? 0
+						: roleIndex + 1
+					: roleIndex - 1 < 0
+					? this.roleList.length - 1
+					: roleIndex - 1;
+			user.role = this.roleList[newIndex];
+
+			this.roomInfoBroadcast();
+		} else {
+			return;
+		}
+	}
+
 	public async startGame() {
 		if (!Array.from(this.userList).every((item) => item[1].userId == this.ownerId || item[1].isReady)) {
-			this.roomBroadcast({ type: SocketMsgType.GameStart , source: "server", data: "error", msg: { type: "warning", content: "有玩家未准备" } });
+			this.roomBroadcast({
+				type: SocketMsgType.GameStart,
+				source: "server",
+				data: "error",
+				msg: { type: "warning", content: "有玩家未准备" },
+			});
 			return;
 		}
 		const filePath = path.join(__dirname, "../../public/map-ji.json");
 		const mapData = await fs.readFileSync(filePath, "utf-8");
-		this.roomBroadcast({ type: SocketMsgType.GameStart, source: "server", data: mapData});
+		this.roomBroadcast({ type: SocketMsgType.GameStart, source: "server", data: mapData });
 	}
 
 	/**
@@ -169,7 +206,13 @@ export class Room {
 	 * @param msg 可以使客户端触发message组件的信息
 	 * @param roomId 房间Id
 	 */
-	public sendToClient(socketClient: WebSocket, type: SocketMsgType, data: any, msg?: { type: string; content: string }, roomId?: string) {
+	public sendToClient(
+		socketClient: WebSocket,
+		type: SocketMsgType,
+		data: any,
+		msg?: { type: string; content: string },
+		roomId?: string
+	) {
 		const msgToSend: SocketMessage = {
 			type,
 			data,
