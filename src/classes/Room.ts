@@ -4,6 +4,8 @@ import { User, SocketMessage, RoomInfo } from "../interfaces/bace";
 import fs from "fs";
 import path from "path";
 import { Role } from "../../../monopoly-client/src/interfaces/bace";
+import { GameProcess } from "./GameProcess";
+import { GameOverRule } from "../enums/game";
 
 export class Room {
 	private roomId: string;
@@ -11,6 +13,7 @@ export class Room {
 	private isStarted: boolean;
 	private ownerId: string;
 	private roleList: Role[];
+	private gameProcess: GameProcess;
 
 	constructor(owner: User, roleList: Role[]) {
 		this.roomId = this.newRoomId();
@@ -30,6 +33,10 @@ export class Room {
 			userId: this.ownerId,
 			username: this.userList.get(this.ownerId)!.username,
 		};
+	}
+
+	public getUserList(): User[] {
+		return Array.from(this.userList.values());
 	}
 
 	/**
@@ -120,6 +127,7 @@ export class Room {
 	public leave(userId: string): boolean {
 		this.userList.delete(userId);
 		if (this.userList.size == 0) {
+			if(this.gameProcess) this.gameProcess.distory();
 			return true;
 		} else {
 			if (this.ownerId === userId) {
@@ -163,9 +171,19 @@ export class Room {
 			});
 			return;
 		}
-		const filePath = path.join(__dirname, "../../public/map-ji.json");
-		const mapData = await fs.readFileSync(filePath, "utf-8");
-		this.roomBroadcast({ type: SocketMsgType.GameStart, source: "server", data: mapData });
+		this.gameProcess = new GameProcess(
+			{
+				gameOverRule: GameOverRule.LeftOnePlayer,
+				initMoney: 1000,
+				multiplier: 1,
+				multiplierIncreaseRounds: 7,
+				mapName: "1",
+				roundTime: 15,
+				diceNum: 2,
+			},
+			this
+		);
+		await this.gameProcess.start();
 	}
 
 	/**
@@ -210,7 +228,7 @@ export class Room {
 		socketClient: WebSocket,
 		type: SocketMsgType,
 		data: any,
-		msg?: { type: string; content: string },
+		msg?: { type: "success" | "warning" | "error" | "message"; content: string },
 		roomId?: string
 	) {
 		const msgToSend: SocketMessage = {

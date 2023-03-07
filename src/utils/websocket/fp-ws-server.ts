@@ -3,6 +3,8 @@ import { Room } from "../../classes/Room";
 import { SocketMsgType } from "../../enums/bace";
 import { SocketMessage, User } from "../../interfaces/bace";
 import { getRoleList } from "../db/api/Role";
+import { OperateType } from "../../enums/game";
+import { OperateListener } from "../OperateListener";
 const color = require("colors-console");
 
 enum ServerStatus {
@@ -135,6 +137,9 @@ export class GameSocketServer {
 						break;
 					case SocketMsgType.GameStart:
 						this.handleGameStart(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.RollDice:
+						this.handleRollDice(socketClient, socketMessage, clientUserId);
 						break;
 				}
 			});
@@ -392,6 +397,11 @@ export class GameSocketServer {
 				room.startGame();
 			}
 		}
+	}
+
+	private handleRollDice(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const operateType: OperateType = data.data;
+		OperateListener.getInstance().emit(clientUserId, operateType);
 	}
 }
 
