@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UserInfo } from "../utils/db/api/User";
+import { getUserById } from "../utils/db/api/User";
 import { verToken } from "../utils/token";
 import { ResInterface } from "../interfaces/res";
 
@@ -9,7 +9,7 @@ routerUser.get("/info", async (req, res, next) => {
 	if (req.headers.authorization) {
 		//@ts-ignore
 		const { userId } = await verToken(req.headers.authorization);
-		const user = await UserInfo(userId);
+		const user = await getUserById(userId);
 		if (user) {
 			const resMsg: ResInterface = {
 				status: 200,

@@ -6,10 +6,14 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { expressjwt } from "express-jwt";
 import routerLogin from "./src/routers/login";
-import routerUser from './src/routers/user'
-import routerTest from "./src/routers/test";
-import { UserCreate } from './src/utils/db/api/User';
-import { RoleCreate } from './src/utils/db/api/Role';
+import routerUser from "./src/routers/user";
+import routerUpload from "./src/routers/upload";
+import { createUser } from "./src/utils/db/api/User";
+import { createRole } from "./src/utils/db/api/Role";
+import routerModel from "./src/routers/model";
+import { routerMap } from "./src/routers/map";
+import { routerItemType } from './src/routers/itemType';
+import { routerMapItem } from './src/routers/mapItem';
 
 const APIPORT = 8000;
 const SOCKETPORT = 8001;
@@ -30,32 +34,22 @@ async function bootstrap() {
 
 	app.use(bodyParser.json());
 
-	// app.use(function (req, res, next) {
-	// 	var token = req.headers["authorization"];
-	// 	if (token == undefined) {
-	// 		return next();
-	// 	} else {
-	// 		verToken(token)
-	// 			.then((data) => {
-  //         console.log(data);
-	// 				return next();
-	// 			})
-	// 			.catch((error) => {
-	// 				return next();
-	// 			});
-	// 	}
-	// });
+	app.use('/static', express.static('public'))
+
+	app.use("/login", routerLogin);
+	app.use("/user", routerUser);
+	app.use("/model", routerModel);
+	app.use("/upload", routerUpload);
+	app.use("/map", routerMap);
+	app.use("/item-type", routerItemType);
+	app.use("/map-item", routerMapItem)
 
 	app.use(
 		expressjwt({
 			secret: TOKENKEY,
 			algorithms: ["HS256"],
-		}).unless({ path: ["/login"] })
+		}).unless({ path: ["/login", "/static/*"] })
 	);
-
-	app.use("/login", routerLogin);
-	app.use("/user", routerUser);
-	app.use("/test", routerTest);
 
 	//@ts-ignore
 	app.use(function (err, req, res, next) {

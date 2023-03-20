@@ -49,12 +49,12 @@ export interface MapItem {
 	x: number;
 	y: number;
 	type: TypeItem;
-	link?: MapItem;
+	linkto?: MapItem;
 }
 
 export interface TypeItem {
 	color: string;
 	name: string;
-	module: string;
+	model: string;
 	size: number;
 }

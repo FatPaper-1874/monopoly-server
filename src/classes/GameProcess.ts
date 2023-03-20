@@ -117,7 +117,7 @@ export class GameProcess {
 		//通知全部客户端
 		this.gameBroadcast(msgToRollDice);
 		//设置玩家的位置
-		player.setPositionIndex((player.getPositionIndex() + this.dice.getResultNumber()) % this.mapData.length);
+		player.setPositionIndex((player.getPositionIndex() + this.dice.getResultNumber()) % this.mapIndex.length);
 		//更新游戏信息
 		this.gameInfoBroadcast();
 	}
