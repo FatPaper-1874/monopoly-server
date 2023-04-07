@@ -135,11 +135,26 @@ export class GameSocketServer {
 					case SocketMsgType.ChangeRole:
 						this.handleChangeRole(socketClient, socketMessage, clientUserId);
 						break;
+					case SocketMsgType.ChangeGameSetting:
+						this.handleChangeGameSetting(socketClient, socketMessage, clientUserId);
+						break;
 					case SocketMsgType.GameStart:
 						this.handleGameStart(socketClient, socketMessage, clientUserId);
 						break;
 					case SocketMsgType.RollDice:
 						this.handleRollDice(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.UseChanceCard:
+						this.handleUseChanceCard(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.Animation:
+						this.handleAnimationComplete(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.BuyProperty:
+						this.handleBuyProperty(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.BuildHouse:
+						this.handleBuildHouse(socketClient, socketMessage, clientUserId);
 						break;
 				}
 			});
@@ -180,7 +195,11 @@ export class GameSocketServer {
 	 * @param data 发送的信息本体
 	 * @param msg 可以使客户端触发message组件的信息
 	 */
-	public serverBroadcast(type: SocketMsgType, data: any, msg?: { type: string; content: string }) {
+	public serverBroadcast(
+		type: SocketMsgType,
+		data: any,
+		msg?: { type: "success" | "warning" | "error" | "message" | ""; content: string }
+	) {
 		const msgToSend: SocketMessage = {
 			type,
 			data,
@@ -389,6 +408,16 @@ export class GameSocketServer {
 		}
 	}
 
+	private handleChangeGameSetting(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		if (this.userList.has(clientUserId)) {
+			const roomId = this.userInWhichRoom(clientUserId);
+			const room = this.roomList.get(roomId);
+			if (room) {
+				room.changeGameSetting(data.data);
+			}
+		}
+	}
+
 	private handleGameStart(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
 		if (this.userList.has(clientUserId)) {
 			const roomId = this.userInWhichRoom(clientUserId);
@@ -402,6 +431,36 @@ export class GameSocketServer {
 	private handleRollDice(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
 		const operateType: OperateType = data.data;
 		OperateListener.getInstance().emit(clientUserId, operateType);
+	}
+
+	private handleUseChanceCard(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const chanceCardId: string = data.data;
+		const targetId: string | string[] = data.extra;
+		if (targetId) {
+			if (typeof targetId === "string") {
+				OperateListener.getInstance().emit(clientUserId, OperateType.UseChanceCard, chanceCardId, [targetId]);
+			} else {
+				OperateListener.getInstance().emit(clientUserId, OperateType.UseChanceCard, chanceCardId, targetId);
+			}
+		} else {
+			OperateListener.getInstance().emit(clientUserId, OperateType.UseChanceCard, chanceCardId);
+		}
+	}
+
+	private handleAnimationComplete(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const operateType: OperateType = data.data;
+		OperateListener.getInstance().emit(clientUserId, operateType);
+	}
+
+	private handleBuyProperty(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const operateType: OperateType = data.data;
+
+		OperateListener.getInstance().emit(clientUserId, operateType, data.extra);
+	}
+
+	private handleBuildHouse(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const operateType: OperateType = data.data;
+		OperateListener.getInstance().emit(clientUserId, operateType, data.extra);
 	}
 }
 

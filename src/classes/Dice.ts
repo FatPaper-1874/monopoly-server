@@ -5,7 +5,7 @@ class Dice {
 	constructor(diceNum: number) {
 		this.diceNum = diceNum;
 	}
-  
+
 	public getResultNumber() {
 		let sum = 0;
 		this.resultArray.map((item) => {
@@ -18,10 +18,10 @@ class Dice {
 		return this.resultArray;
 	}
 
-  public roll() {
+	public roll() {
 		this.resultArray = [];
 		for (let rollCount = 0; rollCount < this.diceNum; rollCount++) {
-			this.resultArray.push(this.getRandomInteger(1, 6));
+			this.resultArray[rollCount] = this.getRandomInteger(1, 6);
 		}
 	}
 

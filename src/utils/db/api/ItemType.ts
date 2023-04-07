@@ -54,3 +54,14 @@ export const getItemTypessList = async () => {
 	const itemTypesList = await itemTypeRepository.find();
 	return itemTypesList;
 };
+
+export const getItemTypeListByMapId = async (id: string) => {
+	const map = await mapRepository
+		.createQueryBuilder("map")
+		.leftJoinAndSelect("map.itemTypes", "itemType")
+		.leftJoinAndMapOne("itemType.model", Model, "model", "itemType.modelId = model.id")
+		.where("map.id = :id", { id })
+		.getOne();
+	const itemType = map?.itemTypes || null;
+	return itemType;
+};

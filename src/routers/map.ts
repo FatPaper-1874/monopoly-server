@@ -1,13 +1,11 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import {
-	createMap,
-	getMapById,
-	getTypeListByMapId,
-	getMapsList,
-	getMapItemListByMapId,
-	deleteMap,
-} from "../utils/db/api/Map";
+import { createMap, getMapById, getMapsList, deleteMap, updateIndexList } from "../utils/db/api/Map";
+import { getMapItemListByMapId } from "../utils/db/api/MapItem";
+import { getStreetListByMapId } from "../utils/db/api/Street";
+import { getItemTypeListByMapId } from "../utils/db/api/ItemType";
+import { getPropertysListByMapId } from "../utils/db/api/Property";
+import { getChanceCardsListByMapId } from "../utils/db/api/ChanceCard";
 export const routerMap = Router();
 
 routerMap.post("/create", async (req, res, next) => {
@@ -31,20 +29,54 @@ routerMap.post("/create", async (req, res, next) => {
 	}
 });
 
+routerMap.post("/update-index-list", async (req, res, next) => {
+	const { id, indexList } = req.body;
+	if (id && indexList) {
+		try {
+			await updateIndexList(id, indexList);
+			if (indexList.length == 0) {
+				const resMsg: ResInterface = {
+					status: 400,
+					msg: "已清空地图路径",
+				};
+				res.json(resMsg);
+			} else {
+				const resMsg: ResInterface = {
+					status: 200,
+					msg: "更新地图路径成功",
+				};
+				res.json(resMsg);
+			}
+		} catch {
+			const resMsg: ResInterface = {
+				status: 500,
+				msg: "更新地图路径失败",
+			};
+			res.json(resMsg);
+		}
+	} else {
+		const resMsg: ResInterface = {
+			status: 500,
+			msg: "没有传递name",
+		};
+		res.json(resMsg);
+	}
+});
+
 routerMap.delete("/delete", async (req, res, next) => {
 	const { id } = req.query;
 	if (id) {
 		try {
+			await deleteMap(id.toString());
 			const resMsg: ResInterface = {
 				status: 200,
 				msg: "删除成功",
-				data: await deleteMap(id.toString()),
 			};
 			res.json(resMsg);
-		} catch (e) {
+		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
-				msg: "数据库请求错误",
+				msg: e.toString(),
 			};
 			res.json(resMsg);
 		}
@@ -70,7 +102,7 @@ routerMap.get("/item-type", async (req, res, next) => {
 		try {
 			const resMsg: ResInterface = {
 				status: 200,
-				data: await getTypeListByMapId(id),
+				data: await getItemTypeListByMapId(id),
 			};
 			res.json(resMsg);
 		} catch {}
@@ -84,6 +116,45 @@ routerMap.get("/map-item", async (req, res, next) => {
 			const resMsg: ResInterface = {
 				status: 200,
 				data: await getMapItemListByMapId(id),
+			};
+			res.json(resMsg);
+		} catch {}
+	}
+});
+
+routerMap.get("/street", async (req, res, next) => {
+	const id = req.query.id as string;
+	if (id) {
+		try {
+			const resMsg: ResInterface = {
+				status: 200,
+				data: await getStreetListByMapId(id),
+			};
+			res.json(resMsg);
+		} catch {}
+	}
+});
+
+routerMap.get("/property", async (req, res, next) => {
+	const id = req.query.id as string;
+	if (id) {
+		try {
+			const resMsg: ResInterface = {
+				status: 200,
+				data: await getPropertysListByMapId(id),
+			};
+			res.json(resMsg);
+		} catch {}
+	}
+});
+
+routerMap.get("/chance-card", async (req, res, next) => {
+	const id = req.query.id as string;
+	if (id) {
+		try {
+			const resMsg: ResInterface = {
+				status: 200,
+				data: await getChanceCardsListByMapId(id),
 			};
 			res.json(resMsg);
 		} catch {}

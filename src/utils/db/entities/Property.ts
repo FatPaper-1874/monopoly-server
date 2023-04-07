@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne, JoinColumn } from "typeorm";
 import { Map } from "./Map";
-import { Street } from './Street';
-import { MapItem } from './MapItem';
+import { Street } from "./Street";
+import { MapItem } from "./MapItem";
 
 @Entity()
 export class Property {
@@ -15,6 +15,9 @@ export class Property {
 	sellCost: number;
 
 	@Column({ type: "int", nullable: false })
+	buildCost: number;
+
+	@Column({ type: "int", nullable: false })
 	cost_lv0: number;
 
 	@Column({ type: "int", nullable: false })
@@ -23,12 +26,15 @@ export class Property {
 	@Column({ type: "int", nullable: false })
 	cost_lv2: number;
 
-	@OneToOne(()=>MapItem, mapItem => mapItem.property, {  onDelete: "CASCADE", onUpdate: "CASCADE" })
+	@Column({ type: "varchar", nullable: true })
+	effectCode: string;
+
+	@OneToOne(() => MapItem, (mapItem) => mapItem.property, { onDelete: "CASCADE", onUpdate: "CASCADE" })
 	mapItem: MapItem;
 
-	@ManyToOne(()=> Street, street => street.id, {  onDelete: "CASCADE", onUpdate: "CASCADE" })
-	street: Street
+	@ManyToOne(() => Street, (street) => street.id, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+	street: Street;
 
-	@ManyToOne(()=> Map, map => map.properties, {  onDelete: "CASCADE", onUpdate: "CASCADE" })
-	map: Map
+	@ManyToOne(() => Map, (map) => map.properties, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+	map: Map;
 }

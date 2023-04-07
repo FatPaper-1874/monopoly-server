@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Map } from "./Map";
 import { ItemType } from "./ItemType";
 import { Property } from "./Property";
@@ -20,10 +20,15 @@ export class MapItem {
 	@ManyToOne(() => ItemType, (itemType) => itemType.mapItem, { onDelete: "CASCADE", onUpdate: "CASCADE" })
 	type: ItemType;
 
-	@OneToOne(() => MapItem, mapItem => mapItem.linkto)
+	@ManyToOne(() => MapItem, (mapItem) => mapItem.belinked, { onDelete: "SET NULL" })
+	@JoinColumn()
 	linkto?: MapItem;
 
-	@OneToOne(() => Property, (property) => property.mapItem, { cascade: true })
+	@OneToMany(() => MapItem, (mapItem) => mapItem.linkto, { onDelete: "DEFAULT" })
+	belinked?: MapItem[];
+
+	@OneToOne(() => Property, { cascade: true })
+	@JoinColumn()
 	property?: Property;
 
 	@ManyToOne(() => Map, (map) => map.mapItems, { onDelete: "CASCADE", onUpdate: "CASCADE" })

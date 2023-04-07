@@ -12,8 +12,11 @@ import { createUser } from "./src/utils/db/api/User";
 import { createRole } from "./src/utils/db/api/Role";
 import routerModel from "./src/routers/model";
 import { routerMap } from "./src/routers/map";
-import { routerItemType } from './src/routers/itemType';
-import { routerMapItem } from './src/routers/mapItem';
+import { routerItemType } from "./src/routers/itemType";
+import { routerMapItem } from "./src/routers/mapItem";
+import { routerStreet } from "./src/routers/street";
+import { routerProperty } from "./src/routers/property";
+import { routerChanceCard } from "./src/routers/chanceCard";
 
 const APIPORT = 8000;
 const SOCKETPORT = 8001;
@@ -34,7 +37,14 @@ async function bootstrap() {
 
 	app.use(bodyParser.json());
 
-	app.use('/static', express.static('public'))
+	app.use("/static", express.static("public"));
+
+	app.use(
+		expressjwt({
+			secret: TOKENKEY,
+			algorithms: ["HS256"],
+		}).unless({ path: ["/login", "/static"] })
+	);
 
 	app.use("/login", routerLogin);
 	app.use("/user", routerUser);
@@ -42,14 +52,10 @@ async function bootstrap() {
 	app.use("/upload", routerUpload);
 	app.use("/map", routerMap);
 	app.use("/item-type", routerItemType);
-	app.use("/map-item", routerMapItem)
-
-	app.use(
-		expressjwt({
-			secret: TOKENKEY,
-			algorithms: ["HS256"],
-		}).unless({ path: ["/login", "/static/*"] })
-	);
+	app.use("/map-item", routerMapItem);
+	app.use("/street", routerStreet);
+	app.use("/property", routerProperty);
+	app.use("/chance-card", routerChanceCard);
 
 	//@ts-ignore
 	app.use(function (err, req, res, next) {
@@ -60,6 +66,10 @@ async function bootstrap() {
 				msg: "token过期或者无效, 请重新登录",
 			});
 			return;
+		} else if (err.name === "TokenExpiredError") {
+			console.log(err);
+		} else {
+			console.log(err);
 		}
 		next();
 	});

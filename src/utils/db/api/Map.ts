@@ -2,12 +2,16 @@ import AppDataSource from "../dbConnecter";
 import { Map } from "../entities/Map";
 import { Model } from "../entities/Model";
 import { ItemType } from "../entities/ItemType";
+import { Street } from "../entities/Street";
+import { MapItem } from "../entities/MapItem";
+import { Property } from "../entities/Property";
 
 const mapRepository = AppDataSource.getRepository(Map);
 
 export const createMap = async (name: string) => {
 	const map = new Map();
 	map.name = name;
+	map.indexList = [];
 	return await mapRepository.save(map);
 };
 
@@ -17,24 +21,54 @@ export const deleteMap = async (id: string) => {
 	});
 	if (map) {
 		mapRepository.remove(map);
-		return true;
-	} else return false;
+		return;
+	} else {
+		throw new Error("无效的id");
+	}
 };
 
-export const updateMap = async (newMap: Map) => {
-	mapRepository.merge(newMap);
+export const updateIndexList = async (id: string, indexList: string[]) => {
+	mapRepository.createQueryBuilder().update(Map).set({ indexList }).where("id = :id", { id }).execute();
 };
 
 export const getMapById = async (id: string) => {
 	const map = await mapRepository
 		.createQueryBuilder("map")
 		.leftJoinAndSelect("map.mapItems", "mapItem")
+		.leftJoinAndMapOne("mapItem.linkto", MapItem, "mapItemInMapItem", "mapItem.linktoId = mapItemInMapItem.id")
+		.leftJoinAndMapOne(
+			"mapItemInMapItem.type",
+			ItemType,
+			"typeInMapItemLink",
+			"mapItemInMapItem.typeId = typeInMapItemLink.id"
+		)
+		.leftJoinAndMapOne(
+			"mapItemInMapItem.property",
+			Property,
+			"propertyInMapItemLink",
+			"mapItemInMapItem.propertyId = propertyInMapItemLink.id"
+		)
+		.leftJoinAndMapOne(
+			"propertyInMapItemLink.street",
+			Street,
+			"streetInPropertyInMapItemLink",
+			"propertyInMapItemLink.streetId = streetInPropertyInMapItemLink.id"
+		)
 		.leftJoinAndMapOne("mapItem.type", ItemType, "typeInMapItem", "mapItem.typeId = typeInMapItem.id")
 		.leftJoinAndMapOne("typeInMapItem.model", Model, "modelInMapItem", "typeInMapItem.modelId = modelInMapItem.id")
+		.leftJoinAndMapOne("mapItem.property", Property, "propertyInMapItem", "mapItem.propertyId = propertyInMapItem.id")
+		.leftJoinAndMapOne(
+			"propertyInMapItem.street",
+			Street,
+			"streetInPropertyInMapItem",
+			"propertyInMapItem.streetId = streetInPropertyInMapItem.id"
+		)
 		.leftJoinAndSelect("map.properties", "property")
+		.leftJoinAndMapOne("property.street", Street, "streetInProperty", "property.streetId = streetInProperty.id")
 		.leftJoinAndSelect("map.chanceCards", "chanceCard")
 		.leftJoinAndSelect("map.itemTypes", "itemType")
 		.leftJoinAndMapOne("itemType.model", Model, "model", "itemType.modelId = model.id")
+		.leftJoinAndSelect("map.streets", "street")
 		.where("map.id = :id", { id })
 		.getOne();
 	if (map) {
@@ -44,36 +78,15 @@ export const getMapById = async (id: string) => {
 	}
 };
 
-export const getTypeListByMapId = async (id: string) => {
-	const map = await mapRepository
-		.createQueryBuilder("map")
-		.leftJoinAndSelect("map.itemTypes", "itemType")
-		.leftJoinAndMapOne("itemType.model", Model, "model", "itemType.modelId = model.id")
-		.where("map.id = :id", { id })
-		.getOne();
-	const itemType = map?.itemTypes || null;
-	return itemType;
-};
-
-export const getMapItemListByMapId = async (id: string) => {
-	const map = await mapRepository
-		.createQueryBuilder("map")
-		.leftJoinAndSelect("map.mapItems", "mapItem")
-		.leftJoinAndMapOne("mapItem.type", ItemType, "type", "mapItem.typeId = type.id")
-		.leftJoinAndMapOne("type.model", Model, "model", "type.modelId = model.id")
-		.where("map.id = :id", { id })
-		.getOne();
-	const mapItems = map?.mapItems || null;
-	return mapItems;
-};
-
 export const getMapsList = async (page: number, size: number) => {
 	const mapsList = await mapRepository
 		.createQueryBuilder("map")
 		.leftJoinAndSelect("map.mapItems", "mapItem")
-		.leftJoinAndSelect("map.properties", "property")
-		.leftJoinAndSelect("map.chanceCards", "chanceCard")
+		.leftJoinAndMapOne("mapItem.type", ItemType, "typeInMapItem", "mapItem.typeId = typeInMapItem.id")
+		.leftJoinAndMapOne("typeInMapItem.model", Model, "modelInMapItem", "typeInMapItem.modelId = modelInMapItem.id")
 		.leftJoinAndSelect("map.itemTypes", "itemType")
+		.leftJoinAndMapOne("itemType.model", Model, "model", "itemType.modelId = model.id")
+		.leftJoinAndSelect("map.chanceCards", "chanceCard")
 		.skip((page - 1) * size)
 		.take(size)
 		.getMany();

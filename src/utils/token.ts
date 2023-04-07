@@ -15,9 +15,17 @@ export const setToken = (username: string, userId: string) => {
 	});
 };
 
-export const verToken = (token:string) => {
-	return new Promise((resolve, reject) => {
-		const info =  jwt.verify(token.split(' ')[1], TOKENKEY);
-		resolve(info);
-	});
+export const verToken = (token: string) => {
+	try {
+		const info = jwt.verify(token.split(" ")[1], TOKENKEY);
+		return info;
+	} catch (err: any) {
+		if (err) {
+			if (err.name === "TokenExpiredError") {
+				throw Error("token过期");
+			} else if (err.name === "UnauthorizedError") {
+				throw Error("token无效");
+			}
+		}
+	}
 };

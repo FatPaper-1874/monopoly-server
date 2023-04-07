@@ -6,12 +6,15 @@ import path from "path";
 import { Role } from "../../../monopoly-client/src/interfaces/bace";
 import { GameProcess } from "./GameProcess";
 import { GameOverRule } from "../enums/game";
+import { GameSetting } from "@/interfaces/game";
 
 export class Room {
 	private roomId: string;
 	private userList: Map<string, User>;
 	private isStarted: boolean;
 	private ownerId: string;
+	// private mapId: string;
+	private gameSetting: GameSetting;
 	private roleList: Role[];
 	private gameProcess: GameProcess;
 
@@ -21,6 +24,15 @@ export class Room {
 		this.roleList = roleList;
 		this.isStarted = false;
 		this.userList = new Map();
+		this.gameSetting = {
+			gameOverRule: GameOverRule.LeftOnePlayer,
+			initMoney: 20000,
+			multiplier: 1,
+			multiplierIncreaseRounds: 2,
+			mapId: "",
+			roundTime: 15,
+			diceNum: 2,
+		};
 		this.join(owner);
 	}
 
@@ -81,6 +93,7 @@ export class Room {
 			ownerId: this.getOwner().userId,
 			ownerName: this.getOwner().username,
 			roleList: this.roleList,
+			gameSetting: this.gameSetting,
 		};
 		return roomInfo;
 	}
@@ -127,7 +140,7 @@ export class Room {
 	public leave(userId: string): boolean {
 		this.userList.delete(userId);
 		if (this.userList.size == 0) {
-			if(this.gameProcess) this.gameProcess.distory();
+			if (this.gameProcess) this.gameProcess.distory();
 			return true;
 		} else {
 			if (this.ownerId === userId) {
@@ -161,6 +174,11 @@ export class Room {
 		}
 	}
 
+	public changeGameSetting(gameSetting: GameSetting): void {
+		this.gameSetting = gameSetting;
+		this.roomInfoBroadcast();
+	}
+
 	public async startGame() {
 		if (!Array.from(this.userList).every((item) => item[1].userId == this.ownerId || item[1].isReady)) {
 			this.roomBroadcast({
@@ -171,18 +189,7 @@ export class Room {
 			});
 			return;
 		}
-		this.gameProcess = new GameProcess(
-			{
-				gameOverRule: GameOverRule.LeftOnePlayer,
-				initMoney: 1000,
-				multiplier: 1,
-				multiplierIncreaseRounds: 7,
-				mapName: "1",
-				roundTime: 15,
-				diceNum: 2,
-			},
-			this
-		);
+		this.gameProcess = new GameProcess(this.gameSetting, this);
 		await this.gameProcess.start();
 	}
 

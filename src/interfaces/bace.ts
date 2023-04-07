@@ -1,5 +1,6 @@
 import { WebSocket } from "ws";
 import { SocketMsgType } from "../enums/bace";
+import { GameSetting } from "./game";
 
 export interface SocketMessage {
 	type: SocketMsgType;
@@ -7,9 +8,10 @@ export interface SocketMessage {
 	roomId?: string;
 	data: any;
 	msg?: {
-		type: string;
+		type: "success" | "warning" | "error" | "message" | "";
 		content: string;
 	};
+	extra?: any;
 }
 
 export interface User {
@@ -19,14 +21,14 @@ export interface User {
 	isReady: boolean;
 	avatar: string;
 	color: string;
-	role: Role,
+	role: Role;
 }
 
-export interface Role{
-	id: string,
-	rolename: string,
-	filename: string,
-	color: string,
+export interface Role {
+	id: string;
+	rolename: string;
+	filename: string;
+	color: string;
 }
 
 export interface RoomInfo {
@@ -42,19 +44,46 @@ export interface RoomInfo {
 	ownerId: string;
 	ownerName: string;
 	roleList: Role[];
+	gameSetting: GameSetting;
 }
 
 export interface MapItem {
+	_id: string;
 	id: string;
 	x: number;
 	y: number;
-	type: TypeItem;
+	type: ItemType;
 	linkto?: MapItem;
+	property?: Property;
 }
 
-export interface TypeItem {
+export interface Property {
+	id: string;
+	name: string;
+	sellCost: number;
+	buildCost: number;
+	cost_lv0: number;
+	cost_lv1: number;
+	cost_lv2: number;
+	street: Street;
+}
+
+export interface ItemType {
+	id: string;
 	color: string;
 	name: string;
-	model: string;
+	model: Model;
 	size: number;
+}
+
+export interface Model {
+	id: string;
+	name: string;
+	fileName: string;
+}
+
+export interface Street {
+	id: string;
+	name: string;
+	increase: number;
 }

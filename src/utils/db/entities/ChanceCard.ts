@@ -1,3 +1,4 @@
+import { ChanceCardType } from "@/enums/bace";
 import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany } from "typeorm";
 import { Map } from "./Map";
 
@@ -16,6 +17,12 @@ export class ChanceCard {
 	icon: string;
 
 	@Column({ type: "varchar", nullable: false })
+	color: string;
+
+	@Column({type: "varchar", nullable: false})
+	type: ChanceCardType
+
+	@Column({ type: "text", nullable: false })
 	effectCode: string;
 
 	@ManyToMany(() => Map, (map) => map.chanceCards)

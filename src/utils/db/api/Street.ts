@@ -1,13 +1,23 @@
 import AppDataSource from "../dbConnecter";
+import { Map } from "../entities/Map";
 import { Street } from "../entities/Street";
 
 const streetRepository = AppDataSource.getRepository(Street);
+const mapRepository = AppDataSource.getRepository(Map);
 
-export const createStreet = async (name: string, increase: number) => {
-	const street = new Street();
-	street.name = name;
-	street.increase = increase;
-	await streetRepository.save(street);
+export const createStreet = async (name: string, increase: number, mapId: string) => {
+	const map = await mapRepository.findOne({ where: { id: mapId } });
+	if (map) {
+		console.log(name, increase, map);
+
+		const street = new Street();
+		street.name = name;
+		street.increase = increase;
+		street.map = map;
+		return await streetRepository.save(street);
+	} else {
+		new Error("mapId错误");
+	}
 };
 
 export const deleteStreet = async (id: string) => {
@@ -39,4 +49,14 @@ export const getStreetById = async (id: string) => {
 export const getStreetsList = async () => {
 	const streetsList = await streetRepository.find();
 	return streetsList;
+};
+
+export const getStreetListByMapId = async (id: string) => {
+	const map = await mapRepository
+		.createQueryBuilder("map")
+		.leftJoinAndSelect("map.streets", "streets")
+		.where("map.id = :id", { id })
+		.getOne();
+	const streets = map?.streets || null;
+	return streets;
 };

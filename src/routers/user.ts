@@ -7,19 +7,28 @@ const routerUser = Router();
 
 routerUser.get("/info", async (req, res, next) => {
 	if (req.headers.authorization) {
-		//@ts-ignore
-		const { userId } = await verToken(req.headers.authorization);
-		const user = await getUserById(userId);
-		if (user) {
+		try {
+			//@ts-ignore
+			const { userId } = verToken(req.headers.authorization);
+			const user = await getUserById(userId);
+			if (user) {
+				const resMsg: ResInterface = {
+					status: 200,
+					data: user,
+				};
+				res.json(resMsg);
+			} else {
+				const resMsg: ResInterface = {
+					status: 401,
+					msg: "获取用户信息异常",
+					data: {},
+				};
+				res.json(resMsg);
+			}
+		} catch (err: any) {
 			const resMsg: ResInterface = {
-				status: 200,
-				data: user,
-			};
-			res.json(resMsg);
-		} else {
-			const resMsg: ResInterface = {
-				status: 403,
-				msg: "获取用户信息异常",
+				status: 401,
+				msg: err.message,
 				data: {},
 			};
 			res.json(resMsg);
