@@ -43,7 +43,7 @@ export class Room {
 	public getOwner() {
 		return {
 			userId: this.ownerId,
-			username: this.userList.get(this.ownerId)!.username,
+			username: this.userList.get(this.ownerId)?.username || "",
 		};
 	}
 

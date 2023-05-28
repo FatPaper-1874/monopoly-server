@@ -1,5 +1,3 @@
-import { readFileSync } from "fs";
-import path from "path";
 import { ItemType, MapItem, SocketMessage, Street, User } from "../interfaces/bace";
 import { GameSetting, GameInfo, GameInitInfo, ChanceCardInfo } from "../interfaces/game";
 import { ChanceCardType, SocketMsgType } from "../enums/bace";
@@ -11,6 +9,12 @@ import { OperateListener } from "../utils/OperateListener";
 import { OperateType } from "../enums/game";
 import Dice from "./Dice";
 import { getMapById } from "../utils/db/api/Map";
+import winston from "winston";
+import { gameLoggerFactory } from "../utils/logger";
+import chalk from "chalk";
+import { getRandomInteger } from "../utils";
+
+const chalkB = chalk.bold;
 
 export class GameProcess {
 	//Setting
@@ -33,9 +37,12 @@ export class GameProcess {
 	private currentPlayerInRound: Player;
 	private currentRound: number;
 	private currentMultiplier: number;
+	private timeoutList: any[];
+	private intervalTimerList: any[];
 
 	//Utils
 	private dice: Dice;
+	private logger: winston.Logger;
 
 	constructor(setting: GameSetting, room: Room) {
 		//Setting
@@ -58,12 +65,21 @@ export class GameProcess {
 		this.currentPlayerInRound = this.playersList[0];
 		this.currentRound = 1;
 		this.currentMultiplier = 1;
+		this.timeoutList = [];
+		this.intervalTimerList = [];
 
 		//Utils
 		this.dice = new Dice(setting.diceNum);
+		this.logger = gameLoggerFactory(room.getRoomId());
 	}
 
 	public async start() {
+		this.log(
+			`${chalkB.bgYellow(" 房间: ")} ${chalkB.yellowBright(this.roomInstance.getRoomId())} ${chalkB.bgGreen(
+				" 开始游戏 "
+			)}`
+		);
+
 		//发送游戏开始, 让客户端进入加载页面
 		this.gameBroadcast({
 			type: SocketMsgType.GameStart,
@@ -98,6 +114,10 @@ export class GameProcess {
 
 		//发送游戏初始化完成的信息, 客户端离开加载页面, 进入游戏
 		this.playersList.forEach((player) => player.setCardsList(this.handleGetRadomChanceCard(4)));
+
+		this.playersList.forEach((player) => {
+			player.setPositionIndex(getRandomInteger(0, this.mapIndexList.length - 1));
+		});
 		this.gameInfoBroadcast();
 		this.gameInitBroadcast();
 	}
@@ -131,6 +151,7 @@ export class GameProcess {
 			},
 			roomId: this.roomInstance.getRoomId(),
 		};
+		this.log(`${chalkB.blue("现在是")} ${chalkB.cyanBright(player.getName())} ${chalkB.blue("的回合")}`);
 		player.send(msgToSend);
 	}
 
@@ -150,11 +171,12 @@ export class GameProcess {
 					isRoundEnd = true;
 					OperateListener.getInstance().remove(userId, OperateType.RollDice, rollDiceCallBack);
 					OperateListener.getInstance().removeAll(userId, OperateType.UseChanceCard);
-					console.warn(`回合结束`);
+					this.log(`${chalkB.cyanBright(player.getName())} ${chalkB.blue("的回合超时了")}`);
 					OperateListener.getInstance().emit(userId, OperateType.RollDice); //帮玩家自动投骰子
 					resolve("TimeOut");
 				}
 			}, 1000);
+			this.intervalTimerList.push(intervalTimer);
 
 			function rollDiceCallBack() {
 				clearInterval(intervalTimer);
@@ -169,7 +191,6 @@ export class GameProcess {
 			while (!isRoundEnd) {
 				//监听使用机会卡事件并且处理事件
 				await OperateListener.getInstance().on(userId, OperateType.UseChanceCard, (resultArr: any) => {
-					console.log(resultArr);
 					roundRemainingTime = roundTime; //重置回合剩余时间
 					const [chanceCardId, targetIdList = new Array<string>()] = resultArr;
 					const chanceCard = this.chanceCardsList.find((card) => card.getId() === chanceCardId);
@@ -216,6 +237,11 @@ export class GameProcess {
 									content: error,
 								},
 							};
+							this.log(
+								`${chalkB.cyanBright(player.getName())} ${chalkB.bgRed(" 使用机会卡: ")} ${chalkB.yellowBright(
+									chanceCard.getName()
+								)} ${chalkB.bgRed(" 失败: ")} ${chalkB.redBright(error)}`
+							);
 							player.send(errorMsg);
 						} else {
 							player.loseCard(chanceCardId);
@@ -228,6 +254,11 @@ export class GameProcess {
 									content: `机会卡 ${chanceCard.getName()} 使用成功！`,
 								},
 							};
+							this.log(
+								`${chalkB.cyanBright(player.getName())} ${chalkB.bgYellow(" 使用了机会卡: ")} ${chalkB.yellowBright(
+									chanceCard.getName()
+								)}`
+							);
 							player.send(successMsg);
 						}
 
@@ -272,6 +303,11 @@ export class GameProcess {
 			},
 			roomId: this.roomInstance.getRoomId(),
 		};
+		this.log(
+			`${chalkB.cyanBright(player.getName())} ${chalkB.bgCyan(" 摇到了: ")} ${chalkB.greenBright(
+				this.dice.getResultArray().join("-")
+			)}`
+		);
 		//通知全部客户端
 		this.gameBroadcast(msgToRollDice);
 		//设置玩家的位置
@@ -321,6 +357,7 @@ export class GameProcess {
 								OperateListener.getInstance().emit(player.getId(), OperateType.BuildHouse, false);
 							}
 						}, 1000);
+						this.intervalTimerList.push(intervalTimer);
 						//地产是自己的
 						//已有房产, 升级房屋
 						arriveProperty.type = SocketMsgType.BuildHouse;
@@ -338,6 +375,11 @@ export class GameProcess {
 						clearInterval(intervalTimer);
 						if (playerRes) {
 							this.handlePlayerBuildUp(player, property);
+							this.log(
+								`${chalkB.cyanBright(player.getName())} ${chalkB.blue("升级了")} ${chalkB.greenBright(
+									property.getName()
+								)} ${chalkB.blue("的房屋")}`
+							);
 						}
 					}
 				} else {
@@ -357,6 +399,11 @@ export class GameProcess {
 						content: `${player.getName()}到达了你的${property.getName()}，支付了${passCost}￥过路费`,
 					};
 					ownerPlayer.send(arriveProperty);
+					this.log(
+						`${chalkB.cyanBright(player.getName())} ${chalkB.blue("到达了")} ${chalkB.cyanBright(
+							ownerPlayer.getName()
+						)} ${chalkB.blue("的地皮")} ${chalkB.blue("支付了")} ${chalkB.red(passCost)} ${chalkB.blue("的过路费")}`
+					);
 				}
 			} else {
 				//地皮没有主人
@@ -371,6 +418,7 @@ export class GameProcess {
 							OperateListener.getInstance().emit(player.getId(), OperateType.BuyProperty, false);
 						}
 					}, 1000);
+					this.intervalTimerList.push(intervalTimer);
 					//地皮没有购买
 					arriveProperty.type = SocketMsgType.BuyProperty;
 					arriveProperty.msg = {
@@ -385,6 +433,11 @@ export class GameProcess {
 					clearInterval(intervalTimer);
 					if (playerRes) {
 						this.handlePlayerBuyProperty(player, property);
+						this.log(
+							`${chalkB.cyanBright(player.getName())} ${chalkB.blue("购买了")} ${chalkB.greenBright(
+								property.getName()
+							)}`
+						);
 					}
 				}
 			}
@@ -468,6 +521,12 @@ export class GameProcess {
 
 	public distory() {
 		this.isDistory = true;
+		this.intervalTimerList.forEach((id) => {
+			clearInterval(id);
+		});
+		this.timeoutList.forEach((id) => {
+			clearTimeout(id);
+		});
 	}
 
 	private sleep(ms: number) {
@@ -475,9 +534,7 @@ export class GameProcess {
 	}
 
 	private loadPlayer(userList: User[]) {
-		return userList.map(
-			(user) => new Player(user, this.gameSetting.initMoney, Math.floor(Math.random() * this.mapIndexList.length))
-		);
+		return userList.map((user) => new Player(user, this.gameSetting.initMoney, 0));
 	}
 
 	public gameInitBroadcast() {
@@ -537,5 +594,9 @@ export class GameProcess {
 
 	private getPlayerById(id: string) {
 		return this.playersList.find((player) => player.getId() === id);
+	}
+
+	private log(message: string, level: "error" | "warn" | "info" | "http" | "verbose" | "debug" | "silly" = "info") {
+		this.logger.log(level, message);
 	}
 }

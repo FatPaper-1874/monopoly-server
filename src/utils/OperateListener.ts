@@ -22,7 +22,6 @@ export class OperateListener {
 
 	public on(playerId: string, eventType: OperateType, listener: (args: any[]) => void): Promise<any[]> {
 		return new Promise((resolve, reject) => {
-			console.log(`新增监听器-${playerId}-${eventType}`);
 			this.eventEmitter.once(`${playerId}-${eventType}`, (args: any[]) => {
 				listener(args);
 				resolve(args);
@@ -39,7 +38,6 @@ export class OperateListener {
 	}
 
 	public emit(playerId: string, eventType: OperateType, ...args: any[]): boolean {
-		console.log(`监听器触发-${playerId}-${eventType}`);
 		return this.eventEmitter.emit(`${playerId}-${eventType}`, args);
 	}
 

@@ -1,5 +1,7 @@
+import path, { resolve } from "path";
 import AppDataSource from "../dbConnecter";
 import { Model } from "../entities/Model";
+import fs from "fs";
 
 const modelRepository = AppDataSource.getRepository(Model);
 
@@ -7,7 +9,6 @@ export const createModel = async (name: string, fileName: string) => {
 	const model = new Model();
 	model.name = name;
 	model.fileName = fileName;
-	console.log(model);
 	await modelRepository.save(model);
 };
 
@@ -16,6 +17,7 @@ export const deleteModel = async (id: string) => {
 		where: { id },
 	});
 	if (model) {
+		fs.unlinkSync(`${process.cwd()}/public/models/${model.fileName}`);
 		return modelRepository.remove(model);
 	} else {
 		null;

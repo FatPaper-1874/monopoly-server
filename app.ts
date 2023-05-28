@@ -5,18 +5,19 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { expressjwt } from "express-jwt";
-import routerLogin from "./src/routers/login";
 import routerUser from "./src/routers/user";
 import routerUpload from "./src/routers/upload";
 import { createUser } from "./src/utils/db/api/User";
-import { createRole } from "./src/utils/db/api/Role";
 import routerModel from "./src/routers/model";
 import { routerMap } from "./src/routers/map";
+import { routerRole } from "./src/routers/role";
 import { routerItemType } from "./src/routers/itemType";
 import { routerMapItem } from "./src/routers/mapItem";
 import { routerStreet } from "./src/routers/street";
 import { routerProperty } from "./src/routers/property";
 import { routerChanceCard } from "./src/routers/chanceCard";
+import { serverLog } from "./src/utils/logger";
+import chalk from "chalk";
 
 const APIPORT = 8000;
 const SOCKETPORT = 8001;
@@ -25,11 +26,11 @@ const TOKENKEY = "Fat_PaperLoveMinecraft";
 async function bootstrap() {
 	await AppDataSource.initialize()
 		.then(() => {
-			console.log("DataBase Connect Success!");
+			serverLog(`${chalk.bold.bgGreen(" 数据库连接成功 ")}`);
 		})
 		.catch((e) => {
-			console.error("DataBase Connect Fail");
-			console.info(e);
+			serverLog(`${chalk.bold.bgGreen(" 数据库连接失败 ")}`, "error");
+			serverLog(e, "error");
 		});
 	const app = express();
 
@@ -43,11 +44,11 @@ async function bootstrap() {
 		expressjwt({
 			secret: TOKENKEY,
 			algorithms: ["HS256"],
-		}).unless({ path: ["/login", "/static"] })
+		}).unless({ path: ["/user/register", "/user/login", "/static"] })
 	);
 
-	app.use("/login", routerLogin);
 	app.use("/user", routerUser);
+	app.use("/role", routerRole);
 	app.use("/model", routerModel);
 	app.use("/upload", routerUpload);
 	app.use("/map", routerMap);
@@ -75,7 +76,7 @@ async function bootstrap() {
 	});
 
 	app.listen(APIPORT, () => {
-		console.log("API Server Open Success!");
+		serverLog(`${chalk.bold.bgGreen(" API服务启动成功 ")}`);
 	});
 
 	const gameSocketServer = new GameSocketServer(SOCKETPORT);

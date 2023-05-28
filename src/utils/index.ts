@@ -27,5 +27,11 @@ export function randomColor() {
 	G = hue2rgb(P, Q, H) * 255;
 	B = hue2rgb(P, Q, H - 1 / 3) * 255;
 
-	return `rgb(${parseFloat(R.toFixed(2))}, ${parseFloat(G.toFixed(2))}, ${parseFloat(B.toFixed(2))})`;
+	let hex = "#" + ((1 << 24) + (Math.round(R) << 16) + (Math.round(G) << 8) + Math.round(B)).toString(16).slice(1);
+
+	return hex;
 }
+
+export const getRandomInteger = (min: number, max: number) => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};

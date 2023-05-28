@@ -29,8 +29,6 @@ export const createMapItem = async (_id: string, x: number, y: number, typeId: s
 };
 
 export const deleteMapItem = async (id: string) => {
-	console.log(id);
-
 	const mapItem = await mapItemRepository.findOne({
 		where: { id },
 	});

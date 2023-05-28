@@ -8,7 +8,6 @@ const mapRepository = AppDataSource.getRepository(Map);
 export const createStreet = async (name: string, increase: number, mapId: string) => {
 	const map = await mapRepository.findOne({ where: { id: mapId } });
 	if (map) {
-		console.log(name, increase, map);
 
 		const street = new Street();
 		street.name = name;

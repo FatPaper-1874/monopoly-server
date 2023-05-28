@@ -5,7 +5,8 @@ import { SocketMessage, User } from "../../interfaces/bace";
 import { getRoleList } from "../db/api/Role";
 import { OperateType } from "../../enums/game";
 import { OperateListener } from "../OperateListener";
-const color = require("colors-console");
+import chalk from "chalk";
+import { serverLog } from "../logger/index";
 
 enum ServerStatus {
 	"ONLINE",
@@ -42,44 +43,51 @@ export class GameSocketServer {
 	private socketServer: WebSocketServer;
 	private userList: FPMap<string, User>;
 	private roomList: FPMap<string, Room>;
+
 	// private roomList: Map
 
 	public serverStatus: ServerStatus;
 
 	constructor(port: number = 3001) {
 		this.socketServer = new WebSocketServer({ port });
-		console.log("SocketServer Open Success!");
+		serverLog(`${chalk.bold.bgGreen(" Socket服务开启成功 ")}`);
 		this.serverStatus = ServerStatus.ONLINE;
 
 		//设置用户列表变动触发的函数
 		this.userList = new FPMap({
 			setFunction: (key: string, value: User) => {
-				console.log("用户: " + color("magenta", value.userId) + color("green", " 连接成功"));
+				serverLog(
+					`${chalk.bold.bgCyan(" 用户: ")} ${chalk.bold.cyanBright(value.username)} ${chalk.bold.bgGreen(" 连接成功 ")}`
+				);
 				this.serverBroadcast(SocketMsgType.UserList, this.getUserList()); //广播用户列表
-				this.logUserList();
+				// this.logUserList();
 			},
 			deleteFunction: (key: string) => {
-				console.log("用户: " + color("magenta", key) + color("red", " 断开了连接"));
+				const user = this.userList.get(key);
+				serverLog(
+					`${chalk.bold.bgCyan(" 用户: ")} ${chalk.bold.cyanBright(user?.username || key)} ${chalk.bold.bgRed(
+						" 断开连接 "
+					)}`
+				);
 				this.serverBroadcast(SocketMsgType.UserList, this.getUserList()); //广播用户列表
-				this.logUserList();
+				// this.logUserList();
 			},
 		});
 
 		this.roomList = new FPMap({
 			setFunction: (key: string, value: Room) => {
-				console.log(
-					"用户: " +
-						color("magenta", value.getOwner().username) +
-						color("green", " 创建了房间: ") +
-						color("yellow", key)
+				serverLog(
+					`${chalk.bold.bgYellow(" 房间: ")} ${chalk.bold.yellowBright(key)} ${chalk.bold.bgGreen(
+						" 创建了 "
+					)} ${chalk.bold.bgCyan(" 房主是: ")} ${chalk.bold.cyanBright(value.getOwner().username)}`
 				);
 				this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
-				this.logRoomList();
+				// this.logRoomList();
 			},
 			deleteFunction: (key: string) => {
-				console.log("房间: " + color("yellow", key) + color("red", " 解散了"));
+				serverLog(`${chalk.bold.bgYellow(" 房间: ")} ${chalk.bold.yellowBright(key)} ${chalk.bold.bgRed(" 解散了 ")}`);
 				this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
-				this.logRoomList();
+				// this.logRoomList();
 			},
 		});
 
@@ -239,21 +247,21 @@ export class GameSocketServer {
 	/**
 	 * 打印当前已连接的用户的名字和id
 	 */
-	private logUserList() {
-		const userIdArr = Array.from(this.userList.values());
-		const userListStr = userIdArr
-			.map((item) => `${color("yellow", item.username)}: ${color("magenta", item.userId)}`)
-			.join("\n");
-		console.log(`---------当前用户(${this.userList.size}) ---------\n${userListStr}\n------------------------------\n`);
-	}
+	// private logUserList() {
+	// 	const userIdArr = Array.from(this.userList.values());
+	// 	const userListStr = userIdArr
+	// 		.map((item) => `${color("yellow", item.username)}: ${color("magenta", item.userId)}`)
+	// 		.join("\n");
+	// 	console.log(`---------当前用户(${this.userList.size}) ---------\n${userListStr}\n------------------------------\n`);
+	// }
 
-	private logRoomList() {
-		const roomList = this.getRoomList();
-		const roomListStr = roomList
-			.map((item) => `${color("yellow", item.ownerName)}: ${color("magenta", item.roomId)}`)
-			.join("\n");
-		console.log(`---------当前房间(${this.roomList.size}) ---------\n${roomListStr}\n------------------------------\n`);
-	}
+	// private logRoomList() {
+	// 	const roomList = this.getRoomList();
+	// 	const roomListStr = roomList
+	// 		.map((item) => `${color("yellow", item.ownerName)}: ${color("magenta", item.roomId)}`)
+	// 		.join("\n");
+	// 	console.log(`---------当前房间(${this.roomList.size}) ---------\n${roomListStr}\n------------------------------\n`);
+	// }
 
 	/**
 	 * 获取当前已连接的用户的名字和id
@@ -339,7 +347,8 @@ export class GameSocketServer {
 				}
 			} else {
 				//	没有roomId就表示要创建房间
-				getRoleList().then((roleList) => {
+				getRoleList(1, 10000).then((res) => {
+					const { roleList } = res;
 					const newRoom = new Room(user, roleList);
 					this.roomList.set(newRoom.getRoomId(), newRoom);
 					this.sendToClient(
