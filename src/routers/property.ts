@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import { createProperty, updateProperty } from "../utils/db/api/Property";
+import { createProperty, getPropertyById, updateProperty } from "../db/api/property";
 export const routerProperty = Router();
 
 routerProperty.post("/create", async (req, res, next) => {
@@ -17,6 +17,31 @@ routerProperty.post("/create", async (req, res, next) => {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
+			};
+			res.json(resMsg);
+		}
+	} else {
+		const resMsg: ResInterface = {
+			status: 500,
+			msg: "参数错误",
+		};
+		res.json(resMsg);
+	}
+});
+
+routerProperty.get("/info", async (req, res, next) => {
+	const { id } = req.body;
+	if (id) {
+		try {
+			const resMsg: ResInterface = {
+				status: 200,
+				data: await getPropertyById(id),
+			};
+			res.json(resMsg);
+		} catch (e) {
+			const resMsg: ResInterface = {
+				status: 500,
+				msg: "数据库请求地皮信息错误",
 			};
 			res.json(resMsg);
 		}

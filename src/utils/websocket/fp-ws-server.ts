@@ -1,12 +1,15 @@
 import { WebSocket, WebSocketServer } from "ws";
 import { Room } from "../../classes/Room";
 import { SocketMsgType } from "../../enums/bace";
-import { SocketMessage, User } from "../../interfaces/bace";
-import { getRoleList } from "../db/api/Role";
+import { ChatMessage, SocketMessage, User } from "../../interfaces/bace";
+import { getRoleList } from "../../db/api/role";
 import { OperateType } from "../../enums/game";
-import { OperateListener } from "../OperateListener";
+import { OperateListener } from "../../classes/OperateListener";
 import chalk from "chalk";
 import { serverLog } from "../logger/index";
+import { verToken } from "../token";
+import { getUserByToken } from "../fetch/user";
+import { UserInfoClient } from "src/interfaces/game";
 
 enum ServerStatus {
 	"ONLINE",
@@ -43,6 +46,7 @@ export class GameSocketServer {
 	private socketServer: WebSocketServer;
 	private userList: FPMap<string, User>;
 	private roomList: FPMap<string, Room>;
+	private heartCheckInIntervalId: any;
 
 	// private roomList: Map
 
@@ -52,6 +56,8 @@ export class GameSocketServer {
 		this.socketServer = new WebSocketServer({ port });
 		serverLog(`${chalk.bold.bgGreen(" Socket服务开启成功 ")}`);
 		this.serverStatus = ServerStatus.ONLINE;
+
+		this.startHeartCheck();
 
 		//设置用户列表变动触发的函数
 		this.userList = new FPMap({
@@ -93,38 +99,50 @@ export class GameSocketServer {
 
 		this.socketServer.on("connection", (socketClient: WebSocket) => {
 			let clientUserId = "";
-			socketClient.once("message", (data: Buffer) => {
+			socketClient.once("message", async (data: Buffer) => {
 				const resData = JSON.parse(JSON.parse(data.toString()).data);
 				//接收客户端返回的账号信息
-				const userId = resData.userId || "";
-				const username = resData.username || "";
-				const avatar = resData.avatar || "";
-				const color = resData.color || "";
-				const role = resData.role || "";
-
-				if (userId && username) {
-					//如果收到的信息有效, 就把用户加进userList并回复客户端
-					clientUserId = userId;
-					this.userList.set(userId, {
-						userId,
-						username,
-						socketClient,
-						isReady: false,
-						avatar,
-						color,
-						role,
-					});
-					this.sendToClient(socketClient, SocketMsgType.ConfirmIdentity, "success", {
-						type: "success",
-						content: "Socket服务器连接成功 !",
-					}); //向客户端返回获得账号信息成功
-					this.sendToClient(socketClient, SocketMsgType.RoomList, this.getRoomList()); //向客户端发送房间信息
-				} else {
-					this.sendToClient(socketClient, SocketMsgType.ConfirmIdentity, "fail", {
+				const token = resData.token || "";
+				try {
+					const user = await getUserByToken(token);
+					if (user) {
+						clientUserId = user.id;
+						const _user = {
+							userId: user.id,
+							username: user.username,
+							socketClient,
+							avatar: user.avatar,
+							color: user.color,
+						};
+						const userToClient = {
+							userId: user.id,
+							useraccount: user.useraccount,
+							username: user.username,
+							avatar: user.avatar,
+							color: user.color,
+						};
+						this.userList.set(user.id, _user);
+						this.sendToClient(socketClient, SocketMsgType.ConfirmIdentity, userToClient, {
+							type: "success",
+							content: "Socket服务器连接成功 !",
+						}); //向客户端返回获得账号信息成功
+						this.sendToClient(socketClient, SocketMsgType.RoomList, this.getRoomList()); //向客户端发送房间信息
+						//初次连接处理重连
+						if (this.isUserNeedToReconnect(_user)) {
+							this.handleUserReconnect(_user);
+						}
+					} else {
+						this.sendToClient(socketClient, SocketMsgType.ConfirmIdentity, false, {
+							type: "error",
+							content: "Token过期, Socket连接失败",
+						});
+						socketClient.close();
+					}
+				} catch (e: any) {
+					this.sendToClient(socketClient, SocketMsgType.ConfirmIdentity, "", {
 						type: "error",
-						content: "Socket服务器获取用户失败, 关闭Socket连接",
+						content: e.message,
 					});
-					socketClient.close();
 				}
 			});
 
@@ -136,6 +154,9 @@ export class GameSocketServer {
 						break;
 					case SocketMsgType.LeaveRoom:
 						this.handleLeaveRoom(socketClient, socketMessage, clientUserId);
+						break;
+					case SocketMsgType.RoomChat:
+						this.handleRoomChat(socketClient, socketMessage, clientUserId);
 						break;
 					case SocketMsgType.ReadyToggle:
 						this.handleReadyToggle(socketClient, socketMessage, clientUserId);
@@ -149,8 +170,8 @@ export class GameSocketServer {
 					case SocketMsgType.GameStart:
 						this.handleGameStart(socketClient, socketMessage, clientUserId);
 						break;
-					case SocketMsgType.RollDice:
-						this.handleRollDice(socketClient, socketMessage, clientUserId);
+					case SocketMsgType.RollDiceResult:
+						this.handleRollDiceResult(socketClient, socketMessage, clientUserId);
 						break;
 					case SocketMsgType.UseChanceCard:
 						this.handleUseChanceCard(socketClient, socketMessage, clientUserId);
@@ -168,31 +189,11 @@ export class GameSocketServer {
 			});
 
 			socketClient.on("close", () => {
-				if (this.userList.has(clientUserId)) {
-					const roomId = this.userInWhichRoom(clientUserId);
-					if (roomId) {
-						if (this.roomList.get(roomId)?.leave(clientUserId)) {
-							//如果用户离开后房间为空
-							this.roomList.delete(roomId); //解散房间
-						}
-						this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
-					}
-					this.userList.delete(clientUserId);
-				}
+				this.handleUserDisconnect(clientUserId);
 			});
 
 			socketClient.on("error", () => {
-				if (this.userList.has(clientUserId)) {
-					const roomId = this.userInWhichRoom(clientUserId);
-					if (roomId) {
-						if (this.roomList.get(roomId)?.leave(clientUserId)) {
-							//如果用户离开后房间为空
-							this.roomList.delete(roomId); //解散房间
-						}
-						this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
-					}
-					this.userList.delete(clientUserId);
-				}
+				this.handleUserDisconnect(clientUserId);
 			});
 		});
 	}
@@ -206,7 +207,7 @@ export class GameSocketServer {
 	public serverBroadcast(
 		type: SocketMsgType,
 		data: any,
-		msg?: { type: "success" | "warning" | "error" | "message" | ""; content: string }
+		msg?: { type: "success" | "warning" | "error" | "info" | ""; content: string }
 	) {
 		const msgToSend: SocketMessage = {
 			type,
@@ -231,7 +232,7 @@ export class GameSocketServer {
 		socketClient: WebSocket,
 		type: SocketMsgType,
 		data: any,
-		msg?: { type: "success" | "warning" | "error" | "message"; content: string },
+		msg?: { type: "success" | "warning" | "error" | "info"; content: string },
 		roomId?: string
 	) {
 		const msgToSend: SocketMessage = {
@@ -297,6 +298,40 @@ export class GameSocketServer {
 		return roomId;
 	}
 
+	private startHeartCheck() {
+		this.heartCheckInIntervalId = setInterval(() => {
+			this.serverBroadcast(SocketMsgType.Heart, Date.now());
+		}, 1000);
+	}
+
+	private handleUserDisconnect(clientUserId: string) {
+		if (this.userList.has(clientUserId)) {
+			const roomIdUserIn = this.userInWhichRoom(clientUserId);
+			if (roomIdUserIn) {
+				const roomUserIn = this.roomList.get(roomIdUserIn) as Room;
+				if (roomUserIn.leave(clientUserId)) {
+					//如果用户离开后房间为空
+					this.roomList.delete(roomIdUserIn); //解散房间
+				}
+				this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
+			}
+			this.userList.delete(clientUserId);
+		}
+	}
+
+	private handleUserReconnect(user: User) {
+		const roomIdUserIn = this.userInWhichRoom(user.userId); //用户现在在的房间Id
+		const roomUserIn = this.roomList.get(roomIdUserIn); //用户在的房间
+		roomUserIn && roomUserIn.handleUserReconnect(user);
+	}
+
+	private isUserNeedToReconnect(user: User): boolean {
+		const roomIdUserIn = this.userInWhichRoom(user.userId); //用户现在在的房间Id
+		const roomUserIn = this.roomList.get(roomIdUserIn); //用户现在在的房间
+		if (!roomUserIn) return false;
+		return roomUserIn.isUserOffLine(user.userId);
+	}
+
 	// -----处理socket信息的函数-----
 
 	/**
@@ -307,40 +342,43 @@ export class GameSocketServer {
 	 */
 	private handleJoinRoom(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
 		const user = this.userList.get(clientUserId);
-		const roomId = data.roomId;
 		if (user) {
-			if (this.userInWhichRoom(user.userId)) {
-				//如果用户在某个房间里面 就不能创建或加入房间
-				this.sendToClient(
-					socketClient,
-					SocketMsgType.JoinRoom,
-					"fail",
-					{ type: "error", content: "你已经在房间内" },
-					this.userInWhichRoom(user.userId)
-				);
-				return;
-			}
-			if (roomId) {
+			const roomIdToJoin = data.roomId; //用户要加入的房间Id
+			//判断请求是否带roomId, 有则处理加入, 无则处理创建;
+			if (roomIdToJoin) {
 				//	有roomId要加入房间
-				const roomToJoin = this.roomList.get(roomId);
+				const roomIdUserIn = this.userInWhichRoom(user.userId); //用户现在在的房间Id
+				const roomToJoin = this.roomList.get(roomIdToJoin); //用户要加入的房间
 				if (roomToJoin) {
-					if (roomToJoin.join(user)) {
+					//用户要加入的房间存在
+					if (roomIdUserIn) {
 						this.sendToClient(
 							user.socketClient,
 							SocketMsgType.JoinRoom,
-							"success",
-							{ type: "success", content: `成功加入了${roomToJoin.getOwner().username}的房间` },
-							roomId
+							"error",
+							{ type: "error", content: `你已经在房间内` },
+							roomIdToJoin
 						);
-						this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); // 有人加入房间后广播房间列表
 					} else {
-						this.sendToClient(
-							user.socketClient,
-							SocketMsgType.JoinRoom,
-							"fail",
-							{ type: "warning", content: "你已经在房间内" },
-							roomId
-						);
+						//不在某个房间中就走正常加入房间流程
+						if (roomToJoin.join(user)) {
+							this.sendToClient(
+								user.socketClient,
+								SocketMsgType.JoinRoom,
+								"success",
+								{ type: "success", content: `成功加入了${roomToJoin.getOwner().username}的房间` },
+								roomIdToJoin
+							);
+							this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); // 有人加入房间后广播房间列表
+						} else {
+							this.sendToClient(
+								user.socketClient,
+								SocketMsgType.JoinRoom,
+								"fail",
+								{ type: "warning", content: "你已经在房间内" },
+								roomIdToJoin
+							);
+						}
 					}
 				} else {
 					this.sendToClient(socketClient, SocketMsgType.JoinRoom, "fail", { type: "error", content: "房间不存在" });
@@ -373,7 +411,8 @@ export class GameSocketServer {
 		if (this.userList.has(clientUserId)) {
 			const roomId = this.userInWhichRoom(clientUserId);
 			if (roomId && data.roomId === roomId) {
-				if (this.roomList.get(roomId)?.leave(clientUserId)) {
+				const roomToLeave = this.roomList.get(roomId);
+				if (roomToLeave && roomToLeave.leave(clientUserId)) {
 					//如果用户离开后房间为空
 					this.roomList.delete(roomId); //解散房间
 				}
@@ -386,6 +425,15 @@ export class GameSocketServer {
 				this.sendToClient(socketClient, SocketMsgType.LeaveRoom, "error", { type: "error", content: "非法的房间号" });
 			}
 		}
+	}
+
+	private handleRoomChat(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+		const roomId = data.roomId;
+		if (!roomId) return;
+		const message = data.data as string;
+		const room = this.roomList.get(roomId);
+		if (!room) return;
+		room.chatBroadcast(message, clientUserId);
 	}
 
 	private handleReadyToggle(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
@@ -437,7 +485,7 @@ export class GameSocketServer {
 		}
 	}
 
-	private handleRollDice(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
+	private handleRollDiceResult(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
 		const operateType: OperateType = data.data;
 		OperateListener.getInstance().emit(clientUserId, operateType);
 	}

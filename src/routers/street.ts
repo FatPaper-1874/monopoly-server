@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import { createStreet } from "../utils/db/api/Street";
+import { createStreet } from "../db/api/street";
 export const routerStreet = Router();
 
 routerStreet.post("/create", async (req, res, next) => {
@@ -10,7 +10,7 @@ routerStreet.post("/create", async (req, res, next) => {
 			const resMsg: ResInterface = {
 				status: 200,
 				data: await createStreet(name, increase, mapId),
-				msg: "创建街道成功"
+				msg: "创建街道成功",
 			};
 			res.json(resMsg);
 		} catch (e: any) {

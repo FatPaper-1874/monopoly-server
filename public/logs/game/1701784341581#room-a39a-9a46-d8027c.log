@@ -1,0 +1,180 @@
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[43m 房间: \x1B[49m\x1B[22m \x1B[1m\x1B[93mroom-a39a-9a46-d8027c\x1B[39m\x1B[22m \x1B[1m\x1B[42m 开始游戏 \x1B[49m\x1B[22m',
+  timestamp: '2023-12-05 21:52:21'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:52:21'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m2-4\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:52:24'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:52:30'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:52:51'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m4-6\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:52:53'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:53:23'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:53:44'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:53:45'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:53:52'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:54:13'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m4-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:54:15'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:54:43'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:55:04'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m1-5\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:55:05'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:55:33'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:55:54'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m6-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:55:55'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:56:25'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:56:46'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m1-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:56:47'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:57:14'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:57:35'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m1-5\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:57:36'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:57:43'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:58:04'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m2-4\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:58:05'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:58:33'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:58:54'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m5-4\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:58:55'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:59:25'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:59:46'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 21:59:47'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 22:00:15'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m5-3\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 22:00:45'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m1\x1B[39m\x1B[22m',
+  timestamp: '2023-12-05 22:00:54'
+}

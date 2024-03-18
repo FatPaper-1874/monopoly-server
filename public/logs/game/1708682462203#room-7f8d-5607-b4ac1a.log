@@ -1,0 +1,15 @@
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[43m 房间: \x1B[49m\x1B[22m \x1B[1m\x1B[93mroom-7f8d-5607-b4ac1a\x1B[39m\x1B[22m \x1B[1m\x1B[42m 开始游戏 \x1B[49m\x1B[22m',
+  timestamp: '2024-02-23 18:01:02'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2024-02-23 18:01:02'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFatPaper\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m4-3\x1B[39m\x1B[22m',
+  timestamp: '2024-02-23 18:03:17'
+}

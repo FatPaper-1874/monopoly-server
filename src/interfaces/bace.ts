@@ -1,5 +1,5 @@
 import { WebSocket } from "ws";
-import { SocketMsgType } from "../enums/bace";
+import { ChatMessageType, SocketMsgType } from "../enums/bace";
 import { GameSetting } from "./game";
 
 export interface SocketMessage {
@@ -8,20 +8,31 @@ export interface SocketMessage {
 	roomId?: string;
 	data: any;
 	msg?: {
-		type: "success" | "warning" | "error" | "message" | "";
+		type: "info" | "success" | "warning" | "error" | "";
 		content: string;
 	};
 	extra?: any;
+}
+
+export interface UserInDB {
+	id: string;
+	useraccount: string;
+	username: string;
+	avatar: string;
+	color: string;
 }
 
 export interface User {
 	userId: string;
 	username: string;
 	socketClient: WebSocket;
-	isReady: boolean;
 	avatar: string;
 	color: string;
+}
+
+export interface UserInRoom extends User {
 	role: Role;
+	isReady: boolean;
 }
 
 export interface Role {
@@ -73,6 +84,8 @@ export interface ItemType {
 	color: string;
 	name: string;
 	model: Model;
+	effectCode?: string;
+	hasEvent: boolean;
 	size: number;
 }
 
@@ -86,4 +99,21 @@ export interface Street {
 	id: string;
 	name: string;
 	increase: number;
+}
+
+export interface ChatUserInfo {
+	userId: string;
+	username: string;
+	isReady: boolean;
+	avatar: string;
+	color: string;
+	role: Role;
+}
+
+export interface ChatMessage {
+	id: string;
+	type: ChatMessageType;
+	user: ChatUserInfo;
+	content: string;
+	time: number;
 }

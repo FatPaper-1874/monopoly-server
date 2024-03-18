@@ -1,23 +1,16 @@
 import jwt from "jsonwebtoken";
-const TOKENKEY = "Fat_PaperLoveMinecraft";
+import { getPublicKey } from "./api/keys";
 
-export const setToken = (username: string, userId: string) => {
-	return new Promise((resolve, reject) => {
-		const token = jwt.sign(
-			{
-				username,
-				userId,
-			},
-			TOKENKEY,
-			{ expiresIn: "1 day" }
-		);
-		resolve(token);
-	});
-};
-
-export const verToken = (token: string) => {
+export async function verToken(token: string) {
 	try {
-		const info = jwt.verify(token.split(" ")[1], TOKENKEY);
+		if (token.includes("Bearer")) {
+			token = token.split(" ")[1];
+		}
+		const info = jwt.verify(token, await getPublicKey(), { algorithms: ["RS256"] }) as {
+			userId: string;
+			isAdmin: boolean;
+			exp: number;
+		};
 		return info;
 	} catch (err: any) {
 		if (err) {
@@ -28,4 +21,4 @@ export const verToken = (token: string) => {
 			}
 		}
 	}
-};
+}

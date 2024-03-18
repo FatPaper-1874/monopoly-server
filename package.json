@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec ts-node ./app.ts",
+    "dev": "nodemon -r --exec ts-node ./app.ts",
     "start": "ts-node ./app.ts"
   },
   "devDependencies": {
@@ -12,7 +12,7 @@
     "@types/node": "^18.11.17",
     "@types/ws": "^8.5.3",
     "express": "^4.18.2",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.4",
     "ws": "^8.11.0"
   },
@@ -23,6 +23,8 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/multer": "^1.4.7",
     "@types/winston": "^2.4.4",
+    "NeteaseCloudMusicApi": "^4.13.6",
+    "axios": "^1.5.0",
     "body-parser": "^1.20.1",
     "chalk": "4.1.2",
     "cors": "^2.8.5",
@@ -30,7 +32,9 @@
     "jsonwebtoken": "^9.0.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "node-vibrant": "^3.2.1-alpha.1",
     "nodemon": "^2.0.20",
+    "path-to-regexp": "^6.2.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.11",
     "winston": "^3.8.2"

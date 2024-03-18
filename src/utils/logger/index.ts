@@ -64,9 +64,7 @@ export const serverLog = (
 };
 
 const gamePrintFormat = format.printf(({ level, message, label, timestamp }) => {
-	return `${chalk.bold.bgGray(` ${timestamp} `)}${chalk.bold.bgMagenta(` ${label} `)}${colorizer(
-		level
-	)}: ${message}`;
+	return `${chalk.bold.bgGray(` ${timestamp} `)}${chalk.bold.bgMagenta(` ${label} `)}${colorizer(level)}: ${message}`;
 });
 
 const serverPrintFormat = format.printf(({ level, message, label, timestamp }) => {

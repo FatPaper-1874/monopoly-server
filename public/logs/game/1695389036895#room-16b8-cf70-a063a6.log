@@ -1,0 +1,75 @@
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[43m 房间: \x1B[49m\x1B[22m \x1B[1m\x1B[93mroom-16b8-cf70-a063a6\x1B[39m\x1B[22m \x1B[1m\x1B[42m 开始游戏 \x1B[49m\x1B[22m',
+  timestamp: '2023-09-22 21:23:56'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:23:56'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:18'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-5\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:19'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:24'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:27'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:30'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:33'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:34'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:35'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:36'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:37'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:38'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[43m 使用了机会卡: \x1B[49m\x1B[22m \x1B[1m\x1B[93m小财神\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:24:39'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96mFat哥\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m6-6\x1B[39m\x1B[22m',
+  timestamp: '2023-09-22 21:26:48'
+}

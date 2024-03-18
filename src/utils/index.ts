@@ -1,3 +1,6 @@
+import { MapItem } from "../interfaces/bace";
+import Vibrant from "node-vibrant";
+
 export function randomColor() {
 	const H = Math.random();
 	const S = Math.random();
@@ -35,3 +38,35 @@ export function randomColor() {
 export const getRandomInteger = (min: number, max: number) => {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+export function getItemTypesFromMapItems(mapItems: MapItem[]) {
+	const itemTypesIdSet = new Set<string>();
+	mapItems.forEach((i) => {
+		itemTypesIdSet.add(i.type.id);
+	});
+	return Array.from(itemTypesIdSet).map((typeId) => {
+		return mapItems.find((mapItem) => mapItem.type.id === typeId)!.type;
+	});
+}
+
+export function randomString(length: number) {
+	const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	let randomString = "";
+	for (let i = 0; i < length; i++) {
+		const randomIndex = Math.floor(Math.random() * characters.length);
+		randomString += characters.charAt(randomIndex);
+	}
+	return randomString;
+}
+
+export async function getImageMainColor(filename: string) {
+	try {
+		const palette = await Vibrant.from(filename).getPalette();
+		if (!palette || !palette.Vibrant) return null;
+		const dominantColor = palette.Vibrant.getHex();
+		return dominantColor;
+	} catch (error) {
+		console.error("Error:", error);
+		return null;
+	}
+}

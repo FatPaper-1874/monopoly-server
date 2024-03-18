@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import { deleteModel, getModelList } from "../utils/db/api/Model";
+import { deleteModel, getModelList } from "../db/api/model";
 
 const routerModel = Router();
 

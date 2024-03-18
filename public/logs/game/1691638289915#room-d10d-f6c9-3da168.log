@@ -1,0 +1,70 @@
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[43m 房间: \x1B[49m\x1B[22m \x1B[1m\x1B[93mroom-d10d-f6c9-3da168\x1B[39m\x1B[22m \x1B[1m\x1B[42m 开始游戏 \x1B[49m\x1B[22m',
+  timestamp: '2023-08-10 11:31:29'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:31:29'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m4-5\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:31:44'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m1\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:31:51'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:31:51'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m2-1\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:31:57'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m5\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:01'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:01'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:22'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m2-2\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:24'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m到达了\x1B[39m\x1B[22m \x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的地皮\x1B[39m\x1B[22m \x1B[1m\x1B[34m支付了\x1B[39m\x1B[22m \x1B[1m\x1B[31m200\x1B[39m\x1B[22m \x1B[1m\x1B[34m的过路费\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:45'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:32:45'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-6\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:33:32'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m4\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 11:33:39'
+}

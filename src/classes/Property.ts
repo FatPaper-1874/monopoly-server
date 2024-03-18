@@ -1,5 +1,5 @@
 import { PropertyInfo, PropertyInterface } from "../interfaces/game";
-import { Property as PropertyFromDB } from "@/utils/db/entities/Property";
+import { Property as PropertyFromDB } from "../db/entities/property";
 import { Player } from "./Player";
 
 export class Property implements PropertyInterface {

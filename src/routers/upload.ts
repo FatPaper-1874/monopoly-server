@@ -2,12 +2,14 @@ import { Router } from "express";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-import { createModel } from "../utils/db/api/Model";
+import { createModel } from "../db/api/model";
 import { ResInterface } from "../interfaces/res";
-import { createRole } from "../utils/db/api/Role";
+import { createRole } from "../db/api/role";
+import { setBackground } from "../db/api/map";
+import { getWxOpenId } from "src/utils/wx";
 
 const modelUploaderMulter = multer({ dest: "public/models" });
-const roleUploaderMulter = multer({ dest: "public/roles" });
+const backgroundMulter = multer({ dest: "public/backgrounds" });
 const routerUpload = Router();
 
 routerUpload.post("/model", modelUploaderMulter.single("model"), async (req, res, next) => {
@@ -54,7 +56,7 @@ routerUpload.post("/model", modelUploaderMulter.single("model"), async (req, res
 	}
 });
 
-routerUpload.post("/role", roleUploaderMulter.single("role"), async (req, res, next) => {
+routerUpload.post("/background", backgroundMulter.single("background"), async (req, res, next) => {
 	// console.log(req.file);
 	if (req.file?.originalname) {
 		const fileType = path.parse(req.file?.originalname).ext;
@@ -70,33 +72,32 @@ routerUpload.post("/role", roleUploaderMulter.single("role"), async (req, res, n
 		const newName = oldName + fileType;
 		fs.renameSync(oldName, newName);
 
-		if (req.body.name) {
-			const rolelName = req.body.name;
-			const roleColor = req.body.color;
+		if (req.body.mapId) {
+			const mapId = req.body.mapId;
 			try {
-				await createRole(rolelName, req.file.filename + fileType, roleColor);
+				await setBackground(mapId, req.file.filename + fileType);
 			} catch {
 				const resMsg: ResInterface = {
 					status: 500,
-					msg: "角色创建失败",
+					msg: "背景添加失败",
 				};
 				res.json(resMsg);
 				return;
 			}
 			const resMsg: ResInterface = {
 				status: 200,
-				msg: "角色创建成功",
+				msg: "背景添加成功",
+				data: req.file.filename + fileType,
 			};
 			res.json(resMsg);
 		} else {
 			const resMsg: ResInterface = {
 				status: 500,
-				msg: "没有角色文件名",
+				msg: "没有文件名",
 			};
 			res.json(resMsg);
 			return;
 		}
 	}
 });
-
 export default routerUpload;

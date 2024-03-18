@@ -3,7 +3,7 @@ import { Property } from "../classes/Property";
 import { GameOverRule } from "../enums/game";
 import { ItemType, MapItem, Role, Street, User } from "./bace";
 import { ChanceCard } from "../classes/ChanceCard";
-import { ChanceCardType } from "@/enums/bace";
+import { ChanceCardType } from "../enums/bace";
 
 export interface GameSetting {
 	gameOverRule: GameOverRule; //游戏结束的判定规则
@@ -48,6 +48,7 @@ export interface PlayerInterface {
 	//机会卡相关
 	getCardsList: () => ChanceCard[];
 	setCardsList: (newChanceCardList: ChanceCard[]) => void;
+	getCardById: (cardId: string) => ChanceCard | undefined;
 	gainCard: (card: ChanceCard) => void;
 	loseCard: (cardId: string) => void;
 
@@ -109,6 +110,8 @@ export interface PlayerInfo {
 	chanceCards: ChanceCardInfo[];
 	positionIndex: number;
 	isStop: number;
+	isBankrupted: boolean;
+	isOffline: boolean;
 }
 
 export interface ChanceCardInfo {
@@ -123,6 +126,7 @@ export interface ChanceCardInfo {
 export interface GameInitInfo {
 	mapId: string;
 	mapName: string;
+	mapBackground: string;
 	mapItemsList: MapItem[];
 	mapIndexList: string[];
 	itemTypesList: ItemType[];

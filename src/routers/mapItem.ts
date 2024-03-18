@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import { createMapItem, deleteMapItem, linkMapItem } from "../utils/db/api/MapItem";
+import { createMapItem, deleteMapItem, linkMapItem } from "../db/api/mapItem";
 export const routerMapItem = Router();
 
 routerMapItem.post("/create", async (req, res, next) => {
@@ -12,10 +12,10 @@ routerMapItem.post("/create", async (req, res, next) => {
 				data: await createMapItem(_id, x, y, typeId, mapId),
 			};
 			res.json(resMsg);
-		} catch (e) {
+		} catch (e:any) {
 			const resMsg: ResInterface = {
 				status: 500,
-				msg: "数据库请求错误",
+				msg: e.message,
 			};
 			res.json(resMsg);
 		}
@@ -54,7 +54,7 @@ routerMapItem.post("/link", async (req, res, next) => {
 			await linkMapItem(sourceId.toString(), targetId.toString());
 			const resMsg: ResInterface = {
 				status: 200,
-				msg: '连接MapItem成功'
+				msg: "连接MapItem成功",
 			};
 			res.json(resMsg);
 		} catch (e: any) {

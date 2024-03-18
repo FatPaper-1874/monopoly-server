@@ -1,11 +1,19 @@
 import { Router } from "express";
 import { ResInterface } from "../interfaces/res";
-import { createMap, getMapById, getMapsList, deleteMap, updateIndexList } from "../utils/db/api/Map";
-import { getMapItemListByMapId } from "../utils/db/api/MapItem";
-import { getStreetListByMapId } from "../utils/db/api/Street";
-import { getItemTypeListByMapId } from "../utils/db/api/ItemType";
-import { getPropertysListByMapId } from "../utils/db/api/Property";
-import { getChanceCardsListByMapId } from "../utils/db/api/ChanceCard";
+import {
+	createMap,
+	getMapById,
+	getMapsList,
+	deleteMap,
+	updateIndexList,
+	setBackground,
+	getMapIndexsByMapId,
+} from "../db/api/map";
+import { getMapItemListByMapId } from "../db/api/mapItem";
+import { getStreetListByMapId } from "../db/api/street";
+import { getItemTypeListByMapId } from "../db/api/item-type";
+import { getPropertysListByMapId } from "../db/api/property";
+import { getChanceCardsListByMapId } from "../db/api/chance-card";
 export const routerMap = Router();
 
 routerMap.post("/create", async (req, res, next) => {
@@ -158,6 +166,25 @@ routerMap.get("/chance-card", async (req, res, next) => {
 			};
 			res.json(resMsg);
 		} catch {}
+	}
+});
+
+routerMap.get("/map-indexs", async (req, res, next) => {
+	const id = req.query.id as string;
+	if (id) {
+		try {
+			const resMsg: ResInterface = {
+				status: 200,
+				data: await getMapIndexsByMapId(id),
+			};
+			res.json(resMsg);
+		} catch (e: any) {
+			const resMsg: ResInterface = {
+				status: 500,
+				data: e.message,
+			};
+			res.json(resMsg);
+		}
 	}
 });
 

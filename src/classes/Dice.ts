@@ -7,11 +7,7 @@ class Dice {
 	}
 
 	public getResultNumber() {
-		let sum = 0;
-		this.resultArray.map((item) => {
-			sum += item;
-		});
-		return sum;
+		return this.resultArray.reduce((p, c) => p + c, 0);
 	}
 
 	public getResultArray() {

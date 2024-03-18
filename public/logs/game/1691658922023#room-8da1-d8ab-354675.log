@@ -1,0 +1,65 @@
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[43m 房间: \x1B[49m\x1B[22m \x1B[1m\x1B[93mroom-8da1-d8ab-354675\x1B[39m\x1B[22m \x1B[1m\x1B[42m 开始游戏 \x1B[49m\x1B[22m',
+  timestamp: '2023-08-10 17:15:22'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:22'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m1-2\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:27'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m6\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:30'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:30'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m1-5\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:36'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m购买了\x1B[39m\x1B[22m \x1B[1m\x1B[92m7\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:41'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:15:41'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:16:02'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser2\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-1\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:16:04'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[34m现在是\x1B[39m\x1B[22m \x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:29:44'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[34m的回合超时了\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:30:05'
+}
+{
+  level: 'info',
+  message: '\x1B[1m\x1B[96muser1\x1B[39m\x1B[22m \x1B[1m\x1B[46m 摇到了: \x1B[49m\x1B[22m \x1B[1m\x1B[92m3-3\x1B[39m\x1B[22m',
+  timestamp: '2023-08-10 17:30:06'
+}
