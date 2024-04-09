@@ -8449,3 +8449,15 @@
 {"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-03-27 10:36:56"}
 {"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-03-27 10:36:56"}
 {"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 8000端口\u001b[49m\u001b[22m","timestamp":"2024-03-27 10:36:56"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错:  \u001b[49m\u001b[22m","timestamp":"2024-03-31 12:43:41"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: AggregateError \u001b[49m\u001b[22m","timestamp":"2024-03-31 12:48:14"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 12:49:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-03-31 15:57:56"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 15:57:57"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-03-31 15:58:29"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 15:58:29"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-03-31 16:01:08"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 16:01:08"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 16:02:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-03-31 16:05:24"}
+{"level":"error","message":"\u001b[1m\u001b[41m 服务器出错: \u001b[49m\u001b[22m","timestamp":"2024-03-31 16:05:24"}

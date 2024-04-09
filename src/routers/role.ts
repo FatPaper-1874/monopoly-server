@@ -52,7 +52,9 @@ routerRole.post("/create", roleUploaderMulter.array("role"), async (req, res, ne
         files.forEach(file => {
             const fileType = path.parse(file.originalname).ext;
             const oldFileName = file.path;
-            const newFileName = `public\\roles\\${tempName + fileType}`;
+            const tempArr = oldFileName.split('/');
+            tempArr.pop();
+            const newFileName = `${tempArr.join('/')}/${tempName + fileType}`;
             fs.renameSync(oldFileName, newFileName);
             if (fileType === ".atlas") {
                 //修改atlas文件的png文件名
@@ -133,11 +135,13 @@ routerRole.post("/update", roleUploaderMulter.array("role"), async (req, res, ne
         }
 
         //对文件进行修改操作
-        const _fileName = crypto.randomUUID();
+        const tempName = crypto.randomUUID();
         files.forEach(file => {
             const fileType = path.parse(file.originalname).ext;
             const oldFileName = file.path;
-            const newFileName = `public\\roles\\${_fileName + fileType}`;
+            const tempArr = oldFileName.split('/');
+            tempArr.pop();
+            const newFileName = `${tempArr.join('/')}/${tempName + fileType}`;
             fs.renameSync(oldFileName, newFileName);
             if (fileType === ".atlas") {
                 //修改atlas文件的png文件名
@@ -147,12 +151,12 @@ routerRole.post("/update", roleUploaderMulter.array("role"), async (req, res, ne
                     if (lines.length < 1) {
                         throw new Error();
                     }
-                    lines[1] = _fileName + '.png';
+                    lines[1] = tempName + '.png';
 
                     // 将修改后的内容重新组合成一个字符串
                     const modifiedData = lines.join('\n');
                     fs.writeFileSync(newFileName, modifiedData, 'utf-8');
-                    fileName = _fileName
+                    fileName = tempName
                 } catch (e: any) {
                     const resMsg: ResInterface = {
                         status: 500,
@@ -235,7 +239,9 @@ routerRole.post("/pre-upload", rolePreUploaderMulter.array("role"), async (req, 
         files.forEach(file => {
             const fileType = path.parse(file.originalname).ext;
             const oldFileName = file.path;
-            const newFileName = `public\\temp\\${tempName + fileType}`;
+            const tempArr = oldFileName.split('/');
+            tempArr.pop();
+            const newFileName = `${tempArr.join('/')}/${tempName + fileType}`;
             tempFilePathList.push(newFileName);
             fs.renameSync(oldFileName, newFileName);
             if (fileType === ".atlas") {

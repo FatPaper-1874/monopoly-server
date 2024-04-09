@@ -1,4 +1,6 @@
-export const __USERSERVERHOST__ = "http://localhost:8002";
-export const __APIPORT__ = 8000;
-export const __SOCKETPORT__ = 8001;
+import {FATPAPER_USER_SERVER_PORT, MONOPOLY_SERVER_PORT, MONOPOLY_SOCKET_PORT} from "../global.config";
+
+export const __USERSERVERHOST__ = `http://user-server:${FATPAPER_USER_SERVER_PORT}`;
+export const __APIPORT__ = MONOPOLY_SERVER_PORT;
+export const __SOCKETPORT__ = MONOPOLY_SOCKET_PORT;
 

@@ -4,9 +4,7 @@ import path from "path";
 import fs from "fs";
 import { createModel } from "../db/api/model";
 import { ResInterface } from "../interfaces/res";
-import { createRole } from "../db/api/role";
 import { setBackground } from "../db/api/map";
-import { getWxOpenId } from "src/utils/wx";
 
 const modelUploaderMulter = multer({ dest: "public/models" });
 const backgroundMulter = multer({ dest: "public/backgrounds" });

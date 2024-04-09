@@ -28,11 +28,12 @@ import {initNeteaseCloudMusic} from "./src/utils/music";
 
 async function bootstrap() {
     try {
-        const publicKey = await getPublicKey();
-
         await AppDataSource.initialize().then(() => {
             serverLog(`${chalk.bold.bgGreen(" 数据库连接成功 ")}`);
         });
+
+        const publicKey = await getPublicKey();
+        serverLog(`${chalk.bold.bgGreen(" 用户服务器连接成功 ")}`);
 
         // await initNeteaseCloudMusic('13431722727', 'max2684', "monopoly_music");
 
@@ -64,7 +65,8 @@ async function bootstrap() {
 
         const gameSocketServer = new GameSocketServer(__SOCKETPORT__);
     } catch (e: any) {
-        serverLog(`${chalk.bold.bgRed(` 服务器出错: ${e.message} `)}`, "error");
+        serverLog(`${chalk.bold.bgRed(` 服务器出错: `)}`, "error");
+        console.log(e)
     }
 }
 
