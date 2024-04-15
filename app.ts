@@ -59,6 +59,13 @@ async function bootstrap() {
         app.use("/chance-card", routerChanceCard);
         app.use("/music", routerMusic);
 
+        app.get('/health', (req, res) => {
+            // 在这里进行服务的健康检查，返回适当的响应
+            // 为了配合docker-compose按顺序启动
+            res.status(200).send('OK');
+        });
+
+
         app.listen(__APIPORT__, () => {
             serverLog(`${chalk.bold.bgGreen(` API服务启动成功 ${__APIPORT__}端口`)}`);
         });
