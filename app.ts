@@ -70,7 +70,7 @@ async function bootstrap() {
 			serverLog(`${chalk.bold.bgGreen(` API服务启动成功 ${__APIPORT__}端口`)}`);
 		});
 
-		const gameSocketServer = new GameSocketServer(FATPAPER_HOST, __SOCKETPORT__);
+		const gameSocketServer = new GameSocketServer(__SOCKETPORT__);
 	} catch (e: any) {
 		serverLog(`${chalk.bold.bgRed(` 服务器出错: `)}`, "error");
 		console.log(e);

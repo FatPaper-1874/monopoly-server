@@ -52,9 +52,9 @@ export class GameSocketServer {
 
     public serverStatus: ServerStatus;
 
-    constructor(host: string = "localhost", port: number = 3001) {
+    constructor(port: number = 3001) {
         try {
-            this.socketServer = new WebSocketServer({host, port});
+            this.socketServer = new WebSocketServer({port});
             serverLog(`${chalk.bold.bgGreen(" Socket服务开启成功 ")}`);
             this.serverStatus = ServerStatus.ONLINE;
 
