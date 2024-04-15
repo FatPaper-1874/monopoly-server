@@ -52,8 +52,8 @@ export class GameSocketServer {
 
 	public serverStatus: ServerStatus;
 
-	constructor(port: number = 3001) {
-		this.socketServer = new WebSocketServer({ port });
+	constructor(host: string = "localhost", port: number = 3001) {
+		this.socketServer = new WebSocketServer({ host, port });
 		serverLog(`${chalk.bold.bgGreen(" Socket服务开启成功 ")}`);
 		this.serverStatus = ServerStatus.ONLINE;
 
