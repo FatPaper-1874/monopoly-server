@@ -1,15 +1,13 @@
 import {WebSocket, WebSocketServer} from "ws";
 import {Room} from "../../classes/Room";
 import {SocketMsgType} from "../../enums/bace";
-import {ChatMessage, SocketMessage, User} from "../../interfaces/bace";
+import {SocketMessage, User} from "../../interfaces/bace";
 import {getRoleList} from "../../db/api/role";
 import {OperateType} from "../../enums/game";
 import {OperateListener} from "../../classes/OperateListener";
 import chalk from "chalk";
 import {serverLog} from "../logger/index";
-import {verToken} from "../token";
 import {getUserByToken} from "../fetch/user";
-import {UserInfoClient} from "src/interfaces/game";
 
 enum ServerStatus {
     "ONLINE",
@@ -170,6 +168,9 @@ export class GameSocketServer {
                             break;
                         case SocketMsgType.GameStart:
                             this.handleGameStart(socketClient, socketMessage, clientUserId);
+                            break;
+                        case SocketMsgType.GameInitFinished:
+                            this.handleGameInitFinished(socketClient, socketMessage, clientUserId);
                             break;
                         case SocketMsgType.RollDiceResult:
                             this.handleRollDiceResult(socketClient, socketMessage, clientUserId);
@@ -501,6 +502,11 @@ export class GameSocketServer {
                 room.startGame();
             }
         }
+    }
+
+    private handleGameInitFinished(socketClient: WebSocket, data: SocketMessage, clientUserId: string){
+        console.log(`${clientUserId} 加载完成`)
+        OperateListener.getInstance().emit(clientUserId, OperateType.GameInitFinished);
     }
 
     private handleRollDiceResult(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {

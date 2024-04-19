@@ -99,6 +99,8 @@ export class GameProcess {
         this.gameInfoBroadcast();
         this.gameInitBroadcast();
 
+        await this.waitInitFinished();
+
         await this.gameLoop();
     }
 
@@ -127,6 +129,19 @@ export class GameProcess {
         this.playersList.forEach((player) => {
             player.setPositionIndex(getRandomInteger(0, this.mapIndexList.length - 1));
         });
+    }
+
+    //等待全部玩家加载完成
+    private async waitInitFinished() {
+        const operateListener = OperateListener.getInstance();
+        const promiseArr: Promise<any>[] = [];
+        this.playersList.forEach(player => {
+            const _p = new Promise(resolve => operateListener.once(player.getId(), OperateType.GameInitFinished, resolve));
+            promiseArr.push(_p);
+        })
+        await Promise.all(promiseArr);
+        console.log("玩家加载完成")
+        this.roomInstance.roomBroadcast({type: SocketMsgType.GameInitFinished, data: "", source: "server"})
     }
 
     //游戏循环
