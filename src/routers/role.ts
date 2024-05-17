@@ -6,6 +6,8 @@ import fs from "fs";
 import multer from "multer";
 import crypto from "crypto";
 import {deleteModel} from "../db/api/model";
+import {uploadFiles} from "../utils/COS-uploader";
+import {getFileNameInPath} from "../utils";
 
 export const routerRole = Router();
 const roleUploaderMulter = multer({dest: "public/roles"});
@@ -19,13 +21,13 @@ routerRole.get("/list", async (req, res, next) => {
             status: 200,
             data: {total, current: parseInt(page.toString()), roleList},
         };
-        res.json(resMsg);
+        res.status(resMsg.status).json(resMsg);
     } catch {
         const resMsg: ResInterface = {
             status: 500,
             msg: "获取游戏角色列表失败",
         };
-        res.json(resMsg);
+        res.status(resMsg.status).json(resMsg);
     }
 });
 
@@ -48,34 +50,35 @@ routerRole.post("/create", roleUploaderMulter.array("role"), async (req, res, ne
         }
 
         //对文件进行修改操作
-        const tempName = crypto.randomUUID();
+        const newFileName = crypto.randomUUID();
+        const newFilePathArr: string[] = [];
         files.forEach(file => {
             const fileType = path.parse(file.originalname).ext;
-            const oldFileName = file.path;
-            const tempArr = oldFileName.split('/');
+            const oldFilePath = file.path;
+            const tempArr = oldFilePath.split('/');
             tempArr.pop();
-            const newFileName = `${tempArr.join('/')}/${tempName + fileType}`;
-            fs.renameSync(oldFileName, newFileName);
+            const newFilePath = `${tempArr.join('/')}/${newFileName + fileType}`;
+            fs.renameSync(oldFilePath, newFilePath);
+            newFilePathArr.push(newFilePath);
             if (fileType === ".atlas") {
                 //修改atlas文件的png文件名
                 try {
-                    const data = fs.readFileSync(newFileName, 'utf-8');
+                    const data = fs.readFileSync(newFilePath, 'utf-8');
                     const lines = data.split('\n');
                     if (lines.length < 1) {
-                        throw new Error();
+                        throw new Error("文件为空");
                     }
-                    lines[1] = tempName + '.png';
+                    lines[1] = newFileName + '.png';
 
                     // 将修改后的内容重新组合成一个字符串
                     const modifiedData = lines.join('\n');
-                    fs.writeFileSync(newFileName, modifiedData, 'utf-8');
+                    fs.writeFileSync(newFilePath, modifiedData, 'utf-8');
                 } catch (e: any) {
                     const resMsg: ResInterface = {
                         status: 500,
-                        msg: "在修改atlas文件时出错",
+                        msg: `在修改atlas文件时出错：${e.message}`,
                     };
                     res.status(500).json(resMsg);
-
                 }
             }
         })
@@ -84,20 +87,31 @@ routerRole.post("/create", roleUploaderMulter.array("role"), async (req, res, ne
         const roleColor = req.body.color;
         if (rolelName && roleColor) {
             try {
-                await createRole(rolelName, tempName, roleColor);
+                const fileUrls = await uploadFiles(newFilePathArr.map(filePath => {
+                    const fileName = getFileNameInPath(filePath);
+                    return {filePath, targetPath: 'monopoly/roles/', name: fileName}
+                }));
+                if (fileUrls.length > 0) {
+                    const tempArr = fileUrls[0].split("/")
+                    tempArr.pop();
+                    const baseUrl = tempArr.join("/");
+                    await createRole(rolelName, `${baseUrl}`, newFileName, roleColor);
+                } else {
+                    throw new Error("COS错误的返回值")
+                }
             } catch {
                 const resMsg: ResInterface = {
                     status: 500,
                     msg: "角色创建失败",
                 };
-                res.json(resMsg);
+                res.status(resMsg.status).json(resMsg);
                 return;
             }
             const resMsg: ResInterface = {
                 status: 200,
                 msg: "角色创建成功",
             };
-            res.json(resMsg);
+            res.status(resMsg.status).json(resMsg);
         } else {
             const resMsg: ResInterface = {
                 status: 400,
@@ -120,7 +134,6 @@ routerRole.post("/update", roleUploaderMulter.array("role"), async (req, res, ne
     const files = req.files;
     const acceptTypes = ['.json', '.atlas', '.png'];
 
-    let fileName = "";
     if (files && files instanceof Array && files.length === 3) {
         //检查是否为三种文件;
         if (!checkFileTypes(acceptTypes, files)) {
@@ -135,64 +148,75 @@ routerRole.post("/update", roleUploaderMulter.array("role"), async (req, res, ne
         }
 
         //对文件进行修改操作
-        const tempName = crypto.randomUUID();
+        const newFileName = crypto.randomUUID();
+        const newFilePathArr: string[] = [];
         files.forEach(file => {
             const fileType = path.parse(file.originalname).ext;
-            const oldFileName = file.path;
-            const tempArr = oldFileName.split('/');
+            const oldFilePath = file.path;
+            const tempArr = oldFilePath.split('/');
             tempArr.pop();
-            const newFileName = `${tempArr.join('/')}/${tempName + fileType}`;
-            fs.renameSync(oldFileName, newFileName);
+            const newFilePath = `${tempArr.join('/')}/${newFileName + fileType}`;
+            fs.renameSync(oldFilePath, newFilePath);
+            newFilePathArr.push(newFilePath);
             if (fileType === ".atlas") {
                 //修改atlas文件的png文件名
                 try {
-                    const data = fs.readFileSync(newFileName, 'utf-8');
+                    const data = fs.readFileSync(newFilePath, 'utf-8');
                     const lines = data.split('\n');
                     if (lines.length < 1) {
-                        throw new Error();
+                        throw new Error("文件为空");
                     }
-                    lines[1] = tempName + '.png';
+                    lines[1] = newFileName + '.png';
 
                     // 将修改后的内容重新组合成一个字符串
                     const modifiedData = lines.join('\n');
-                    fs.writeFileSync(newFileName, modifiedData, 'utf-8');
-                    fileName = tempName
+                    fs.writeFileSync(newFilePath, modifiedData, 'utf-8');
                 } catch (e: any) {
                     const resMsg: ResInterface = {
                         status: 500,
-                        msg: "在修改atlas文件时出错",
+                        msg: `在修改atlas文件时出错：${e.message}`,
                     };
                     res.status(500).json(resMsg);
-
                 }
             }
         })
-    }
-    const roleId = req.body.id;
-    const roleName = req.body.name;
-    const roleColor = req.body.color;
-    if (roleId && roleName && roleColor) {
-        try {
-            await updateRole(roleId, roleName, roleColor, fileName);
-        } catch {
+        const roleId = req.body.id;
+        const roleName = req.body.name;
+        const roleColor = req.body.color;
+        if (roleId && roleName && roleColor) {
+            try {
+                await uploadFiles(newFilePathArr.map(filePath => {
+                    const fileName = getFileNameInPath(filePath);
+                    return {filePath, targetPath: 'monopoly/roles/', name: fileName}
+                }));
+                await updateRole(roleId, roleName, roleColor, newFileName);
+            } catch {
+                const resMsg: ResInterface = {
+                    status: 500,
+                    msg: "角色更新失败",
+                };
+                res.status(500).json(resMsg);
+                return;
+            }
             const resMsg: ResInterface = {
-                status: 500,
-                msg: "角色更新失败",
+                status: 200,
+                msg: "角色更新成功",
             };
-            res.json(resMsg);
+            res.status(200).json(resMsg);
+        } else {
+            const resMsg: ResInterface = {
+                status: 400,
+                msg: "没有附带信息",
+            };
+            res.status(400).json(resMsg);
             return;
         }
-        const resMsg: ResInterface = {
-            status: 200,
-            msg: "角色更新成功",
-        };
-        res.json(resMsg);
     } else {
         const resMsg: ResInterface = {
-            status: 400,
-            msg: "没有附带信息",
+            status: 500,
+            msg: "没有上传文件",
         };
-        res.status(400).json(resMsg);
+        res.status(500).json(resMsg);
         return;
     }
 });
@@ -206,13 +230,13 @@ routerRole.delete("/delete", async (req, res, next) => {
                 msg: "删除成功",
                 data: await deleteRole(id.toString()),
             };
-            res.json(resMsg);
+            res.status(resMsg.status).json(resMsg);
         } catch (e: any) {
             const resMsg: ResInterface = {
                 status: 500,
                 msg: e.message || "数据库请求错误",
             };
-            res.json(resMsg);
+            res.status(resMsg.status).json(resMsg);
         }
     }
 })

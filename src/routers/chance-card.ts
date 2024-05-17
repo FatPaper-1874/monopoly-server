@@ -19,13 +19,13 @@ routerChanceCard.post("/create", async (req, res, next) => {
 				status: 200,
 				msg: "机会卡创建成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "机会卡创建失败",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 			return;
 		}
 	} else {
@@ -33,7 +33,7 @@ routerChanceCard.post("/create", async (req, res, next) => {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 		return;
 	}
 });
@@ -47,20 +47,20 @@ routerChanceCard.post("/update", async (req, res, next) => {
 				msg: "更新机会卡信息成功",
 				data: await updateChanceCard(id, name, describe, type, icon, color, effectCode),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -72,14 +72,14 @@ routerChanceCard.get("/info", async (req, res, next) => {
 				status: 200,
 				data: await getChanceCardById(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "获取机会卡信息失败, 无效的id",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -92,13 +92,13 @@ routerChanceCard.delete("/delete", async (req, res, next) => {
 				status: 200,
 				msg: "删除成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: e.toString(),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	}
 });
@@ -111,13 +111,13 @@ routerChanceCard.get("/list", async (req, res, next) => {
 			status: 200,
 			data: { total, current: parseInt(page.toString()), chanceCardsList },
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	} catch {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "获取机会卡列表失败",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -130,19 +130,19 @@ routerChanceCard.post("/bind-map", async (req, res, next) => {
 				status: 200,
 				msg: "修改地图的机会卡成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });

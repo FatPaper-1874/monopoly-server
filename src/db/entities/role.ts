@@ -6,10 +6,13 @@ export class Role {
   id: string
 
   @PrimaryColumn({ type: 'varchar', nullable: false})
-  rolename: string
+  roleName: string
 
   @Column({ type: 'varchar', nullable: false})
-  filename: string
+  baseUrl: string
+
+  @Column({ type: 'varchar', nullable: false})
+  fileName: string
 
   @Column({ type: 'varchar', nullable: false})
   color: string

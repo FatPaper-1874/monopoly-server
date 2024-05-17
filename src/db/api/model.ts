@@ -2,12 +2,14 @@ import path, { resolve } from "path";
 import AppDataSource from "../dbConnecter";
 import { Model } from "../entities/model";
 import fs from "fs";
+import {deleteFiles} from "../../utils/COS-uploader";
 
 const modelRepository = AppDataSource.getRepository(Model);
 
-export const createModel = async (name: string, fileName: string) => {
+export const createModel = async (name: string, fileUrl: string, fileName: string) => {
 	const model = new Model();
 	model.name = name;
+	model.fileUrl = fileUrl;
 	model.fileName = fileName;
 	await modelRepository.save(model);
 };
@@ -17,10 +19,13 @@ export const deleteModel = async (id: string) => {
 		where: { id },
 	});
 	if (model) {
-		fs.unlinkSync(`${process.cwd()}/public/models/${model.fileName}`);
-		return modelRepository.remove(model);
+		try {
+			await deleteFiles([`monopoly/models/${model.fileName}`])
+		} catch (e: any){
+			throw new Error(`删除Model失败：${e.message}`);
+		}
 	} else {
-		null;
+		throw new Error("不存在的Model");
 	}
 };
 
@@ -30,7 +35,7 @@ export const updateModel = async (newModel: Model) => {
 
 export const getModelById = async (id: string) => {
 	const model = await modelRepository.findOne({
-		select: ["id", "name", "fileName"],
+		select: ["id", "name", "fileUrl"],
 		where: { id },
 	});
 	if (model) {

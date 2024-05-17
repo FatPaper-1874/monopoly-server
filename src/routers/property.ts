@@ -12,20 +12,20 @@ routerProperty.post("/create", async (req, res, next) => {
 				msg: "创建地皮成功",
 				data: await createProperty(name, sellCost, buildCost, cost_lv0, cost_lv1, cost_lv2, mapItemId, streetId, mapId),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -37,20 +37,20 @@ routerProperty.get("/info", async (req, res, next) => {
 				status: 200,
 				data: await getPropertyById(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求地皮信息错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -63,19 +63,19 @@ routerProperty.post("/update", async (req, res, next) => {
 				msg: "更新地皮信息成功",
 				data: await updateProperty(id, name, sellCost, buildCost, cost_lv0, cost_lv1, cost_lv2, streetId),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });

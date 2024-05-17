@@ -10,6 +10,9 @@ export class Model {
 	name: string;
 
 	@Column({ type: "varchar", nullable: false })
+	fileUrl: string;
+
+	@Column({ type: "varchar", nullable: false })
 	fileName: string;
 
 	@OneToMany(() => ItemType, (itemType) => itemType.model, { cascade: true })

@@ -11,20 +11,20 @@ routerMapItem.post("/create", async (req, res, next) => {
 				status: 200,
 				data: await createMapItem(_id, x, y, typeId, mapId),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e:any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: e.message,
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -36,13 +36,13 @@ routerMapItem.delete("/delete", async (req, res, next) => {
 			const resMsg: ResInterface = {
 				status: 200,
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "数据库请求错误",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	}
 });
@@ -56,13 +56,13 @@ routerMapItem.post("/link", async (req, res, next) => {
 				status: 200,
 				msg: "连接MapItem成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: e.toString(),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	}
 });

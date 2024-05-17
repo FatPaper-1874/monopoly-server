@@ -2,13 +2,15 @@ import AppDataSource from "../dbConnecter";
 import {Role} from "../entities/role";
 import {Role as RoleInterface} from "../../interfaces/bace";
 import fs from "fs";
+import {deleteFiles} from "../../utils/COS-uploader";
 
 const roleRepository = AppDataSource.getRepository(Role);
 
-export const createRole = async (rolename: string, filename: string, color: string) => {
+export const createRole = async (roleName: string, baseUrl: string, fileName: string, color: string) => {
     const roleToCreate = new Role();
-    roleToCreate.rolename = rolename;
-    roleToCreate.filename = filename;
+    roleToCreate.roleName = roleName;
+    roleToCreate.fileName = fileName;
+    roleToCreate.baseUrl = baseUrl;
     roleToCreate.color = color;
     await roleRepository.save(roleToCreate);
     return roleToCreate;
@@ -18,10 +20,10 @@ export const updateRole = async (id: string, rolename: string, color: string, fi
     const roleToUpdate = await roleRepository.findOne({where: {id}});
     if (roleToUpdate) {
         if(filename) {
-            deleteRoleFile(roleToUpdate.filename)
-            roleToUpdate.filename = filename;
+            await deleteRoleFile(roleToUpdate.fileName)
+            roleToUpdate.fileName = filename;
         }
-        roleToUpdate.rolename = rolename;
+        roleToUpdate.roleName = rolename;
         roleToUpdate.color = color;
         await roleRepository.save(roleToUpdate);
     } else {
@@ -35,7 +37,7 @@ export const deleteRole = async (id: string) => {
         where: {id},
     });
     if (role) {
-        deleteRoleFile(role.filename)
+        await deleteRoleFile(role.fileName)
         return roleRepository.remove(role);
     } else {
         throw new Error("不存在的角色");
@@ -48,8 +50,6 @@ export const getRoleList = async (page: number, size: number) => {
     return {roleList, total};
 };
 
-function deleteRoleFile(fileName:string){
-    fs.unlinkSync(`${process.cwd()}/public/roles/${fileName}.json`);
-    fs.unlinkSync(`${process.cwd()}/public/roles/${fileName}.png`);
-    fs.unlinkSync(`${process.cwd()}/public/roles/${fileName}.atlas`);
+async function deleteRoleFile(fileName:string){
+    await deleteFiles(['json','png','atlas'].map(type => `monopoly/roles/${fileName}.${type}`))
 }

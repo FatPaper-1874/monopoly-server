@@ -20,20 +20,20 @@ routerMap.post("/create", async (req, res, next) => {
 	const { name } = req.body;
 	if (name) {
 		try {
-			res.json({ data: await createMap(name) });
+			res.status(200).json({ data: await createMap(name) });
 		} catch {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "创建地图失败",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "没有传递name",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -47,27 +47,27 @@ routerMap.post("/update-index-list", async (req, res, next) => {
 					status: 400,
 					msg: "已清空地图路径",
 				};
-				res.json(resMsg);
+				res.status(resMsg.status).json(resMsg);
 			} else {
 				const resMsg: ResInterface = {
 					status: 200,
 					msg: "更新地图路径成功",
 				};
-				res.json(resMsg);
+				res.status(resMsg.status).json(resMsg);
 			}
 		} catch {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: "更新地图路径失败",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "没有传递name",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
 
@@ -80,13 +80,13 @@ routerMap.delete("/delete", async (req, res, next) => {
 				status: 200,
 				msg: "删除成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: e.toString(),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	}
 });
@@ -99,7 +99,7 @@ routerMap.get("/info", async (req, res, next) => {
 				status: 200,
 				data: await getMapById(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -112,7 +112,7 @@ routerMap.get("/item-type", async (req, res, next) => {
 				status: 200,
 				data: await getItemTypeListByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -125,7 +125,7 @@ routerMap.get("/map-item", async (req, res, next) => {
 				status: 200,
 				data: await getMapItemListByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -138,7 +138,7 @@ routerMap.get("/street", async (req, res, next) => {
 				status: 200,
 				data: await getStreetListByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -151,7 +151,7 @@ routerMap.get("/property", async (req, res, next) => {
 				status: 200,
 				data: await getPropertysListByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -164,7 +164,7 @@ routerMap.get("/chance-card", async (req, res, next) => {
 				status: 200,
 				data: await getChanceCardsListByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch {}
 	}
 });
@@ -177,13 +177,13 @@ routerMap.get("/map-indexs", async (req, res, next) => {
 				status: 200,
 				data: await getMapIndexsByMapId(id),
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				data: e.message,
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	}
 });
@@ -196,12 +196,12 @@ routerMap.get("/list", async (req, res, next) => {
 			status: 200,
 			data: { total, current: parseInt(page.toString()), mapsList },
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	} catch {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "获取地图列表失败",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });

@@ -12,19 +12,19 @@ routerStreet.post("/create", async (req, res, next) => {
 				data: await createStreet(name, increase, mapId),
 				msg: "创建街道成功",
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				data: e,
 			};
-			res.json(resMsg);
+			res.status(resMsg.status).json(resMsg);
 		}
 	} else {
 		const resMsg: ResInterface = {
 			status: 500,
 			msg: "参数错误",
 		};
-		res.json(resMsg);
+		res.status(resMsg.status).json(resMsg);
 	}
 });
