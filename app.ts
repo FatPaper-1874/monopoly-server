@@ -21,9 +21,6 @@ import chalk from "chalk";
 import { __APIPORT__, __SOCKETPORT__, __USERSERVERHOST__ } from "./global.config";
 import { getPublicKey } from "./src/utils/api/keys";
 import { roleValidation } from "./src/utils/role-validation";
-import { login, login_cellphone } from "NeteaseCloudMusicApi";
-import { initNeteaseCloudMusic } from "./src/utils/music";
-import { FATPAPER_HOST } from "../global.config";
 
 // import { roleValidation } from "./src/utils/role-validation";
 
