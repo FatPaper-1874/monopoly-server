@@ -14,6 +14,8 @@ enum ServerStatus {
     "OFFLINE",
 }
 
+const ROOM_MAX_NUM = 3;
+
 /**
  * 扩写Map, 使Map在触发某些函数的时候自动触发自定义的函数;
  */
@@ -397,19 +399,29 @@ export class GameSocketServer {
                     });
                 }
             } else {
-                //	没有roomId就表示要创建房间
-                getRoleList(1, 10000).then((res) => {
-                    const {roleList} = res;
-                    const newRoom = new Room(user, roleList);
-                    this.roomList.set(newRoom.getRoomId(), newRoom);
+                if (Array.from(this.roomList.values()).length < ROOM_MAX_NUM) {
+                    //	没有roomId就表示要创建房间
+                    getRoleList(1, 10000).then((res) => {
+                        const {roleList} = res;
+                        const newRoom = new Room(user, roleList);
+                        this.roomList.set(newRoom.getRoomId(), newRoom);
+                        this.sendToClient(
+                            socketClient,
+                            SocketMsgType.JoinRoom,
+                            "success",
+                            {type: "success", content: "创建房间成功"},
+                            newRoom.getRoomId()
+                        );
+                    });
+                } else {
                     this.sendToClient(
                         socketClient,
-                        SocketMsgType.JoinRoom,
-                        "success",
-                        {type: "success", content: "创建房间成功"},
-                        newRoom.getRoomId()
+                        SocketMsgType.MsgNotify,
+                        "error",
+                        {type: "error", content: "创建房间失败：房间太多啦"},
+                        ""
                     );
-                });
+                }
             }
         }
     }
@@ -504,7 +516,7 @@ export class GameSocketServer {
         }
     }
 
-    private handleGameInitFinished(socketClient: WebSocket, data: SocketMessage, clientUserId: string){
+    private handleGameInitFinished(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
         console.log(`${clientUserId} 加载完成`)
         OperateListener.getInstance().emit(clientUserId, OperateType.GameInitFinished);
     }
@@ -543,7 +555,4 @@ export class GameSocketServer {
         const operateType: OperateType = data.data;
         OperateListener.getInstance().emit(clientUserId, operateType, data.extra);
     }
-}
-
-export function createSocketServer() {
 }
