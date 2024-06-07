@@ -6,7 +6,7 @@ import {verToken} from "./token";
 const AllowPath = {
     Admin: [],
     User: ["/user/info", "/map/list"],
-    Ignore: ["/upload/avatar", "/user/login", "/user/get-code-state", "/user/get-login-code", "/static/(.*)"],
+    Ignore: ["/upload/avatar", "/user/login", "/user/get-code-state", "/user/get-login-code", "/static/(.*)", "/music/list"],
 };
 
 function isIgnore(path: string): boolean {

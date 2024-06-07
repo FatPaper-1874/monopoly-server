@@ -20,6 +20,7 @@ export const deleteModel = async (id: string) => {
 	});
 	if (model) {
 		try {
+			await modelRepository.remove(model)
 			await deleteFiles([`monopoly/models/${model.fileName}`])
 		} catch (e: any){
 			throw new Error(`删除Model失败：${e.message}`);
