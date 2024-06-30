@@ -4,15 +4,15 @@ import { createMapItem, deleteMapItem, linkMapItem } from "../db/api/mapItem";
 export const routerMapItem = Router();
 
 routerMapItem.post("/create", async (req, res, next) => {
-	const { _id, x, y, typeId, mapId } = req.body;
-	if (_id && x && y && typeId && mapId) {
+	const { _id, x, y, rotation, typeId, mapId } = req.body;
+	if (_id && x && y && rotation !== undefined && typeId && mapId) {
 		try {
 			const resMsg: ResInterface = {
 				status: 200,
-				data: await createMapItem(_id, x, y, typeId, mapId),
+				data: await createMapItem(_id, x, y, rotation, typeId, mapId),
 			};
 			res.status(resMsg.status).json(resMsg);
-		} catch (e:any) {
+		} catch (e: any) {
 			const resMsg: ResInterface = {
 				status: 500,
 				msg: e.message,

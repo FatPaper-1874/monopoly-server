@@ -11,7 +11,14 @@ const mapItemRepository = AppDataSource.getRepository(MapItem);
 const mapRepository = AppDataSource.getRepository(Map);
 const itemTypeRepository = AppDataSource.getRepository(ItemType);
 
-export const createMapItem = async (_id: string, x: number, y: number, typeId: string, mapId: string) => {
+export const createMapItem = async (
+	_id: string,
+	x: number,
+	y: number,
+	rotation: 0 | 1 | 2 | 3,
+	typeId: string,
+	mapId: string
+) => {
 	const itemType = await itemTypeRepository.findOne({ where: { id: typeId } });
 	const map = await mapRepository.findOne({ where: { id: mapId }, relations: ["mapItems"] });
 
@@ -22,6 +29,7 @@ export const createMapItem = async (_id: string, x: number, y: number, typeId: s
 			mapItem.x = x;
 			mapItem.y = y;
 			mapItem.type = itemType;
+			mapItem.rotation = rotation;
 			mapItem.map = map;
 
 			return await mapItemRepository.save(mapItem);

@@ -17,6 +17,9 @@ export class MapItem {
 	@Column({ type: "int", nullable: false })
 	y: number;
 
+	@Column({ type: "int", nullable: false, default: 0 })
+	rotation: number;
+
 	@ManyToOne(() => ItemType, (itemType) => itemType.mapItem, { onDelete: "CASCADE", onUpdate: "CASCADE" })
 	type: ItemType;
 
