@@ -20,14 +20,8 @@ export class ItemType {
 	@Column({ type: "int", nullable: false })
 	size: number;
 
-	@Column({ type: "varchar", nullable: true })
-	effectCode: string;
-
 	@OneToMany(() => MapItem, (mapItem) => mapItem.type, { cascade: true })
 	mapItem: MapItem;
-
-	@Column({type: "boolean", nullable: false, default: false})
-	hasEvent: boolean;
 
 	@ManyToMany(() => Map, (map) => map.itemTypes)
 	@JoinTable({name: "itemtype_map"})

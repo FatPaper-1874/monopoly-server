@@ -1,7 +1,6 @@
 import {WebSocket} from "ws";
 import {ChatMessageType, SocketMsgType} from "../enums/bace";
 import {GameSetting} from "./game";
-import {Column} from "typeorm";
 
 export interface SocketMessage {
     type: SocketMsgType;
@@ -65,8 +64,10 @@ export interface MapItem {
     id: string;
     x: number;
     y: number;
+    rotation: 0 | 1 | 2 | 3;
     type: ItemType;
     linkto?: MapItem;
+    arrivedEvent?: ArrivedEvent;
     property?: Property;
 }
 
@@ -86,8 +87,6 @@ export interface ItemType {
     color: string;
     name: string;
     model: Model;
-    effectCode?: string;
-    hasEvent: boolean;
     size: number;
 }
 
@@ -95,6 +94,15 @@ export interface Model {
     id: string;
     name: string;
     fileName: string;
+}
+
+export interface ArrivedEvent {
+	id: string;
+	name: string;
+	describe: string;
+	iconUrl: string;
+	effectCode: string;
+	mapItem: MapItem[];
 }
 
 export interface Street {

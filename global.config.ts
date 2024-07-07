@@ -6,7 +6,7 @@ import {
     __TC_REGION__ as tc_r
 } from "../tencent-cloud"
 
-export const __USERSERVERHOST__ = `http://user-server:${FATPAPER_USER_SERVER_PORT}`;
+export const __USERSERVERHOST__ = `http://localhost:${FATPAPER_USER_SERVER_PORT}`;
 export const __APIPORT__ = MONOPOLY_SERVER_PORT;
 export const __SOCKETPORT__ = MONOPOLY_SOCKET_PORT;
 

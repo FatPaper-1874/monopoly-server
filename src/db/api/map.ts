@@ -63,6 +63,7 @@ export const getMapById = async (id: string) => {
             "mapItems.linkto.property.street",
             "mapItems.type",
             "mapItems.type.model",
+            "mapItems.arrivedEvent",
             "mapItems.property",
             "mapItems.property.street",
             "properties",

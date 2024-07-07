@@ -500,8 +500,8 @@ export class GameProcess {
                     );
                 }
             }
-        } else if (arriveItem.type.hasEvent) {
-            const effectCode = arriveItem.type.effectCode;
+        } else if (arriveItem.arrivedEvent) {
+            const effectCode = arriveItem.arrivedEvent.effectCode;
             effectCode && new Function("arrivedPlayer", effectCode)(arrivedPlayer);
         }
         this.gameInfoBroadcast();
