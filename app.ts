@@ -33,8 +33,6 @@ async function bootstrap() {
         const publicKey = await getPublicKey();
         serverLog(`${chalk.bold.bgGreen(" 用户服务器连接成功 ")}`);
 
-        // await initNeteaseCloudMusic('13431722727', 'max2684', "monopoly_music");
-
         const app = express();
 
         app.use(cors());

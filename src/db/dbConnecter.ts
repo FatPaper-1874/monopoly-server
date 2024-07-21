@@ -3,7 +3,7 @@ import {MYSQL_PORT} from "../../../global.config";
 
 const AppDataSource = new DataSource({
 	type: "mysql",
-	host: "localhost",
+	host: process.env.NODE_ENV == "production" ? "mysql" : "localhost",
 	port: MYSQL_PORT,
 	username: "root",
 	password: "root",

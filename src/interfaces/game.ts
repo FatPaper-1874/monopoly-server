@@ -109,7 +109,7 @@ export interface PlayerInfo {
 	properties: PropertyInfo[];
 	chanceCards: ChanceCardInfo[];
 	positionIndex: number;
-	isStop: number;
+	stop: number;
 	isBankrupted: boolean;
 	isOffline: boolean;
 }

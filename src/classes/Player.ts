@@ -136,7 +136,7 @@ export class Player implements PlayerInterface {
             properties: this.properties.map((property) => property.getPropertyInfo()),
             chanceCards: this.chanceCards.map((card) => card.getChanceCardInfo()),
             positionIndex: this.positionIndex,
-            isStop: this.isStop,
+            stop: this.isStop,
             isBankrupted: this.isBankrupted,
             isOffline: this.isOffline,
         };

@@ -32,7 +32,7 @@ export class GameProcess {
     private chanceCardsList: ChanceCardFromDB[];
     private mapIndexList: string[];
     private playersList: Player[];
-    private itemTypesLsit: ItemType[];
+    private itemTypesList: ItemType[];
     private streetsList: Street[];
     private animationStepDuration_ms: number = 600;
 
@@ -61,7 +61,7 @@ export class GameProcess {
         this.mapItemsList = new Map();
         this.chanceCardsList = [];
         this.mapIndexList = [];
-        this.itemTypesLsit = [];
+        this.itemTypesList = [];
         this.streetsList = [];
         this.playersList = this.loadPlayer(room.getUserList());
 
@@ -119,12 +119,12 @@ export class GameProcess {
             });
 
             this.chanceCardsList = chanceCards;
-            this.itemTypesLsit = itemTypes;
+            this.itemTypesList = itemTypes;
             this.streetsList = streets;
         }
 
         //发送游戏初始化完成的信息, 客户端离开加载页面, 进入游戏
-        this.playersList.forEach((player) => player.setCardsList(this.getRadomChanceCard(4)));
+        this.playersList.forEach((player) => player.setCardsList(this.getRandomChanceCard(4)));
 
         this.playersList.forEach((player) => {
             player.setPositionIndex(getRandomInteger(0, this.mapIndexList.length - 1));
@@ -149,7 +149,19 @@ export class GameProcess {
         while (!this.isDistory) {
             let currentPlayerIndex = 0;
             while (currentPlayerIndex < this.playersList.length) {
-                if (this.playersList[currentPlayerIndex].getIsBankrupted()) {
+                const currentPlayer = this.playersList[currentPlayerIndex];
+                if (currentPlayer.getIsBankrupted()) {
+                    break;
+                }
+
+                if (currentPlayer.getStop() > 0) {
+                    this.gameBroadcast({
+                        type: SocketMsgType.MsgNotify,
+                        source: "server",
+                        data: "",
+                        msg: {content: `${currentPlayer.getName()}睡着了,跳过回合`, type: 'info'}
+                    })
+                    currentPlayer.setStop(currentPlayer.getStop() - 1);
                     break;
                 }
                 this.currentPlayerInRound = this.playersList[currentPlayerIndex];
@@ -583,7 +595,7 @@ export class GameProcess {
         return;
     }
 
-    private getRadomChanceCard(num: number): ChanceCard[] {
+    private getRandomChanceCard(num: number): ChanceCard[] {
         let tempChanceCardList: ChanceCard[] = [];
         for (let i = 0; i < num; i++) {
             const getIndex = Math.floor(Math.random() * this.chanceCardsList.length);
@@ -623,7 +635,7 @@ export class GameProcess {
             mapBackground: this.mapBackground,
             mapItemsList: Array.from(this.mapItemsList.values()),
             mapIndexList: this.mapIndexList,
-            itemTypesList: this.itemTypesLsit,
+            itemTypesList: this.itemTypesList,
             streetsList: this.streetsList,
             playerList: this.playersList.map((player) => player.getPlayerInfo()),
             properties: Array.from(this.propertiesList.values()).map((property) => property.getPropertyInfo()),
@@ -698,7 +710,7 @@ export class GameProcess {
                 mapBackground: this.mapBackground,
                 mapItemsList: Array.from(this.mapItemsList.values()),
                 mapIndexList: this.mapIndexList,
-                itemTypesList: this.itemTypesLsit,
+                itemTypesList: this.itemTypesList,
                 streetsList: this.streetsList,
                 playerList: this.playersList.map((player) => player.getPlayerInfo()),
                 properties: Array.from(this.propertiesList.values()).map((property) => property.getPropertyInfo()),

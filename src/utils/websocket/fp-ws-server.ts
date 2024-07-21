@@ -36,8 +36,9 @@ class FPMap<K, V> extends Map<K, V> {
     }
 
     delete(key: K): boolean {
+        const value = this.get(key);
         const res = super.delete(key);
-        this.deleteFunction(key);
+        this.deleteFunction(key, value);
         return res;
     }
 }
@@ -69,10 +70,9 @@ export class GameSocketServer {
                     this.serverBroadcast(SocketMsgType.UserList, this.getUserList()); //广播用户列表
                     // this.logUserList();
                 },
-                deleteFunction: (key: string) => {
-                    const user = this.userList.get(key);
+                deleteFunction: (key: string, value: User) => {
                     serverLog(
-                        `${chalk.bold.bgCyan(" 用户: ")} ${chalk.bold.cyanBright(user?.username || key)} ${chalk.bold.bgRed(
+                        `${chalk.bold.bgCyan(" 用户: ")} ${chalk.bold.cyanBright(value.username || key)} ${chalk.bold.bgRed(
                             " 断开连接 "
                         )}`
                     );
@@ -91,7 +91,7 @@ export class GameSocketServer {
                     this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
                     // this.logRoomList();
                 },
-                deleteFunction: (key: string) => {
+                deleteFunction: (key: string, value: Room) => {
                     serverLog(`${chalk.bold.bgYellow(" 房间: ")} ${chalk.bold.yellowBright(key)} ${chalk.bold.bgRed(" 解散了 ")}`);
                     this.serverBroadcast(SocketMsgType.RoomList, this.getRoomList()); //广播房间列表
                     // this.logRoomList();
