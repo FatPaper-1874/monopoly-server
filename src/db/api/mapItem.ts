@@ -46,7 +46,7 @@ export const deleteMapItem = async (id: string) => {
         where: {id},
     });
     if (mapItem) {
-        mapItemRepository.remove(mapItem);
+        await mapItemRepository.remove(mapItem);
         return true;
     } else return false;
 };
@@ -129,6 +129,7 @@ export const getMapItemListByMapId = async (id: string) => {
         ]
     })
 	if(map){
+        console.log(map.mapItems.length)
 		return map.mapItems;
 	}else {
 		throw new Error("错误的mapId")

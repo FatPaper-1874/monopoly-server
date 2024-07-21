@@ -140,7 +140,6 @@ export class GameProcess {
             promiseArr.push(_p);
         })
         await Promise.all(promiseArr);
-        console.log("玩家加载完成")
         this.roomInstance.roomBroadcast({type: SocketMsgType.GameInitFinished, data: "", source: "server"})
     }
 
@@ -151,7 +150,7 @@ export class GameProcess {
             while (currentPlayerIndex < this.playersList.length) {
                 const currentPlayer = this.playersList[currentPlayerIndex];
                 if (currentPlayer.getIsBankrupted()) {
-                    break;
+                    continue;
                 }
 
                 if (currentPlayer.getStop() > 0) {
@@ -162,7 +161,7 @@ export class GameProcess {
                         msg: {content: `${currentPlayer.getName()}睡着了,跳过回合`, type: 'info'}
                     })
                     currentPlayer.setStop(currentPlayer.getStop() - 1);
-                    break;
+                    continue;
                 }
                 this.currentPlayerInRound = this.playersList[currentPlayerIndex];
                 this.roundTurnNotify(this.currentPlayerInRound);
@@ -244,7 +243,7 @@ export class GameProcess {
                                 case ChanceCardType.ToSelf:
                                     chanceCard.use(sourcePlayer, sourcePlayer); //直接使用
                                     break;
-                                case ChanceCardType.ToOtherPlayer:
+                                case ChanceCardType.ToPlayer:
                                     const _targetPlayer = this.playersList.find((player) => player.getId() === targetIdList[0]); //获取目标玩家对象
                                     if (!_targetPlayer) {
                                         error = "目标玩家不存在";
