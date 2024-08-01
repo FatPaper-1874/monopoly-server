@@ -19,7 +19,7 @@ export const deleteMap = async (id: string) => {
         where: {id},
     });
     if (map) {
-        mapRepository.remove(map);
+        await mapRepository.remove(map);
         return;
     } else {
         throw new Error("无效的id");

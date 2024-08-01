@@ -53,16 +53,11 @@ export const deleteMapItem = async (id: string) => {
 
 export const linkMapItem = async (sourceId: string, targetId: string) => {
     const targetMapItem = await mapItemRepository.findOne({where: {id: targetId}});
-    if (targetMapItem) {
-        mapItemRepository
-            .createQueryBuilder("mapItem")
-            .update(MapItem)
-            .set({linkto: targetMapItem})
-            .where("id = :id", {id: sourceId})
-            .execute();
-    } else {
-        new Error("不存在的目标id");
-    }
+    if (!targetMapItem) throw new Error("不存在的目标id");
+    const sourceMapItem = await mapItemRepository.findOne({where: {id: sourceId}});
+    if (!sourceMapItem) throw new Error("不存在的源目标id");
+    sourceMapItem.linkto = targetMapItem;
+    await mapItemRepository.save(sourceMapItem);
 };
 
 export const updateMapItem = async (newMapItem: MapItem) => {
@@ -128,10 +123,9 @@ export const getMapItemListByMapId = async (id: string) => {
             "mapItems.property.street",
         ]
     })
-	if(map){
-        console.log(map.mapItems.length)
-		return map.mapItems;
-	}else {
-		throw new Error("错误的mapId")
-	}
+    if (map) {
+        return map.mapItems;
+    } else {
+        throw new Error("错误的mapId")
+    }
 };

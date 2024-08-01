@@ -21,6 +21,8 @@ export enum SocketMsgType {
 	UseChanceCard, //使用机会卡
 	RemainingTime, //回合剩余时间
 	RoundTimeOut, //回合超时
+	PlayerWalk,	//位置移动方式1：玩家角色走路
+	PlayerTp,	//位置移动方式2：传送
 	Animation, //前端动画完成回馈
 	BuyProperty, //购买地皮
 	BuildHouse, //升级房子

@@ -1,4 +1,4 @@
-import {ItemType, MapItem, SocketMessage, Street, User, UserInRoom} from "../interfaces/bace";
+import {ItemType, MapItem, SocketMessage, Street, User} from "../interfaces/bace";
 import {GameInfo, GameInitInfo, GameSetting} from "../interfaces/game";
 import {ChanceCardType, SocketMsgType} from "../enums/bace";
 import {ChanceCard as ChanceCardFromDB} from "../db/entities/chanceCard";
@@ -7,7 +7,7 @@ import {Player} from "./Player";
 import {Property} from "./Property";
 import {ChanceCard} from "./ChanceCard";
 import {OperateListener} from "./OperateListener";
-import {GameOverRule, OperateType} from "../enums/game";
+import {GameOverRule, OperateType, PlayerEvents} from "../enums/game";
 import Dice from "./Dice";
 import {getMapById} from "../db/api/map";
 import winston from "winston";
@@ -37,7 +37,7 @@ export class GameProcess {
     private animationStepDuration_ms: number = 600;
 
     //Dynamic Data
-    private currentPlayerInRound: Player;
+    private currentPlayerInRound: Player | null = null;
     private currentRound: number;
     private currentMultiplier: number;
     private timeoutList: any[];
@@ -63,10 +63,9 @@ export class GameProcess {
         this.mapIndexList = [];
         this.itemTypesList = [];
         this.streetsList = [];
-        this.playersList = this.loadPlayer(room.getUserList());
+        this.playersList = [];
 
         //Dynamic Data
-        this.currentPlayerInRound = this.playersList[0];
         this.currentRound = 1;
         this.currentMultiplier = 1;
         this.timeoutList = [];
@@ -96,6 +95,9 @@ export class GameProcess {
         //加载游戏地图
         await this.loadGameMap();
 
+        //初始化玩家
+        this.initPlayer();
+
         this.gameInfoBroadcast();
         this.gameInitBroadcast();
 
@@ -122,13 +124,36 @@ export class GameProcess {
             this.itemTypesList = itemTypes;
             this.streetsList = streets;
         }
+    }
+
+    private initPlayer() {
+        this.playersList = this.roomInstance.getUserList().map((user) => new Player(user, this.gameSetting.initMoney, getRandomInteger(0, this.mapIndexList.length - 1)));
 
         //发送游戏初始化完成的信息, 客户端离开加载页面, 进入游戏
-        this.playersList.forEach((player) => player.setCardsList(this.getRandomChanceCard(4)));
-
         this.playersList.forEach((player) => {
-            player.setPositionIndex(getRandomInteger(0, this.mapIndexList.length - 1));
+            player.setCardsList(this.getRandomChanceCard(4));
+            player.addEventListener(PlayerEvents.Walk, (step: number) => {
+                const msg: SocketMessage = {
+                    type: SocketMsgType.PlayerWalk,
+                    source: "server",
+                    data: {playerId: player.getId(), step},
+                }
+                player.setPositionIndex((player.getPositionIndex() + this.dice.getResultNumber()) % this.mapIndexList.length);
+                this.gameInfoBroadcast()
+                this.gameBroadcast(msg);
+            })
+            player.addEventListener(PlayerEvents.Tp, (positionIndex: number) => {
+                const msg: SocketMessage = {
+                    type: SocketMsgType.PlayerTp,
+                    source: "server",
+                    data: {playerId: player.getId(), positionIndex},
+                }
+                player.setPositionIndex(positionIndex);
+                this.gameInfoBroadcast()
+                this.gameBroadcast(msg);
+            })
         });
+        this.currentPlayerInRound = this.playersList[0];
     }
 
     //等待全部玩家加载完成
@@ -169,7 +194,6 @@ export class GameProcess {
                 this.useChanceCardListener(this.currentPlayerInRound); //监听使用机会卡
                 await this.waitRollDice(this.currentPlayerInRound); //监听投骰子
                 await this.handleArriveEvent(this.currentPlayerInRound); //处理玩家到达某个格子的事件
-
                 this.playersList.forEach((player) => {
                     if (player.getMoney() <= 0) {
                         player.setBankrupted(true);
@@ -353,8 +377,8 @@ export class GameProcess {
             source: "server",
             data: {
                 rollDiceResult: this.dice.getResultArray(),
-                rollDiveCount: this.dice.getResultNumber(),
-                rollDicePlayerId: this.currentPlayerInRound.getId(),
+                rollDiceCount: this.dice.getResultNumber(),
+                rollDicePlayerId: player.getId(),
             },
             msg: {
                 type: "info",
@@ -370,7 +394,7 @@ export class GameProcess {
         //通知全部客户端
         this.gameBroadcast(msgToRollDice);
         //设置玩家的位置
-        player.setPositionIndex((player.getPositionIndex() + this.dice.getResultNumber()) % this.mapIndexList.length);
+        player.walk(this.dice.getResultNumber());
         //更新游戏信息
         this.gameInfoBroadcast();
 
@@ -623,10 +647,6 @@ export class GameProcess {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    private loadPlayer(userList: UserInRoom[]) {
-        return userList.map((user) => new Player(user, this.gameSetting.initMoney, 0));
-    }
-
     public gameInitBroadcast() {
         const gameInitInfo: GameInitInfo = {
             mapId: this.mapId,
@@ -639,7 +659,7 @@ export class GameProcess {
             playerList: this.playersList.map((player) => player.getPlayerInfo()),
             properties: Array.from(this.propertiesList.values()).map((property) => property.getPropertyInfo()),
             chanceCards: this.chanceCardsList,
-            currentPlayerInRound: this.currentPlayerInRound.getId(),
+            currentPlayerInRound: this.currentPlayerInRound ? this.currentPlayerInRound.getId() : "",
             currentRound: this.currentRound,
             currentMultiplier: this.currentMultiplier,
         };
@@ -654,7 +674,7 @@ export class GameProcess {
 
     public gameInfoBroadcast() {
         const gameInfo: GameInfo = {
-            currentPlayerInRound: this.currentPlayerInRound.getId(),
+            currentPlayerInRound: this.currentPlayerInRound ? this.currentPlayerInRound.getId() : "",
             currentRound: this.currentRound,
             currentMultiplier: this.currentMultiplier,
             playerList: this.playersList.map((player) => player.getPlayerInfo()),
@@ -714,7 +734,7 @@ export class GameProcess {
                 playerList: this.playersList.map((player) => player.getPlayerInfo()),
                 properties: Array.from(this.propertiesList.values()).map((property) => property.getPropertyInfo()),
                 chanceCards: this.chanceCardsList,
-                currentPlayerInRound: this.currentPlayerInRound.getId(),
+                currentPlayerInRound: this.currentPlayerInRound ? this.currentPlayerInRound.getId() : "",
                 currentRound: this.currentRound,
                 currentMultiplier: this.currentMultiplier,
             };
@@ -725,6 +745,12 @@ export class GameProcess {
                 roomId: this.roomInstance.getRoomId(),
             };
             player.send(reloadCommand);
+            OperateListener.getInstance().once(player.getId(), OperateType.GameInitFinished, () => {
+                player.send({
+                    type: SocketMsgType.GameInitFinished, data: "", source: "server",
+                    roomId: this.roomInstance.getRoomId(),
+                });
+            })
             this.gameInfoBroadcast();
         } else {
             console.log("奇怪的玩家 in game");

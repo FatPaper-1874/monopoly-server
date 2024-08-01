@@ -31,7 +31,7 @@ export const deleteChanceCard = async (id: string) => {
         where: {id},
     });
     if (chanceCard) {
-        chanceCardRepository.remove(chanceCard);
+        await chanceCardRepository.remove(chanceCard);
         return;
     } else {
         throw new Error("无效的id");

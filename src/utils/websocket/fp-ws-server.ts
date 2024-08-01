@@ -517,7 +517,6 @@ export class GameSocketServer {
     }
 
     private handleGameInitFinished(socketClient: WebSocket, data: SocketMessage, clientUserId: string) {
-        console.log(`${clientUserId} 加载完成`)
         OperateListener.getInstance().emit(clientUserId, OperateType.GameInitFinished);
     }
 
