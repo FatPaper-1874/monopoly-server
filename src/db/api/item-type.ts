@@ -70,5 +70,5 @@ export const getItemTypeListByMapId = async (id: string) => {
         select: ["id", "name", "color", "model", "size"],
         relations: ["model"],
     });
-    return itemType;
+    return itemType.sort((a, b) => a.name.localeCompare(b.name));
 };

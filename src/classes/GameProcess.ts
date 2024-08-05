@@ -20,7 +20,7 @@ const chalkB = chalk.bold;
 export class GameProcess {
     //Setting
     private gameSetting: GameSetting;
-    private isDistory: boolean;
+    private isDestroy: boolean;
 
     //Static Data
     private roomInstance: Room;
@@ -50,7 +50,7 @@ export class GameProcess {
     constructor(setting: GameSetting, room: Room) {
         //Setting
         this.gameSetting = setting;
-        this.isDistory = false;
+        this.isDestroy = false;
 
         //Static Data
         this.mapId = setting.mapId;
@@ -152,6 +152,11 @@ export class GameProcess {
                 this.gameInfoBroadcast()
                 this.gameBroadcast(msg);
             })
+            player.addEventListener(PlayerEvents.GainCard, (num: number) => {
+                const cardsList = player.getCardsList();
+                const addCardsList = this.getRandomChanceCard(num);
+                player.setCardsList(cardsList.concat(addCardsList));
+            })
         });
         this.currentPlayerInRound = this.playersList[0];
     }
@@ -170,11 +175,13 @@ export class GameProcess {
 
     //游戏循环
     private async gameLoop() {
-        while (!this.isDistory) {
+        while (!this.isDestroy) {
             let currentPlayerIndex = 0;
             while (currentPlayerIndex < this.playersList.length) {
+                this.gameInfoBroadcast();
                 const currentPlayer = this.playersList[currentPlayerIndex];
                 if (currentPlayer.getIsBankrupted()) {
+                    currentPlayerIndex++;
                     continue;
                 }
 
@@ -186,6 +193,7 @@ export class GameProcess {
                         msg: {content: `${currentPlayer.getName()}睡着了,跳过回合`, type: 'info'}
                     })
                     currentPlayer.setStop(currentPlayer.getStop() - 1);
+                    currentPlayerIndex++;
                     continue;
                 }
                 this.currentPlayerInRound = this.playersList[currentPlayerIndex];
@@ -199,7 +207,6 @@ export class GameProcess {
                         player.setBankrupted(true);
                     }
                 });
-
                 currentPlayerIndex++;
             }
             this.nextRound();
@@ -267,6 +274,7 @@ export class GameProcess {
                                 case ChanceCardType.ToSelf:
                                     chanceCard.use(sourcePlayer, sourcePlayer); //直接使用
                                     break;
+                                case ChanceCardType.ToOtherPlayer:
                                 case ChanceCardType.ToPlayer:
                                     const _targetPlayer = this.playersList.find((player) => player.getId() === targetIdList[0]); //获取目标玩家对象
                                     if (!_targetPlayer) {
@@ -563,7 +571,7 @@ export class GameProcess {
                 data: "游戏结束",
                 msg: {content: "游戏结束", type: "info"},
             });
-            _this.isDistory = true;
+            _this.isDestroy = true;
         }
     }
 
@@ -633,8 +641,8 @@ export class GameProcess {
         return source.cost(money);
     }
 
-    public distory() {
-        this.isDistory = true;
+    public destroy() {
+        this.isDestroy = true;
         this.intervalTimerList.forEach((id) => {
             clearInterval(id);
         });

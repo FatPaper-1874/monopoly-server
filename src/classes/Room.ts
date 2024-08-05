@@ -183,7 +183,7 @@ export class Room {
             this.handleUserOffline(userId);
             if (this.gameProcess && this.gameProcess.getIsAllPlayerOffline()) {
                 //如果所有人都断线了, 解散房间
-                this.gameProcess.distory();
+                this.gameProcess.destroy();
                 return true;
             } else {
                 return false;
@@ -193,7 +193,7 @@ export class Room {
             if (this.userList.size === 1) {
                 //房间最后一个人退出, 退出后解散房间
                 this.userList.delete(userId);
-                if (this.gameProcess) this.gameProcess.distory();
+                if (this.gameProcess) this.gameProcess.destroy();
                 return true;
             } else {
                 if (this.ownerId === userId) {

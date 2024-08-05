@@ -3,9 +3,6 @@ import AppDataSource from "../dbConnecter";
 import {ItemType} from "../entities/itemTypes";
 import {Map} from "../entities/map";
 import {MapItem} from "../entities/mapItem";
-import {Model} from "../entities/model";
-import {Property} from "../entities/property";
-import {Street} from "../entities/street";
 
 const mapItemRepository = AppDataSource.getRepository(MapItem);
 const mapRepository = AppDataSource.getRepository(Map);

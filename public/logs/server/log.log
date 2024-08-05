@@ -10634,3 +10634,368 @@
 {"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 14:38:18"}
 {"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 14:38:18"}
 {"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-01 14:38:18"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:49:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:49:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:49:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-01 15:49:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:52:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:52:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 15:52:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-01 15:52:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 19:40:15"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 19:40:15"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-01 19:40:15"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-01 19:40:15"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:14:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:14:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:14:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-02 01:14:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:17:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:17:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:17:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-02 01:17:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:20:53"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:20:53"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:20:53"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-02 01:20:53"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:28:52"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-e774-4136-51fdf3\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 01:28:53"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-e774-4136-51fdf3\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:30:08"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:30:08"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:30:18"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d3e5-81b8-9dcc4e\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 01:30:39"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d3e5-81b8-9dcc4e\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:30:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:30:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:31:09"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-4f96-ce24-9f7436\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 01:31:09"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-4f96-ce24-9f7436\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:32:38"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 01:32:38"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 22:50:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 22:50:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 22:50:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-02 22:50:02"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:03:17"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7b3e-2b60-cc489a\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:03:18"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7b3e-2b60-cc489a\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:05:40"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:05:40"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:50:59"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-836c-2889-b72b64\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:51:00"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-836c-2889-b72b64\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:51:42"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:51:42"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:51:53"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-ae9b-8f5c-f78c49\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:51:54"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:53:16"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-ae9b-8f5c-f78c49\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:53:38"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:53:38"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:53:48"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d771-bcc3-fdcb03\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:53:48"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d771-bcc3-fdcb03\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:54:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:54:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:54:30"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d21f-3594-f6001f\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:54:31"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-02 23:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:57:00"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7fd8-4f06-190fd5\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-02 23:57:02"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-02 23:59:14"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:03:23"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:04:10"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7fd8-4f06-190fd5\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:04:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:04:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:05:07"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-c7ab-48f4-3b1ebe\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:05:08"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-c7ab-48f4-3b1ebe\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:07:18"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:07:18"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:07:55"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-4871-2a40-e8d704\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:07:56"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:08:02"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-4871-2a40-e8d704\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:09:09"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:09:09"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:09:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:09:28"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-b702-f129-b34cdb\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:09:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:10:39"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-b702-f129-b34cdb\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:10:41"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:10:41"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:07"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:07"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:13"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:12:18"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-06df-79d7-9bd64b\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:12:19"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:13:47"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-06df-79d7-9bd64b\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:13:48"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:13:48"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:17:03"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:17:04"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-713f-dca6-9e901b\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:17:05"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:18:12"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-713f-dca6-9e901b\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:18:13"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:18:13"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:19:50"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:19:50"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:19:50"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 00:19:50"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:20:56"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-1b17-252c-300729\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-03 00:20:57"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:20:57"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:21:15"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:21:16"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:21:51"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-1b17-252c-300729\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:21:52"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-03 00:21:52"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:33:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:33:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:33:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:33:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:37:41"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:37:41"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:37:41"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:37:41"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:41:48"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:41:48"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:41:48"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:41:48"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:44:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:44:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:44:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:44:45"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:47:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:47:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:47:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:47:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:49:39"}
+{"level":"error","message":"向用户服务器请求公钥失败，错误信息：","timestamp":"2024-08-03 23:49:40"}
+{"level":"warn","message":"正在进行第1次重试","timestamp":"2024-08-03 23:49:40"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:52:28"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:52:28"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:52:28"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:52:28"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:53:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:53:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:53:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:53:19"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:57:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:57:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-03 23:57:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-03 23:57:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:06:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:06:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:06:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:06:03"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:10"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:10"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:10"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:10"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:46"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:46"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:46"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:07:46"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:04"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:57"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:57"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:57"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:09:57"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:12:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:12:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:12:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:12:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:15:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:15:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:15:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:15:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:24:43"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:24:43"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:24:43"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:24:43"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:27:54"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:27:55"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:27:55"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:27:55"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:28:29"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-dd43-68cd-76d464\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:28:30"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-dd43-68cd-76d464\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:31:24"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:31:24"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:33:58"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:33:58"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:33:58"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:33:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:35:46"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-79bb-dcf3-4b340e\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:35:52"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-79bb-dcf3-4b340e\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:36:06"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:36:06"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:36:31"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-5fa9-f1e3-4cdb1d\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:36:32"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-5fa9-f1e3-4cdb1d\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:37:14"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:37:14"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:41:42"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-84cc-0c17-6b71f3\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:41:44"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:43:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:43:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:43:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:43:51"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:44:11"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-c0ac-2faf-edacef\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:44:13"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:11"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:11"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:11"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:11"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:42"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:42"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:46:55"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7e3f-e038-d71c36\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:46:56"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7e3f-e038-d71c36\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:47:57"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:47:57"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:52:06"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-3039-eefb-6a51bf\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:52:07"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:52:47"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:52:56"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-3039-eefb-6a51bf\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:53:13"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:53:13"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:54:09"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-8a2e-92e4-115b6a\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:54:10"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-8a2e-92e4-115b6a\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:55:33"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:55:33"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:56:16"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-3ac4-5b00-1af523\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:56:17"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:58:34"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-3ac4-5b00-1af523\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:58:36"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:58:37"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 00:59:08"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-570a-016a-9ca652\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 00:59:09"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-570a-016a-9ca652\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:02:48"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:02:48"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:03:16"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7766-c922-29afff\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 01:03:17"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7766-c922-29afff\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:03:55"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:03:55"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:04:19"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:04:26"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-0985-bdf8-232a6a\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-04 01:04:27"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:09:49"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-0985-bdf8-232a6a\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:09:51"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:09:51"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:23:29"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:23:29"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:23:29"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 01:23:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:54:41"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-f1db-8a55-c80269\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 01:54:44"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-f1db-8a55-c80269\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:56:16"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:56:16"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:56:51"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-9b52-acc2-f944a9\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-04 01:56:52"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:57:50"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-9b52-acc2-f944a9\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:57:50"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 01:57:50"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:00:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:00:23"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-220c-986d-f4c8c6\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-04 02:00:24"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:00:45"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:00:45"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:01:28"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:01:41"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:01:51"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-220c-986d-f4c8c6\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:01:54"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:01:54"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:02:06"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:02:07"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-554f-be86-f92226\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 02:02:08"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:03:34"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-554f-be86-f92226\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:03:36"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:03:36"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:04:53"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:08:20"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-703a-8f81-8da523\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 02:10:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:11:21"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-703a-8f81-8da523\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:11:22"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:11:22"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:58:50"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7396-9acb-839063\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 02:58:51"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-7396-9acb-839063\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:59:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:59:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:59:47"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 02:59:47"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d82b-a2c3-8b7345\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 02:59:50"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 03:02:38"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-d82b-a2c3-8b7345\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 03:02:39"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 03:02:39"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 14:08:14"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 14:08:14"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 14:08:14"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 14:08:14"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 15:11:46"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-15e1-58ee-ecc9d8\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-04 15:12:13"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-15e1-58ee-ecc9d8\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-04 15:14:01"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-04 15:14:01"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 17:13:38"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 17:13:38"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-04 17:13:38"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-04 17:13:38"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:19:06"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:19:06"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:19:06"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-05 16:19:06"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:25:48"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-af00-1413-55716a\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:25:48"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:26:02"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:27:20"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-af00-1413-55716a\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:27:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:27:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:28:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:28:30"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-b586-159a-82c743\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:28:30"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:29:11"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-b586-159a-82c743\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:29:12"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:29:12"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:31:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:31:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:31:34"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-05 16:31:34"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:32:29"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:32:29"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-a791-f9ea-340c81\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:32:34"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:21"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-a791-f9ea-340c81\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:22"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:22"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:47"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:47"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:47"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-05 16:33:47"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:35:27"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:35:27"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:35:27"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-05 16:35:27"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:36:26"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:36:26"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-57c4-f0c2-a985a9\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:36:27"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-df20-58c2-257db1\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:36:29"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-df20-58c2-257db1\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:36:34"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:36:46"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:36:54"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:37:56"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-57c4-f0c2-a985a9\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:37:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:37:58"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:38:06"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[42m 连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:38:07"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-f8f5-8d99-f293c0\u001b[39m\u001b[22m \u001b[1m\u001b[42m 创建了 \u001b[49m\u001b[22m \u001b[1m\u001b[46m 房主是: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m","timestamp":"2024-08-05 16:38:07"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96mFatPaper\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:39:20"}
+{"level":"info","message":"\u001b[1m\u001b[43m 房间: \u001b[49m\u001b[22m \u001b[1m\u001b[93mroom-f8f5-8d99-f293c0\u001b[39m\u001b[22m \u001b[1m\u001b[41m 解散了 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:39:21"}
+{"level":"info","message":"\u001b[1m\u001b[46m 用户: \u001b[49m\u001b[22m \u001b[1m\u001b[96m小胖\u001b[39m\u001b[22m \u001b[1m\u001b[41m 断开连接 \u001b[49m\u001b[22m","timestamp":"2024-08-05 16:39:21"}
+{"level":"info","message":"\u001b[1m\u001b[42m 数据库连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 22:54:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m 用户服务器连接成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 22:54:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m Socket服务开启成功 \u001b[49m\u001b[22m","timestamp":"2024-08-05 22:54:02"}
+{"level":"info","message":"\u001b[1m\u001b[42m API服务启动成功 84端口\u001b[49m\u001b[22m","timestamp":"2024-08-05 22:54:02"}

@@ -49,7 +49,7 @@ export interface PlayerInterface {
     getCardsList: () => ChanceCard[];
     setCardsList: (newChanceCardList: ChanceCard[]) => void;
     getCardById: (cardId: string) => ChanceCard | undefined;
-    gainCard: (card: ChanceCard) => void;
+    gainCard: (num: number) => void;
     loseCard: (cardId: string) => void;
 
     //钱相关

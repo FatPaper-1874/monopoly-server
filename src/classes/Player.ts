@@ -78,19 +78,19 @@ export class Player implements PlayerInterface {
         return this.chanceCards[index] || undefined;
     }
 
-    public gainCard = (card: ChanceCard) => {
-        this.emit(PlayerEvents.GainCard, card);
-        if (this.chanceCards.length < 4) {
-            this.chanceCards.push(card);
-        } else {
+    public gainCard = (num: number) => {
+        if(this.chanceCards.length >= 4) return;
+        if (this.chanceCards.length + num > 4) {
             const msg: SocketMessage = {
                 type: SocketMsgType.MsgNotify,
                 data: "",
                 source: "server",
-                msg: {type: "warning", content: "你的机会卡已满，新获得的机会卡将销毁"}
+                msg: {type: "warning", content: "机会卡不能超过4张，不要太贪心喔~"}
             }
             this.send(msg)
+            num = 4 - this.chanceCards.length;
         }
+        this.emit(PlayerEvents.GainCard, num);
     };
 
     public loseCard = (cardId: string) => {
