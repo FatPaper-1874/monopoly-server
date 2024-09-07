@@ -3,7 +3,7 @@ import AppDataSource from "../dbConnecter";
 import {Map} from "../entities/map";
 import {unlinkSync} from "fs";
 import path from "path";
-import {deleteFiles} from "../../utils/COS-uploader";
+import {deleteFiles} from "../../utils/file-uploader";
 
 const mapRepository = AppDataSource.getRepository(Map);
 

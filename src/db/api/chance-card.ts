@@ -2,7 +2,7 @@ import {ChanceCardType} from "../../enums/bace";
 import AppDataSource from "../dbConnecter";
 import {ChanceCard} from "../entities/chanceCard";
 import {Map} from "../entities/map";
-import {deleteFiles} from "../../utils/COS-uploader";
+import {deleteFiles} from "../../utils/file-uploader";
 import {getFileNameInPath} from "../../utils";
 
 const chanceCardRepository = AppDataSource.getRepository(ChanceCard);

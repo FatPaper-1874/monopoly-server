@@ -3,7 +3,7 @@ import {ResInterface} from "../interfaces/res";
 import {createModel, deleteModel, getModelList, updateModel} from "../db/api/model";
 import multer from "multer";
 import path from "path";
-import {uploadFile} from "../utils/COS-uploader";
+import {uploadFile} from "../utils/file-uploader";
 
 const routerModel = Router();
 const modelUploaderMulter = multer({dest: "public/models"});

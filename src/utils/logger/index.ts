@@ -27,7 +27,7 @@ export const gameLoggerFactory = (roomId: string) =>
 
 let serverLogger: Logger;
 
-const getServerLogger = () => {
+function getServerLogger(){
 	if (!serverLogger) {
 		serverLogger = createLogger({
 			transports: [
@@ -71,7 +71,7 @@ const serverPrintFormat = format.printf(({ level, message, label, timestamp }) =
 	return `${chalk.bold.bgGray(` ${timestamp} `)}${chalk.bold.bgMagenta(` ${label} `)}${colorizer(level)}: ${message}`;
 });
 
-const colorizer = (level: string) => {
+function colorizer(level: string){
 	switch (level) {
 		case "error":
 			return chalk.bold.bgRed(` ${level.toUpperCase()} `);

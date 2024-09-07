@@ -3,7 +3,7 @@ import {ResInterface} from "../interfaces/res";
 import {createMusic, deleteMusic, getMusicList} from "../db/api/music";
 import multer from "multer";
 import path from "path";
-import {uploadFile} from "../utils/COS-uploader";
+import {uploadFile} from "../utils/file-uploader";
 
 export const routerMusic = Router();
 

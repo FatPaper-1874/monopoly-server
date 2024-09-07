@@ -33,8 +33,16 @@ export class OperateListener {
 		this.eventEmitter.removeListener(`${playerId}-${eventType}`, callback);
 	}
 
-	public removeAll(playerId: string, eventType: OperateType) {
-		this.eventEmitter.removeAllListeners(`${playerId}-${eventType}`);
+	public removeAll(playerId: string, eventType?: OperateType) {
+		if (eventType) {
+			this.eventEmitter.removeAllListeners(`${playerId}-${eventType}`);
+		} else {
+			Object.keys(OperateType)
+				.filter((key) => Number.isNaN(Number(key)))
+				.forEach((k) => {
+					this.eventEmitter.removeAllListeners(`${playerId}-${k}`);
+				});
+		}
 	}
 
 	public emit(playerId: string, eventType: OperateType, ...args: any[]): boolean {

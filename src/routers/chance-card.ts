@@ -10,7 +10,7 @@ import {
 } from "../db/api/chance-card";
 import multer from "multer";
 import path from "path";
-import {uploadFile} from "../utils/COS-uploader";
+import {uploadFile} from "../utils/file-uploader";
 
 export const routerChanceCard = Router();
 const iconUploaderMulter = multer({dest: "public/chance_card_icon"});

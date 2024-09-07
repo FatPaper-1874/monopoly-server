@@ -16,7 +16,7 @@ import {getPropertysListByMapId} from "../db/api/property";
 import {getChanceCardsListByMapId} from "../db/api/chance-card";
 import path from "path";
 import multer from "multer";
-import {uploadFile} from "../utils/COS-uploader";
+import {uploadFile} from "../utils/file-uploader";
 
 export const routerMap = Router();
 const backgroundMulter = multer({dest: "public/backgrounds"});

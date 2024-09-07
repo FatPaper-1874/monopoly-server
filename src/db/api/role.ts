@@ -1,6 +1,6 @@
 import AppDataSource from "../dbConnecter";
 import {Role} from "../entities/role";
-import {deleteFiles} from "../../utils/COS-uploader";
+import {deleteFiles} from "../../utils/file-uploader";
 
 const roleRepository = AppDataSource.getRepository(Role);
 

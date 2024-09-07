@@ -15,7 +15,7 @@ export function randomColor() {
 
     let R, G, B;
 
-    const hue2rgb = (p: any, q: any, t: any) => {
+    function hue2rgb(p: any, q: any, t: any){
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
         if (t < 1 / 6) return p + (q - p) * 6 * t;
@@ -35,7 +35,7 @@ export function randomColor() {
     return hex;
 }
 
-export const getRandomInteger = (min: number, max: number) => {
+export function getRandomInteger(min: number, max: number){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 

@@ -2,7 +2,7 @@ import path, {resolve} from "path";
 import AppDataSource from "../dbConnecter";
 import {Model} from "../entities/model";
 import fs from "fs";
-import {deleteFiles} from "../../utils/COS-uploader";
+import {deleteFiles} from "../../utils/file-uploader";
 import {getFileNameInPath} from "../../utils";
 
 const modelRepository = AppDataSource.getRepository(Model);

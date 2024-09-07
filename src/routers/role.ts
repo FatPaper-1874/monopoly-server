@@ -6,7 +6,7 @@ import fs from "fs";
 import multer from "multer";
 import crypto from "crypto";
 import {deleteModel} from "../db/api/model";
-import {uploadFiles} from "../utils/COS-uploader";
+import {uploadFiles} from "../utils/file-uploader";
 import {getFileNameInPath} from "../utils";
 
 export const routerRole = Router();

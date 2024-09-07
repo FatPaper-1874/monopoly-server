@@ -96,7 +96,6 @@ export class Player implements PlayerInterface {
     public loseCard = (cardId: string) => {
         this.emit(PlayerEvents.LoseCard, cardId);
         const index = this.chanceCards.findIndex((card) => card.getId() === cardId);
-        console.log(`${this.getName()}---${cardId}---${index}`)
         if (index != -1) {
             this.chanceCards.splice(index, 1);
         }
@@ -109,13 +108,15 @@ export class Player implements PlayerInterface {
     };
 
     public setMoney = (money: number) => {
-        this.emit(PlayerEvents.SetMoney, money);
         this.money = money;
+        if (this.money <= 0) this.setBankrupted(true);
+        this.emit(PlayerEvents.SetMoney, money);
     };
 
     public cost(money: number) {
-        this.emit(PlayerEvents.Cost, money);
         this.money -= money;
+        if (this.money <= 0) this.setBankrupted(true);
+        this.emit(PlayerEvents.Cost, money);
         return this.money > 0;
     }
 

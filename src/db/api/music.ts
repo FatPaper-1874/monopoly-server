@@ -1,6 +1,6 @@
 import AppDataSource from "../dbConnecter";
 import { Music } from "../entities/music";
-import {deleteFiles} from "../../utils/COS-uploader";
+import {deleteFiles} from "../../utils/file-uploader";
 import {getFileNameInPath} from "../../utils";
 
 const musicRepository = AppDataSource.getRepository(Music);
