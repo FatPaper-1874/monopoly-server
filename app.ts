@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import {GameSocketServer} from "./src/utils/websocket/fp-ws-server";
 import AppDataSource from "./src/db/dbConnecter";
-import express from "express";
+import express, {ErrorRequestHandler, RequestHandler} from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import {expressjwt} from "express-jwt";
@@ -61,6 +61,8 @@ async function bootstrap() {
             res.status(200).send("OK");
         });
 
+        app.use(handleError);
+
         app.listen(__APIPORT__, () => {
             serverLog(`${chalk.bold.bgGreen(` API服务启动成功 ${__APIPORT__}端口`)}`);
         });
@@ -73,3 +75,8 @@ async function bootstrap() {
 }
 
 bootstrap();
+
+const handleError: ErrorRequestHandler = (err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send(`服务器错误:${err.message}`)
+}
