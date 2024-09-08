@@ -7,7 +7,7 @@ import {
 } from "../tencent-cloud"
 
 export const __USERSERVERHOST__ = `http://${process.env.NODE_ENV == "production" ? "user-server" : "localhost"}:${FATPAPER_USER_SERVER_PORT}`;
-export const __MONOPOLYSERVERHOST__ = `${process.env.NODE_ENV == "production" ? "monopoly-server" : "localhost"}:${MONOPOLY_SERVER_PORT}`
+export const __MONOPOLYSERVERHOST__ = `localhost:${MONOPOLY_SERVER_PORT}`
 export const __APIPORT__ = MONOPOLY_SERVER_PORT;
 export const __SOCKETPORT__ = MONOPOLY_SOCKET_PORT;
 
