@@ -1,6 +1,7 @@
 import COS from 'cos-nodejs-sdk-v5';
 import {__TC_BUCKET_NAME__, __TC_REGION__, __TC_ID__, __TC_KEY__, __MONOPOLYSERVERHOST__} from "../../global.config";
 import fs from 'fs'
+import path from 'path';
 
 type UploadFile = {
     filePath: string,
@@ -106,7 +107,9 @@ export async function deleteFiles(filePaths: string[]) {
 }
 
 function saveFileToLocal(file: UploadFile, targetPath: string) {
-    fs.renameSync(file.filePath, targetPath);
+	const targetDir = path.dirname(targetPath);
+	fs.mkdirSync(targetDir, { recursive: true });
+	fs.renameSync(file.filePath, targetPath);
     return targetPath;
 }
 
