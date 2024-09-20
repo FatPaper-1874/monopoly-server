@@ -17,7 +17,7 @@ export const createRole = async (roleName: string, baseUrl: string, fileName: st
 export const updateRole = async (id: string, rolename: string, color: string, filename?: string) => {
     const roleToUpdate = await roleRepository.findOne({where: {id}});
     if (roleToUpdate) {
-        if(filename) {
+        if (filename) {
             await deleteRoleFile(roleToUpdate.fileName)
             roleToUpdate.fileName = filename;
         }
@@ -42,12 +42,18 @@ export const deleteRole = async (id: string) => {
     }
 };
 
-export const getRoleList = async (page: number, size: number) => {
-    const roleList = await roleRepository.find({skip: (page - 1) * size, take: size});
-    const total = await roleRepository.count();
-    return {roleList, total};
+export const getRoleList = async (page: number, size: number = 0) => {
+    if (page > 0) {
+        const roleList = await roleRepository.find({skip: (page - 1) * size, take: size});
+        const total = await roleRepository.count();
+        return {roleList, total};
+    } else {
+        const roleList = await roleRepository.find();
+        const total = await roleRepository.count();
+        return {roleList, total};
+    }
 };
 
-async function deleteRoleFile(fileName:string){
-    await deleteFiles(['json','png','atlas'].map(type => `monopoly/roles/${fileName}.${type}`))
+async function deleteRoleFile(fileName: string) {
+    await deleteFiles(['json', 'png', 'atlas'].map(type => `monopoly/roles/${fileName}.${type}`))
 }

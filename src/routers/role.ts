@@ -14,7 +14,7 @@ const roleUploaderMulter = multer({dest: "public/roles"});
 const rolePreUploaderMulter = multer({dest: "public/temp"});
 
 routerRole.get("/list", async (req, res, next) => {
-    const {page = 1, size = 8} = req.query;
+    const {page = -1, size = 0} = req.query;
     try {
         const {roleList, total} = await getRoleList(parseInt(page.toString()), parseInt(size.toString()));
         const resMsg: ResInterface = {

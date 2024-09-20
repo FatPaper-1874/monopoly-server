@@ -5,6 +5,7 @@ import {ItemType, MapItem, Role, Street, User} from "./bace";
 import {ChanceCard} from "../classes/ChanceCard";
 import {ChanceCardType} from "../enums/bace";
 
+
 export interface GameSetting {
     gameOverRule: GameOverRule; //游戏结束的判定规则
     initMoney: number; //初始金钱

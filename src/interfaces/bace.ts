@@ -1,6 +1,16 @@
 import {WebSocket} from "ws";
-import {ChatMessageType, SocketMsgType} from "../enums/bace";
+import {ChatMessageType, MonopolyWebSocketMsgType, SocketMsgType, WorkerCommType} from "../enums/bace";
 import {GameSetting} from "./game";
+
+export interface MonopolyWebSocketMsg {
+    type: MonopolyWebSocketMsgType;
+    data: any;
+};
+
+export interface WorkerCommMsg {
+    type: WorkerCommType;
+    data: any;
+}
 
 export interface SocketMessage {
     type: SocketMsgType;
@@ -25,7 +35,6 @@ export interface UserInDB {
 export interface User {
     userId: string;
     username: string;
-    socketClient: WebSocket;
     avatar: string;
     color: string;
 }
@@ -97,12 +106,12 @@ export interface Model {
 }
 
 export interface ArrivedEvent {
-	id: string;
-	name: string;
-	describe: string;
-	iconUrl: string;
-	effectCode: string;
-	mapItem: MapItem[];
+    id: string;
+    name: string;
+    describe: string;
+    iconUrl: string;
+    effectCode: string;
+    mapItem: MapItem[];
 }
 
 export interface Street {
@@ -127,3 +136,5 @@ export interface ChatMessage {
     content: string;
     time: number;
 }
+
+
