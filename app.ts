@@ -1,10 +1,8 @@
 import "reflect-metadata";
-import {GameSocketServer} from "./src/classes/GameSocketServer";
 import AppDataSource from "./src/db/dbConnecter";
 import express, {ErrorRequestHandler, RequestHandler} from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import {expressjwt} from "express-jwt";
 import routerModel from "./src/routers/model";
 import {routerUser} from "./src/routers/user";
 import {routerMap} from "./src/routers/map";
