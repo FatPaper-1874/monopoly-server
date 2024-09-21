@@ -1,6 +1,4 @@
-import {WebSocket} from "ws";
 import {ChatMessageType, MonopolyWebSocketMsgType, SocketMsgType, WorkerCommType} from "../enums/bace";
-import {GameSetting} from "./game";
 
 export interface MonopolyWebSocketMsg {
     type: MonopolyWebSocketMsgType;
@@ -50,22 +48,6 @@ export interface Role {
     roleName: string;
     fileName: string;
     color: string;
-}
-
-export interface RoomInfo {
-    roomId: string;
-    userList: Array<{
-        userId: string;
-        username: string;
-        isReady: boolean;
-        color: string;
-        avatar: string;
-    }>;
-    isStarted: boolean;
-    ownerId: string;
-    ownerName: string;
-    roleList: Role[];
-    gameSetting: GameSetting;
 }
 
 export interface MapItem {

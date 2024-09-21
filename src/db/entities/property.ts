@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne, JoinColumn, Index } from "typeorm";
 import { Map } from "./map";
 import { Street } from "./street";
 import { MapItem } from "./mapItem";
@@ -33,8 +33,10 @@ export class Property {
 	mapItem: MapItem;
 
 	@ManyToOne(() => Street, (street) => street.id, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+	@Index()
 	street: Street;
 
 	@ManyToOne(() => Map, (map) => map.properties, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+	@Index()
 	map: Map;
 }

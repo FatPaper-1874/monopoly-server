@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, OneToMany, Index} from "typeorm";
 import {Map} from "./map";
 import {ItemType} from "./itemTypes";
 import {Property} from "./property";
@@ -22,10 +22,12 @@ export class MapItem {
     rotation: 0 | 1 | 2 | 3;
 
     @ManyToOne(() => ItemType, (itemType) => itemType.mapItem, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @Index()
     type: ItemType;
 
     @ManyToOne(() => MapItem, (mapItem) => mapItem.belinked, {onDelete: "SET NULL"})
     @JoinColumn()
+    @Index()
     linkto?: MapItem;
 
     @OneToMany(() => MapItem, (mapItem) => mapItem.linkto, {onDelete: "DEFAULT"})
@@ -38,8 +40,10 @@ export class MapItem {
 
     @ManyToOne(() => ArrivedEvent, (arriveEvent) => arriveEvent.mapItem, {onDelete: "SET NULL", onUpdate: "CASCADE"})
     @JoinColumn()
+    @Index()
     arrivedEvent?: ArrivedEvent;
 
     @ManyToOne(() => Map, (map) => map.mapItems, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @Index()
     map: Map;
 }

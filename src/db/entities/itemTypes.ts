@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable, Index } from "typeorm";
 import { Map } from "./map";
 import { MapItem } from "./mapItem";
 import { Model } from "./model";
@@ -15,6 +15,7 @@ export class ItemType {
 	name: string;
 
 	@ManyToOne(() => Model, (model) => model.itemType, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+	@Index()
 	model: Model;
 
 	@Column({ type: "int", nullable: false })

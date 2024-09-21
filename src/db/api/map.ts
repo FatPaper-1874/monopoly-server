@@ -53,7 +53,6 @@ export const updateIndexList = async (id: string, indexList: string[]) => {
 };
 
 export const getMapById = async (id: string) => {
-	console.time("getMapInfo");
 	const map = await mapRepository.findOne({
 		where: { id },
 		relations: [
@@ -73,10 +72,8 @@ export const getMapById = async (id: string) => {
 			"streets",
 		],
 	});
-	console.timeLog("getMapInfo");
 	if (map) {
-		// map.itemTypes = getItemTypesFromMapItems(map.mapItems) as any;
-		console.timeEnd("getMapInfo");
+		map.itemTypes = getItemTypesFromMapItems(map.mapItems) as any;
 		return map;
 	} else {
 		return null;
