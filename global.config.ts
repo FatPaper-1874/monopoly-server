@@ -3,7 +3,6 @@ import {
     FATPAPER_USER_SERVER_PORT,
     ICE_SERVER_PORT,
     MONOPOLY_SERVER_PORT,
-    MONOPOLY_SOCKET_PORT
 } from "../global.config";
 import {
     __TC_SECRETID__ as tc_id,
@@ -17,7 +16,6 @@ export const __USERSERVERHOST__ = `http://${
 }:${FATPAPER_USER_SERVER_PORT}`;
 export const __MONOPOLYSERVERHOST__ = `${FATPAPER_HOST}:${MONOPOLY_SERVER_PORT}`;
 export const __APIPORT__ = MONOPOLY_SERVER_PORT;
-export const __SOCKETPORT__ = MONOPOLY_SOCKET_PORT;
 export const __ICE_SERVER_PORT__ = ICE_SERVER_PORT;
 
 export const __TC_ID__ = tc_id;

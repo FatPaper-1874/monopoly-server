@@ -16,7 +16,7 @@ import { routerMusic } from "./src/routers/music";
 import { roomRouter } from "./src/routers/room-router";
 import { serverLog } from "./src/utils/logger";
 import chalk from "chalk";
-import { __APIPORT__, __ICE_SERVER_PORT__, __SOCKETPORT__, __USERSERVERHOST__ } from "./global.config";
+import { __APIPORT__, __ICE_SERVER_PORT__, __USERSERVERHOST__ } from "./global.config";
 import { getPublicKey } from "./src/utils/api/keys";
 import { roleValidation } from "./src/utils/role-validation";
 import { routerArrivedEvent } from "./src/routers/arrived-event";
@@ -69,8 +69,6 @@ async function bootstrap() {
 			serverLog(`${chalk.bold.bgGreen(` API服务启动成功 ${__APIPORT__}端口`)}`);
 		});
 
-		// const gameSocketServer = new GameSocketServer(__SOCKETPORT__);
-		const monopolyRoomRouter = new RoomRouter(__SOCKETPORT__);
 		const peerServer = PeerServer({ port: __ICE_SERVER_PORT__ }, () => {
 			serverLog(`${chalk.bold.bgGreen(` ICE服务启动成功 ${__ICE_SERVER_PORT__}端口`)}`);
 		});
