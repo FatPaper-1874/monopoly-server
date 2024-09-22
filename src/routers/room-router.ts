@@ -14,17 +14,6 @@ setInterval(() => {
 	});
 }, heartContinuationTimeMs * 2); //仁慈的, 取消房间时间计时器翻倍
 
-// 定时输出 Map 的内容
-setInterval(() => {
-	console.clear();
-	console.log("Current Time:");
-	console.log(Date.now());
-	console.log("Current Map Content:");
-	for (const r of roomMap) {
-		console.dir(r);
-	}
-}, 1000);
-
 roomRouter.get("/join", async (req, res, next) => {
 	const { roomId } = req.query as { roomId: string };
 	if (roomId && roomId.length < 13) {

@@ -69,8 +69,6 @@ async function bootstrap() {
 			serverLog(`${chalk.bold.bgGreen(` API服务启动成功 ${__APIPORT__}端口`)}`);
 		});
 
-		// const gameSocketServer = new GameSocketServer(__SOCKETPORT__);
-		const monopolyRoomRouter = new RoomRouter(__SOCKETPORT__);
 		const peerServer = PeerServer({ port: __ICE_SERVER_PORT__ }, () => {
 			serverLog(`${chalk.bold.bgGreen(` ICE服务启动成功 ${__ICE_SERVER_PORT__}端口`)}`);
 		});
