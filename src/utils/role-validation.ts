@@ -15,7 +15,8 @@ const AllowPath = {
 		"/music/list",
 		"/role/list",
 		"/map/list",
-		"/map/info"
+		"/map/info",
+		"/room-router/(.*)",
 	],
 };
 
