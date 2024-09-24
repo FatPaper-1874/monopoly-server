@@ -5,7 +5,6 @@ import { asyncMissionQueue, MissionQueueItem } from "../utils/async-mission-queu
 import { MonopolyWebSocketMsg } from "../interfaces/bace";
 import { serverLog } from "../utils/logger";
 import chalk from "chalk";
-import { __APIPORT__ } from "../../global.config";
 
 export class RoomRouter {
 	private webSocketPort: number;
