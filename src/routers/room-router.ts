@@ -139,8 +139,10 @@ roomRouter.get("/heart", async (req, res, next) => {
 roomRouter.get("/room-list", async (req, res, next) => {
 	res.status(200).json({
 		data: Array.from(roomMap.values()).map((r) => {
-			r.hostPeerId = null;
-			return r;
+			return <RoomMapItem>{
+				...r,
+				hostPeerId: null,
+			};
 		}),
 	});
 });
