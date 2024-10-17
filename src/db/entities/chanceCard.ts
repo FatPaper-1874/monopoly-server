@@ -1,5 +1,5 @@
 import { ChanceCardType } from "src/enums/bace";
-import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Map } from "./map";
 
 @Entity()
@@ -28,4 +28,16 @@ export class ChanceCard {
 	@ManyToMany(() => Map, (map) => map.chanceCards)
 	@JoinTable({ name: "map_chance_card" })
 	maps: Map[];
+
+	@CreateDateColumn({
+		name: "create_time",
+		nullable: true,
+	})
+	createTime: Date;
+
+	@UpdateDateColumn({
+		name: "update_time",
+		nullable: true,
+	})
+	updateTime: Date | null;
 }

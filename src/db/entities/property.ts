@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne, JoinColumn, Index } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, OneToOne, JoinColumn, Index, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Map } from "./map";
 import { Street } from "./street";
 import { MapItem } from "./mapItem";
@@ -39,4 +39,16 @@ export class Property {
 	@ManyToOne(() => Map, (map) => map.properties, { onDelete: "CASCADE", onUpdate: "CASCADE" })
 	@Index()
 	map: Map;
+
+	@CreateDateColumn({
+		name: "create_time",
+		nullable: true,
+	})
+	createTime: Date;
+
+	@UpdateDateColumn({
+		name: "update_time",
+		nullable: true,
+	})
+	updateTime: Date | null;
 }

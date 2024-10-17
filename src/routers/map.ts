@@ -8,6 +8,9 @@ import {
 	updateIndexList,
 	setBackground,
 	getMapIndexsByMapId,
+	updateHouseModelList,
+	updateMapName,
+	updateMapUseState,
 } from "../db/api/map";
 import { getMapItemListByMapId } from "../db/api/mapItem";
 import { getStreetListByMapId } from "../db/api/street";
@@ -17,6 +20,7 @@ import { getChanceCardsListByMapId } from "../db/api/chance-card";
 import path from "path";
 import multer from "multer";
 import { uploadFile } from "../utils/file-uploader";
+import { verToken } from "../utils/token";
 
 export const routerMap = Router();
 const backgroundMulter = multer({ dest: "public/backgrounds" });
@@ -69,8 +73,37 @@ routerMap.post("/update-index-list", async (req, res, next) => {
 		}
 	} else {
 		const resMsg: ResInterface = {
-			status: 500,
-			msg: "没有传递name",
+			status: 400,
+			msg: "参数错误",
+		};
+		res.status(resMsg.status).json(resMsg);
+	}
+});
+
+routerMap.post("/update-house-model-list", async (req, res, next) => {
+	const { id, houseModels } = req.body as {
+		id: string | undefined;
+		houseModels: { lv0: string; lv1: string; lv2: string } | undefined;
+	};
+	if (id && houseModels) {
+		try {
+			await updateHouseModelList(id, houseModels);
+			const resMsg: ResInterface = {
+				status: 200,
+				msg: "更新地图房子模型成功",
+			};
+			res.status(resMsg.status).json(resMsg);
+		} catch (e: any) {
+			const resMsg: ResInterface = {
+				status: 500,
+				msg: "更新地图房子模型失败",
+			};
+			res.status(resMsg.status).json(resMsg);
+		}
+	} else {
+		const resMsg: ResInterface = {
+			status: 400,
+			msg: "参数错误",
 		};
 		res.status(resMsg.status).json(resMsg);
 	}
@@ -206,9 +239,24 @@ routerMap.get("/map-indexs", async (req, res, next) => {
 });
 
 routerMap.get("/list", async (req, res, next) => {
+	let isAdmin = false;
+	const token = req.headers.authorization;
+	if (token) {
+		const tokenInfo = await verToken(token);
+		if (!tokenInfo) {
+			const resContent: ResInterface = {
+				status: 401,
+				msg: "token解析失败",
+			};
+			res.status(401).json(resContent);
+			return;
+		}
+		isAdmin = tokenInfo.isAdmin;
+	}
+
 	const { page = 1, size = 8 } = req.query;
 	try {
-		const { mapsList, total } = await getMapsList(parseInt(page.toString()), parseInt(size.toString()));
+		const { mapsList, total } = await getMapsList(parseInt(page.toString()), parseInt(size.toString()), isAdmin);
 		const resMsg: ResInterface = {
 			status: 200,
 			data: { total, current: parseInt(page.toString()), mapsList },
@@ -265,5 +313,43 @@ routerMap.post("/background", backgroundMulter.single("background"), async (req,
 			res.status(resMsg.status).json(resMsg);
 			return;
 		}
+	}
+});
+
+routerMap.post("/update-name", async (req, res, next) => {
+	const { id, name } = req.body;
+	if (id && name) {
+		await updateMapName(id, name);
+		const resMsg: ResInterface = {
+			status: 200,
+			msg: "更新地图名成功",
+		};
+		res.status(resMsg.status).json(resMsg);
+	} else {
+		const resMsg: ResInterface = {
+			status: 400,
+			msg: "参数错误",
+		};
+		res.status(resMsg.status).json(resMsg);
+		return;
+	}
+});
+
+routerMap.post("/update-inuse", async (req, res, next) => {
+	const { id, inUse } = req.body;
+	if (id && inUse !== undefined) {
+		await updateMapUseState(id, inUse);
+		const resMsg: ResInterface = {
+			status: 200,
+			msg: inUse ? "地图启用成功" : "地图禁用成功",
+		};
+		res.status(resMsg.status).json(resMsg);
+	} else {
+		const resMsg: ResInterface = {
+			status: 400,
+			msg: "参数错误",
+		};
+		res.status(resMsg.status).json(resMsg);
+		return;
 	}
 });

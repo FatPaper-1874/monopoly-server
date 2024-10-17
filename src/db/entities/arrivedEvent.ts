@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany, OneToMany, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { MapItem } from "./mapItem";
 
 @Entity()
@@ -20,4 +20,16 @@ export class ArrivedEvent {
 
 	@OneToMany(() => MapItem, (mapItem) => mapItem.arrivedEvent, { cascade: true })
 	mapItem: MapItem[];
+
+	@CreateDateColumn({
+		name: "create_time",
+		nullable: true,
+	})
+	createTime: Date;
+
+	@UpdateDateColumn({
+		name: "update_time",
+		nullable: true,
+	})
+	updateTime: Date | null;
 }

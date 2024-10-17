@@ -4,8 +4,11 @@ import { Map } from "../entities/map";
 import { unlinkSync } from "fs";
 import path from "path";
 import { deleteFiles } from "../../utils/file-uploader";
+import { Model } from "../entities/model";
+import { In } from "typeorm";
 
 const mapRepository = AppDataSource.getRepository(Map);
+const modelRepository = AppDataSource.getRepository(Model);
 
 export const createMap = async (name: string) => {
 	const map = new Map();
@@ -24,6 +27,14 @@ export const deleteMap = async (id: string) => {
 	} else {
 		throw new Error("无效的id");
 	}
+};
+
+export const updateMapName = async (mapId: string, name: string) => {
+	await mapRepository.createQueryBuilder().update(Map).set({ name }).where("id = :id", { id: mapId }).execute();
+};
+
+export const updateMapUseState = async (mapId: string, inUse: boolean) => {
+	await mapRepository.createQueryBuilder().update(Map).set({ inUse }).where("id = :id", { id: mapId }).execute();
 };
 
 export const setBackground = async (mapId: string, backgroundUrl: string) => {
@@ -48,6 +59,21 @@ export const setBackground = async (mapId: string, backgroundUrl: string) => {
 		.execute();
 };
 
+export const updateHouseModelList = async (mapId: string, houseModels: { lv0: string; lv1: string; lv2: string }) => {
+	const houseModel_lv0 = await modelRepository.findOne({ where: { id: houseModels.lv0 } });
+	const houseModel_lv1 = await modelRepository.findOne({ where: { id: houseModels.lv1 } });
+	const houseModel_lv2 = await modelRepository.findOne({ where: { id: houseModels.lv2 } });
+	const map = await mapRepository.findOne({ where: { id: mapId } });
+	if (map && houseModel_lv0 && houseModel_lv1 && houseModel_lv2) {
+		map.houseModel_lv0 = houseModel_lv0;
+		map.houseModel_lv1 = houseModel_lv1;
+		map.houseModel_lv2 = houseModel_lv2;
+		mapRepository.save(map);
+	} else {
+		throw new Error("获取Map或者Model时发生错误");
+	}
+};
+
 export const updateIndexList = async (id: string, indexList: string[]) => {
 	mapRepository.createQueryBuilder().update(Map).set({ indexList }).where("id = :id", { id }).execute();
 };
@@ -70,6 +96,9 @@ export const getMapById = async (id: string) => {
 			"properties.street",
 			"chanceCards",
 			"streets",
+			"houseModel_lv0",
+			"houseModel_lv1",
+			"houseModel_lv2",
 		],
 	});
 	if (map) {
@@ -80,17 +109,20 @@ export const getMapById = async (id: string) => {
 	}
 };
 
-export const getMapsList = async (page: number, size: number) => {
-	const mapsList = await mapRepository.find({
+export const getMapsList = async (page: number, size: number, isAdmin: boolean) => {
+	const total = await mapRepository.count();
+	let mapsList = await mapRepository.find({
 		relations: ["mapItems", "mapItems.type", "mapItems.type.model", "chanceCards"],
-		skip: (page - 1) * size,
-		take: size,
+		skip: page > 0 ? (page - 1) * size : undefined,
+		take: page > 0 ? size : undefined,
 	});
 	mapsList.map((map) => {
 		map.itemTypes = getItemTypesFromMapItems(map.mapItems) as any;
 		return map;
 	});
-	const total = await mapRepository.count();
+	if (!isAdmin) {
+		mapsList = mapsList.filter((m) => m.inUse);
+	}
 	return { mapsList, total };
 };
 

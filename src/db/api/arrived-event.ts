@@ -87,7 +87,7 @@ export const getArrivedEventById = async (id: string) => {
 export const getArrivedEventsList = async (page: number, size: number) => {
     const total = await arrivedEventRepository.count();
     if (page > 0) {
-        const arrivedEventsList = await arrivedEventRepository.find({skip: (page - 1) * size, take: size});
+        const arrivedEventsList = await arrivedEventRepository.find({skip: (page - 1) * size, take: size, order: { createTime: "DESC" } });
         return {arrivedEventsList, total};
     } else {
         const arrivedEventsList = await arrivedEventRepository.find();

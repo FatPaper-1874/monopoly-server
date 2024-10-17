@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable, Index } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable, Index, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Map } from "./map";
 import { MapItem } from "./mapItem";
 import { Model } from "./model";
@@ -27,4 +27,16 @@ export class ItemType {
 	@ManyToMany(() => Map, (map) => map.itemTypes)
 	@JoinTable({name: "itemtype_map"})
 	map: Map[];
+
+	@CreateDateColumn({
+		name: "create_time",
+		nullable: true,
+	})
+	createTime: Date;
+
+	@UpdateDateColumn({
+		name: "update_time",
+		nullable: true,
+	})
+	updateTime: Date | null;
 }

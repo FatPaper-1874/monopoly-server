@@ -1,5 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	OneToMany,
+	Column,
+	CreateDateColumn,
+	UpdateDateColumn,
+	ManyToMany,
+	JoinTable,
+	ManyToOne,
+	OneToOne,
+} from "typeorm";
 import { ItemType } from "./itemTypes";
+import { Map } from "./map";
 
 @Entity()
 export class Model {
@@ -17,4 +29,25 @@ export class Model {
 
 	@OneToMany(() => ItemType, (itemType) => itemType.model, { cascade: true })
 	itemType: ItemType;
+
+	@OneToOne(() => Map, (map) => map.houseModel_lv0)
+	map_house_lv0: Map;
+
+	@OneToOne(() => Map, (map) => map.houseModel_lv1)
+	map_house_lv1: Map;
+
+	@OneToOne(() => Map, (map) => map.houseModel_lv2)
+	map_house_lv2: Map;
+
+	@CreateDateColumn({
+		name: "create_time",
+		nullable: true,
+	})
+	createTime: Date;
+
+	@UpdateDateColumn({
+		name: "update_time",
+		nullable: true,
+	})
+	updateTime: Date | null;
 }
