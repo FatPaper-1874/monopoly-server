@@ -131,11 +131,12 @@ routerMap.delete("/delete", async (req, res, next) => {
 
 routerMap.get("/info", async (req, res, next) => {
 	const id = req.query.id as string;
+	const isFromConsole = req.query.console as string;
 	if (id) {
 		try {
 			const resMsg: ResInterface = {
 				status: 200,
-				data: await getMapById(id),
+				data: await getMapById(id, Boolean(isFromConsole)),
 			};
 			res.status(resMsg.status).json(resMsg);
 		} catch (e: any) {
