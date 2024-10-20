@@ -7,6 +7,7 @@ type RoomMapItem = {
 	roomId: string;
 	hostName: string;
 	hostId: string;
+	isPrivate: boolean;
 	hostPeerId: string | null;
 	createTime: number;
 	deleteTime: number;
@@ -53,6 +54,7 @@ roomRouter.get("/join", async (req, res, next) => {
 				roomId,
 				hostName: "",
 				hostId: "",
+				isPrivate: true,
 				hostPeerId: null,
 				createTime: Date.now(),
 				deleteTime: Date.now() + heartContinuationTimeMs,
@@ -145,4 +147,33 @@ roomRouter.get("/room-list", async (req, res, next) => {
 			};
 		}),
 	});
+});
+
+roomRouter.get("/random-public-room", async (req, res, next) => {
+	const roomArr = Array.from(roomMap.values()).filter((r) => !r.isPrivate);
+
+	if (roomArr.length > 0) {
+		function getRandomElement<T>(arr: Array<T>) {
+			const randomIndex = Math.floor(Math.random() * arr.length);
+			return arr[randomIndex];
+		}
+		res.status(200).json({ roomId: getRandomElement(roomArr).roomId });
+	} else {
+		res.status(200).json({ roomId: "" });
+	}
+});
+
+roomRouter.post("/set-private", async (req, res, next) => {
+	const { roomId, isPrivate } = req.body as { roomId: string; isPrivate: boolean };
+	const room = roomMap.get(roomId);
+	if (room) {
+		room.isPrivate = isPrivate;
+		res.status(200).json(<ResInterface>{
+			status: 200,
+			msg: room.isPrivate ? "现在房间只能通过输入ID进入啦" : "已将房间公开",
+			data: { roomId: roomId, isPrivate: room.isPrivate },
+		});
+	} else {
+		res.status(400).json(<ResInterface>{ status: 400, msg: "不存在的房间" });
+	}
 });
