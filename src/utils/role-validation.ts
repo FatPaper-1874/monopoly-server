@@ -16,7 +16,13 @@ const AllowPath = {
 		"/role/list",
 		"/map/list",
 		"/map/info",
-		"/room-router/(.*)",
+		"/room-router/join",
+		"/room-router/emit-host",
+		"/room-router/delete",
+		"/room-router/heart",
+		"/room-router/random-public-room",
+		"/room-router/set-private",
+		"/room-router/set-started"
 	],
 };
 

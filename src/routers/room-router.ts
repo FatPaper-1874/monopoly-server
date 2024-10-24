@@ -7,11 +7,12 @@ type RoomMapItem = {
 	roomId: string;
 	hostName: string;
 	hostId: string;
-	isPrivate: boolean;
 	hostPeerId: string | null;
 	createTime: number;
 	deleteTime: number;
 	lastHeartTime: number;
+	isPrivate: boolean;
+	isStarted: boolean;
 };
 
 export const roomRouter = Router();
@@ -54,11 +55,12 @@ roomRouter.get("/join", async (req, res, next) => {
 				roomId,
 				hostName: "",
 				hostId: "",
-				isPrivate: true,
 				hostPeerId: null,
 				createTime: Date.now(),
 				deleteTime: Date.now() + heartContinuationTimeMs,
 				lastHeartTime: Date.now(),
+				isPrivate: true,
+				isStarted: false,
 			});
 			const resMsg: ResInterface = {
 				status: 200,
@@ -150,7 +152,7 @@ roomRouter.get("/room-list", async (req, res, next) => {
 });
 
 roomRouter.get("/random-public-room", async (req, res, next) => {
-	const roomArr = Array.from(roomMap.values()).filter((r) => !r.isPrivate);
+	const roomArr = Array.from(roomMap.values()).filter((r) => !r.isPrivate && !r.isStarted);
 
 	if (roomArr.length > 0) {
 		function getRandomElement<T>(arr: Array<T>) {
@@ -172,6 +174,19 @@ roomRouter.post("/set-private", async (req, res, next) => {
 			status: 200,
 			msg: room.isPrivate ? "现在房间只能通过输入ID进入啦" : "已将房间公开",
 			data: { roomId: roomId, isPrivate: room.isPrivate },
+		});
+	} else {
+		res.status(400).json(<ResInterface>{ status: 400, msg: "不存在的房间" });
+	}
+});
+
+roomRouter.post("/set-started", async (req, res, next) => {
+	const { roomId, isStarted } = req.body as { roomId: string; isStarted: boolean };
+	const room = roomMap.get(roomId);
+	if (room) {
+		room.isStarted = isStarted;
+		res.status(200).json(<ResInterface>{
+			status: 200,
 		});
 	} else {
 		res.status(400).json(<ResInterface>{ status: 400, msg: "不存在的房间" });
